@@ -1,0 +1,21 @@
+{
+    "price": {
+        "trial": {
+            "price": "$3,100",
+            "description": "Save 20% on your first purchase"
+        },
+        "basic": {
+            "price":"$8,900",
+           "description": "Save 20% on your first purchase"
+        },
+        "essential": {
+            "price": "$17,500",
+           "description": "Save 20% on your first purchase"
+        },
+        "pro": {
+            "price": "$29,000",
+            "description": "Save 20% on your first purchase"
+        }
+       
+    }
+}

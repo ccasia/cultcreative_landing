@@ -1,0 +1,21 @@
+{
+    "price": {
+        "trial": {
+            "price": "RM 3,000"
+            
+        },
+        "basic": {
+            "price": "RM 8,800"
+            
+        },
+        "essential": {
+            "price": "RM 16,500"
+            
+        },
+        "pro": {
+            "price": "RM 27,000"
+            
+        }
+       
+    }
+}
