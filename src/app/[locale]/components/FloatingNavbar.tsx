@@ -215,12 +215,21 @@ const FloatingNavbar = () => {
                 {/* Close Button */}
                 <div className="flex justify-end mb-4">
                   <motion.button
-                    className="bg-white border-2 border-gray-300 p-3 rounded-xl text-gray-800 hover:border-gray-400 transition-colors duration-200"
+                    className="bg-white border border-gray-300 rounded-lg text-gray-800 hover:border-gray-400 transition-colors duration-200"
+                    style={{
+                      width: '32px',
+                      height: '32px',
+                      padding: '4.8px 8px 7.2px 8px',
+                      borderRadius: '6.4px',
+                      borderWidth: '0.8px',
+                      borderColor: '#E7E7E7',
+                      boxShadow: '0px -2.4px 0px 0px #E7E7E7 inset'
+                    }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </motion.button>
