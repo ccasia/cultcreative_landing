@@ -43,7 +43,8 @@ export const metadata = {
   },
 };
 
-const NewLanding = ({ params: { locale } }) => {
+const NewLanding = async ({ params }) => {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (

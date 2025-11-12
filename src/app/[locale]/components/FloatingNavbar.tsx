@@ -35,7 +35,7 @@ const FloatingNavbar = () => {
   const navItems = [
     { name: "For Brands", href: `/${locale}/for-brands` },
     { name: "For Creators", href: "#creators" },
-    { name: "Success Stories", href: "#stories" }
+    { name: "Success Stories", href: `/${locale}/new-stories` }
   ];
 
   return (

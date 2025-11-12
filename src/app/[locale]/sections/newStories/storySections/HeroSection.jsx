@@ -1,0 +1,98 @@
+"use client";
+import { easeIn, motion } from "framer-motion";
+
+const HeroSection = ({ storyData }) => {
+  const { title, subtitle, campaignGoal, stats, infoChips } = storyData;
+
+  return (
+    <section
+      className="min-h-screen flex flex-col items-center justify-center px-8 pt-20 pb-60"
+      style={{
+        background: "linear-gradient(180deg, #1340FF 0%, #231F20 49.52%)",
+      }}
+    >
+      {/* Title, Subtitle, Campaign Goal Container with Floating iPhone */}
+      <div className="flex row-auto justify-center my-40">
+        {/* Floating iPhone Image - Left Side */}
+        <motion.div
+          className="relative left-12 hidden lg:block"
+          initial={{ x: '-100vw' }}
+          animate={{ x: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+            delay: 0.2,
+          }}
+          style={{ zIndex: 5 }}
+        >
+          <img
+            width={350}
+            src="/images/newStories/iphone.png"
+            alt="Campaign preview"
+            className="object-contain"
+            style={{
+              filter: "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3))",
+            }}
+          />
+        </motion.div>
+
+
+        {/* Content Container - Centered with consistent spacing */}
+        <div className="flex flex-col max-w-[50%] gap-40">
+          {/* Title and Subtitle */}
+          <div className="max-w-max">
+            <div className="relative z-10 inline-block">
+              <h1 className="text-6xl font-aileron font-bold tracking-4 text-white text-left relative z-10">
+                {title}
+              </h1>
+              <div className="absolute bottom-2 -left-1 w-[233px] h-[38px] bg-[#8A5AFE] z-0"></div>
+              {/* Subtitle text - offset from highlight */}
+              <p className="text-[47px] leading-none italic font-baskerville text-white text-left tracking-tighter z-10 translate-x-0 -translate-y-2">
+                {subtitle}
+              </p>
+            </div>
+          </div>
+
+          {/* Campaign Goal */}
+          <div className="max-w-max relative left-[15%] leading-6 ">
+            <h2 className="text-[34px] font-aileron font-semibold tracking-tight text-white mb-4 text-left">
+              Campaign Goal
+            </h2>
+            <p style={{ fontWeight: 300 }} className="text-[20px] text-white text-left">
+              {campaignGoal}
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      {/* Stats and Info Chips - Separate Container */}
+      <div className="max-w-max">
+        {/* Stats */}
+        <div className="mb-8 grid grid-cols-3 gap-24 max-w-2xl">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-left">
+              <p className="text-white font-aileron font-bold text-[36px] tracking-tight mb-3">{stat.label}</p>
+              <p className="text-6xl tracking-tighter font-light text-white">{stat.value}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Info Chips */}
+        <div className="flex flex-wrap gap-4">
+          {infoChips.map((chip, index) => (
+            <div
+              key={index}
+              className="px-6 py-2 border border-white rounded-full text-white text-sm font-extralight"
+            >
+              {chip}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
