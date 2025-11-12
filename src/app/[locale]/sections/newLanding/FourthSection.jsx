@@ -236,7 +236,13 @@ const FourthSection = () => {
                 <img
                   src="/images/NewMain/blueflowers.svg"
                   alt="Blue flowers decoration"
-                  className="absolute -top-20 left-40 w-20 h-12 z-10"
+                  className="absolute -top-20 left-40 md:left-40 w-20 h-12 z-10 md:block hidden"
+                />
+                {/* Mobile flowers - moved more to the right */}
+                <img
+                  src="/images/NewMain/blueflowers.svg"
+                  alt="Blue flowers decoration mobile"
+                  className="absolute -top-20 right-0 w-20 h-12 z-10 md:hidden block"
                 />
                 <span className="relative text-white px-4 py-2 font-bold -ml-2">Want In.</span>
               </span>

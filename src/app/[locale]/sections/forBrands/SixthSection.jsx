@@ -166,10 +166,10 @@ const SixthSection = () => {
               <div className="pl-8" style={{ width: '60%' }}>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name Field */}
-                  <div className="pointer-events-auto">
-                    <div className="flex items-center mb-2 pointer-events-none">
-                      <img src="/images/NewMain/ContactForm/Person.svg" alt="Person icon" className="w-5 h-5 mr-3" />
-                      <label className="text-white text-sm">Name</label>
+                  <div className="pointer-events-auto cursor-text" onClick={(e) => e.currentTarget.querySelector('input')?.focus()}>
+                    <div className="flex items-center mb-2 pointer-events-auto cursor-text" onClick={(e) => e.currentTarget.closest('div').querySelector('input')?.focus()}>
+                      <img src="/images/NewMain/ContactForm/Person.svg" alt="Person icon" className="w-5 h-5 mr-3 cursor-text" />
+                      <label className="text-white text-sm cursor-text" onClick={(e) => e.currentTarget.closest('div').closest('div').querySelector('input')?.focus()}>Name</label>
                     </div>
                     <input
                       type="text"
@@ -177,7 +177,7 @@ const SixthSection = () => {
                       placeholder="Your Name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2 cursor-text pointer-events-auto"
+                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-3 cursor-text pointer-events-auto"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,
@@ -194,10 +194,10 @@ const SixthSection = () => {
                   </div>
 
                   {/* Phone Field */}
-                  <div className="pointer-events-auto">
-                    <div className="flex items-center mb-2 pointer-events-none">
-                      <img src="/images/NewMain/ContactForm/Phone.svg" alt="Phone icon" className="w-5 h-5 mr-3" />
-                      <label className="text-white text-sm">Phone Number</label>
+                  <div className="pointer-events-auto cursor-text" onClick={(e) => e.currentTarget.querySelector('input')?.focus()}>
+                    <div className="flex items-center mb-2 pointer-events-auto cursor-text" onClick={(e) => e.currentTarget.closest('div').querySelector('input')?.focus()}>
+                      <img src="/images/NewMain/ContactForm/Phone.svg" alt="Phone icon" className="w-5 h-5 mr-3 cursor-text" />
+                      <label className="text-white text-sm cursor-text" onClick={(e) => e.currentTarget.closest('div').closest('div').querySelector('input')?.focus()}>Phone Number</label>
                     </div>
                     <input
                       type="tel"
@@ -205,7 +205,7 @@ const SixthSection = () => {
                       placeholder="Your Phone Number"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2 cursor-text pointer-events-auto"
+                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-3 cursor-text pointer-events-auto"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,
@@ -222,10 +222,10 @@ const SixthSection = () => {
                   </div>
 
                   {/* Company Field */}
-                  <div className="pointer-events-auto">
-                    <div className="flex items-center mb-2 pointer-events-none">
-                      <img src="/images/NewMain/ContactForm/Work outline.svg" alt="Work icon" className="w-5 h-5 mr-3" />
-                      <label className="text-white text-sm">Company Name</label>
+                  <div className="pointer-events-auto cursor-text" onClick={(e) => e.currentTarget.querySelector('input')?.focus()}>
+                    <div className="flex items-center mb-2 pointer-events-auto cursor-text" onClick={(e) => e.currentTarget.closest('div').querySelector('input')?.focus()}>
+                      <img src="/images/NewMain/ContactForm/Work outline.svg" alt="Work icon" className="w-5 h-5 mr-3 cursor-text" />
+                      <label className="text-white text-sm cursor-text" onClick={(e) => e.currentTarget.closest('div').closest('div').querySelector('input')?.focus()}>Company Name</label>
                     </div>
                     <input
                       type="text"
@@ -233,7 +233,7 @@ const SixthSection = () => {
                       placeholder="Your Company Name"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2 cursor-text pointer-events-auto"
+                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-3 cursor-text pointer-events-auto"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,
@@ -250,10 +250,10 @@ const SixthSection = () => {
                   </div>
 
                   {/* Email Field */}
-                  <div>
-                    <div className="flex items-center mb-2">
-                      <img src="/images/NewMain/ContactForm/Email.svg" alt="Email icon" className="w-5 h-5 mr-3" />
-                      <label className="text-white text-sm">Business Email</label>
+                  <div className="pointer-events-auto cursor-text" onClick={(e) => e.currentTarget.querySelector('input')?.focus()}>
+                    <div className="flex items-center mb-2 pointer-events-auto cursor-text" onClick={(e) => e.currentTarget.closest('div').querySelector('input')?.focus()}>
+                      <img src="/images/NewMain/ContactForm/Email.svg" alt="Email icon" className="w-5 h-5 mr-3 cursor-text" />
+                      <label className="text-white text-sm cursor-text" onClick={(e) => e.currentTarget.closest('div').closest('div').querySelector('input')?.focus()}>Business Email</label>
                     </div>
                     <input
                       type="email"
@@ -261,7 +261,7 @@ const SixthSection = () => {
                       placeholder="Your Business Email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2 cursor-text"
+                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-3 cursor-text pointer-events-auto"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,

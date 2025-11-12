@@ -10,11 +10,13 @@ export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   if (pathname === "/") {
-    return NextResponse.redirect(new URL("/my/new-landing", request.url));
+    return NextResponse.redirect(new URL("/my/home", request.url));
   }
 
   if (pathname === "/my" || pathname === "/sg") {
-    return NextResponse.redirect(new URL(`${pathname}/new-landing`, request.url));
+    const locale = pathname.slice(1);
+    request.nextUrl.pathname = `/${locale}/home`;
+    return NextResponse.rewrite(request.nextUrl);
   }
 
   const response = intlMiddleware(request);
