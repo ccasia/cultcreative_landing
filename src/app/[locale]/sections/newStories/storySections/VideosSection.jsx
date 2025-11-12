@@ -26,7 +26,7 @@ const VideosSection = ({ videos }) => {
       {/* iPhone Frames Grid - Centered */}
       <div className="flex justify-center -space-x-40 flex-wrap">
         {mockVideos.map((video) => (
-          <div key={video.id} className="flex-shrink-0 relative -top-24" >
+          <div key={video.id} className="shrink-0 relative -top-24" >
             {/* iPhone Frame */}
             <div className="scale-[0.52] origin-center">
               <DeviceFrameset device='iPhone X' color="black">
