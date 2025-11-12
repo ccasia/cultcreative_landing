@@ -47,7 +47,8 @@ export const metadata = {
   },
 };
 
-const ForBrandsPage = ({ params: { locale } }) => {
+const ForBrandsPage = async ({ params }) => {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (
