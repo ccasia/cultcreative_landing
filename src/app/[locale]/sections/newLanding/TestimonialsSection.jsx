@@ -226,11 +226,14 @@ const TestimonialsSection = () => {
                   <div
                     key={testimonial.id}
                     className="w-full shrink-0 px-4 flex justify-center items-center"
+                    style={{
+                      marginLeft: testimonial.id === 1 ? '-20px' : testimonial.id === 2 ? '20px' : '0px'
+                    }}
                   >
                     <img
                       src={testimonial.svgImage}
                       alt={`Testimonial ${testimonial.id}`}
-                      className="w-full h-auto object-contain"
+                      className={testimonial.id === 1 ? "w-full h-auto object-contain scale-110" : "w-full h-auto object-contain"}
                     />
                   </div>
                 ))}
