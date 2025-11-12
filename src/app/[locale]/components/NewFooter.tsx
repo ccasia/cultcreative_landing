@@ -1,6 +1,11 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 const NewFooter = () => {
+  const pathname = usePathname();
+  const locale = pathname?.split('/')[1] || 'my';
+
   return (
     <section className="text-[#231F20] bg-[#E7E7E7] py-6 footer-section">
       <div className="container mx-auto px-6">
@@ -46,7 +51,7 @@ const NewFooter = () => {
                 <a href="/about">About Us</a>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="/faq">FAQ</a>
+                <a href={`/${locale}/faq/new`}>FAQ</a>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
                 <a href="/contact">Contact Us</a>

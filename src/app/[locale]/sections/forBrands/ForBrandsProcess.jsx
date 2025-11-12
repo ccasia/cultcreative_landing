@@ -1,11 +1,26 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 const ForBrandsProcess = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         {/* Title Section */}
-        <div className="text-left mb-16 ml-8">
-          <h2 className="mb-4" style={{
+        <div className="text-left mb-16 ml-8 md:ml-8 sm:ml-0">
+          <h2 className="mb-4 md:mb-4 sm:mb-2" style={{
             fontFamily: 'Aileron',
             fontWeight: 700,
             fontStyle: 'Bold',
@@ -17,7 +32,7 @@ const ForBrandsProcess = () => {
           }}>
             Creator Marketing
           </h2>
-          <h2 className="text-6xl font-bold mb-4" style={{
+          <h2 className="text-6xl font-bold mb-4 md:mb-4 sm:mb-2" style={{
             fontFamily: 'Aileron',
             fontWeight: 700,
             fontStyle: 'Bold',
@@ -44,12 +59,20 @@ const ForBrandsProcess = () => {
             </span>
           </h2>
           
-          {/* Group 37.svg Image */}
-          <div className="mt-44">
+          {/* Steps Image - Desktop and Mobile */}
+          <div style={{ marginTop: isMobile ? '50px' : '180px', marginLeft: isMobile ? '-30px' : '0px' }}>
+            {/* Desktop Image */}
             <img
               src="/images/ForBrands/steps.svg"
               alt="Creator Marketing Process"
-              className="mx-auto max-w-6xl w-full h-auto"
+              className="hidden md:block mx-auto max-w-6xl w-full h-auto"
+            />
+            
+            {/* Mobile Image */}
+            <img
+              src="/images/ForBrands/mobile-steps.svg"
+              alt="Creator Marketing Process Mobile"
+              className="md:hidden mx-auto w-full h-auto"
             />
           </div>
         </div>
