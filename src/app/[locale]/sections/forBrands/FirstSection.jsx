@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const ForBrandsHero = () => {
+const FirstSection = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   return (
@@ -144,4 +144,4 @@ const ForBrandsHero = () => {
   );
 };
 
-export default ForBrandsHero;
+export default FirstSection;

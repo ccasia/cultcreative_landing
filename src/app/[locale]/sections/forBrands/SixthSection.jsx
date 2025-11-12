@@ -2,9 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
-const ContactFormSection = () => {
+const SixthSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
+  const locale = pathname?.split('/')[1] || 'my';
+  
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -13,6 +17,24 @@ const ContactFormSection = () => {
     industry: "",
     budget: ""
   });
+
+  const budgetOptions = locale === 'sg' ? [
+    { value: "", label: "Monthly Influencer Budget (SGD)" },
+    { value: "", label: "Select one..." },
+    { value: "below-3k", label: "Below SGD3,000" },
+    { value: "3k-8k", label: "SGD 3,000 - SGD8,000" },
+    { value: "8k-15k", label: "SGD 8,000 - SGD15,000" },
+    { value: "15k-25k", label: "SGD 15,000 - SGD25,000" },
+    { value: "above-25k", label: "More than SGD25,000" }
+  ] : [
+    { value: "", label: "Monthly Influencer Budget (RM)" },
+    { value: "", label: "Select one..." },
+    { value: "below-3k", label: "Below RM3,000" },
+    { value: "3k-8k", label: "RM3,000 - RM8,000" },
+    { value: "8k-15k", label: "RM8,000 - RM15,000" },
+    { value: "15k-25k", label: "RM15,000 - RM25,000" },
+    { value: "above-25k", label: "More than RM25,000" }
+  ];
 
   useEffect(() => {
     const checkMobile = () => {
@@ -30,10 +52,40 @@ const ContactFormSection = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    try {
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          locale,
+          formType: "brands",
+        }),
+      });
+
+      if (response.ok) {
+        alert("Form submitted successfully!");
+        // Reset form
+        setFormData({
+          name: "",
+          phone: "",
+          company: "",
+          email: "",
+          industry: "",
+          budget: ""
+        });
+      } else {
+        const error = await response.json();
+        alert(`Error: ${error.error}`);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Failed to submit form");
+    }
   };
 
   return (
@@ -85,13 +137,14 @@ const ContactFormSection = () => {
                     color: '#FFFFFF'
                   }}
                 >
-                  Finding Creators
+                  Work With
                   <img 
                     src="/images/NewMain/singlestar.svg" 
                     alt="Star decoration" 
-                    className="absolute top-0 right-0 w-[28rem] h-[28rem] transform -translate-y-52 translate-x-32"
+                    className="absolute top-0 right-0 w-[28rem] h-[28rem] transform -translate-y-36 translate-x-32"
                   />
-                  <br />For Your Brand?
+                  <br />Content Creators
+                  <br />Today!
                 </h2>
                 <p 
                   className="text-white"
@@ -105,7 +158,7 @@ const ContactFormSection = () => {
                     color: '#FFFFFF'
                   }}
                 >
-                  Fill in the form and we&apos;ll get in touch ASAP.
+                  Fill in the form and we'll get in touch ASAP.
                 </p>
               </div>
 
@@ -113,8 +166,8 @@ const ContactFormSection = () => {
               <div className="pl-8" style={{ width: '60%' }}>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name Field */}
-                  <div>
-                    <div className="flex items-center mb-2">
+                  <div className="pointer-events-auto">
+                    <div className="flex items-center mb-2 pointer-events-none">
                       <img src="/images/NewMain/ContactForm/Person.svg" alt="Person icon" className="w-5 h-5 mr-3" />
                       <label className="text-white text-sm">Name</label>
                     </div>
@@ -124,7 +177,7 @@ const ContactFormSection = () => {
                       placeholder="Your Name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2"
+                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2 cursor-text pointer-events-auto"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,
@@ -132,15 +185,17 @@ const ContactFormSection = () => {
                         fontSize: '14px',
                         lineHeight: '100%',
                         letterSpacing: '0%',
-                        verticalAlign: 'middle'
+                        verticalAlign: 'middle',
+                        WebkitAppearance: 'none',
+                        appearance: 'none'
                       }}
                       required
                     />
                   </div>
 
                   {/* Phone Field */}
-                  <div>
-                    <div className="flex items-center mb-2">
+                  <div className="pointer-events-auto">
+                    <div className="flex items-center mb-2 pointer-events-none">
                       <img src="/images/NewMain/ContactForm/Phone.svg" alt="Phone icon" className="w-5 h-5 mr-3" />
                       <label className="text-white text-sm">Phone Number</label>
                     </div>
@@ -150,7 +205,7 @@ const ContactFormSection = () => {
                       placeholder="Your Phone Number"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2"
+                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2 cursor-text pointer-events-auto"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,
@@ -158,15 +213,17 @@ const ContactFormSection = () => {
                         fontSize: '14px',
                         lineHeight: '100%',
                         letterSpacing: '0%',
-                        verticalAlign: 'middle'
+                        verticalAlign: 'middle',
+                        WebkitAppearance: 'none',
+                        appearance: 'none'
                       }}
                       required
                     />
                   </div>
 
                   {/* Company Field */}
-                  <div>
-                    <div className="flex items-center mb-2">
+                  <div className="pointer-events-auto">
+                    <div className="flex items-center mb-2 pointer-events-none">
                       <img src="/images/NewMain/ContactForm/Work outline.svg" alt="Work icon" className="w-5 h-5 mr-3" />
                       <label className="text-white text-sm">Company Name</label>
                     </div>
@@ -176,7 +233,7 @@ const ContactFormSection = () => {
                       placeholder="Your Company Name"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2"
+                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2 cursor-text pointer-events-auto"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,
@@ -184,7 +241,9 @@ const ContactFormSection = () => {
                         fontSize: '14px',
                         lineHeight: '100%',
                         letterSpacing: '0%',
-                        verticalAlign: 'middle'
+                        verticalAlign: 'middle',
+                        WebkitAppearance: 'none',
+                        appearance: 'none'
                       }}
                       required
                     />
@@ -202,7 +261,7 @@ const ContactFormSection = () => {
                       placeholder="Your Business Email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2"
+                      className="w-full bg-transparent text-white border-b border-white focus:border-blue-400 focus:outline-none py-2 cursor-text"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,
@@ -210,7 +269,9 @@ const ContactFormSection = () => {
                         fontSize: '14px',
                         lineHeight: '100%',
                         letterSpacing: '0%',
-                        verticalAlign: 'middle'
+                        verticalAlign: 'middle',
+                        WebkitAppearance: 'none',
+                        appearance: 'none'
                       }}
                       required
                     />
@@ -236,14 +297,22 @@ const ContactFormSection = () => {
                         required
                       >
                         <option value="">Select Industry</option>
-                        <option value="fashion">Fashion</option>
+                        <option value="banking">Banking and Finance</option>
                         <option value="beauty">Beauty</option>
                         <option value="lifestyle">Lifestyle</option>
-                        <option value="food">Food & Beverage</option>
+                        <option value="health">Health and Wellness</option>
+                        <option value="food">F&B</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="charities">Charities and NGOs</option>
+                        <option value="education">Education</option>
+                        <option value="events">Events</option>
+                        <option value="motherhood">Motherhood and Family</option>
+                        <option value="hotel">Hotel and Travel</option>
+                        <option value="jewellery">Jewellery</option>
+                        <option value="footwear">Footwear</option>
+                        <option value="art">Art</option>
                         <option value="tech">Technology</option>
-                        <option value="fitness">Fitness</option>
-                        <option value="travel">Travel</option>
-                        <option value="other">Other</option>
+                        <option value="other">Others</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                         <svg className="w-4 h-4" fill="none" stroke="#231f20" viewBox="0 0 24 24">
@@ -269,12 +338,9 @@ const ContactFormSection = () => {
                         }}
                         required
                       >
-                        <option value="">Monthly Influencer Budget</option>
-                        <option value="under-5k">Under $5,000</option>
-                        <option value="5k-10k">$5,000 - $10,000</option>
-                        <option value="10k-25k">$10,000 - $25,000</option>
-                        <option value="25k-50k">$25,000 - $50,000</option>
-                        <option value="50k-plus">$50,000+</option>
+                        {budgetOptions.map((option, idx) => (
+                          <option key={idx} value={option.value}>{option.label}</option>
+                        ))}
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                         <svg className="w-4 h-4" fill="none" stroke="#231f20" viewBox="0 0 24 24">
@@ -338,7 +404,7 @@ const ContactFormSection = () => {
                   color: '#FFFFFF'
                 }}
               >
-                Finding Creators For Your Brand?
+                Work With Content Creators Today!
               </h2>
               <p 
                 className="text-white"
@@ -352,7 +418,7 @@ const ContactFormSection = () => {
                   color: '#FFFFFF'
                 }}
               >
-                Fill in the form and we&apos;ll get in touch ASAP.
+                Fill in the form and we'll get in touch ASAP.
               </p>
             </div>
 
@@ -482,14 +548,22 @@ const ContactFormSection = () => {
                     required
                   >
                     <option value="">Select Industry</option>
-                    <option value="fashion">Fashion</option>
+                    <option value="banking">Banking and Finance</option>
                     <option value="beauty">Beauty</option>
                     <option value="lifestyle">Lifestyle</option>
-                    <option value="food">Food & Beverage</option>
+                    <option value="health">Health and Wellness</option>
+                    <option value="food">F&B</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="charities">Charities and NGOs</option>
+                    <option value="education">Education</option>
+                    <option value="events">Events</option>
+                    <option value="motherhood">Motherhood and Family</option>
+                    <option value="hotel">Hotel and Travel</option>
+                    <option value="jewellery">Jewellery</option>
+                    <option value="footwear">Footwear</option>
+                    <option value="art">Art</option>
                     <option value="tech">Technology</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="travel">Travel</option>
-                    <option value="other">Other</option>
+                    <option value="other">Others</option>
                   </select>
                   <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                     <svg className="w-4 h-4" fill="none" stroke="#231f20" viewBox="0 0 24 24">
@@ -515,12 +589,9 @@ const ContactFormSection = () => {
                     }}
                     required
                   >
-                    <option value="">Monthly Influencer Budget</option>
-                    <option value="under-5k">Under $5,000</option>
-                    <option value="5k-10k">$5,000 - $10,000</option>
-                    <option value="10k-25k">$10,000 - $25,000</option>
-                    <option value="25k-50k">$25,000 - $50,000</option>
-                    <option value="50k-plus">$50,000+</option>
+                    {budgetOptions.map((option, idx) => (
+                      <option key={idx} value={option.value}>{option.label}</option>
+                    ))}
                   </select>
                   <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                     <svg className="w-4 h-4" fill="none" stroke="#231f20" viewBox="0 0 24 24">
@@ -559,4 +630,4 @@ const ContactFormSection = () => {
   );
 };
 
-export default ContactFormSection;
+export default SixthSection;

@@ -7,23 +7,23 @@ const FloatingNavbar = dynamic(() =>
   import("@/app/[locale]/components/FloatingNavbar")
 );
 
-const HeroSection = dynamic(() =>
-  import("@/app/[locale]/sections/newLanding/HeroSection")
+const FirstSection = dynamic(() =>
+  import("@/app/[locale]/sections/newLanding/FirstSection")
 );
-const CTASection = dynamic(() =>
-  import("@/app/[locale]/sections/newLanding/CTASection")
+const SecondSection = dynamic(() =>
+  import("@/app/[locale]/sections/newLanding/SecondSection")
 );
-const HowWeDoItSection = dynamic(() =>
-  import("@/app/[locale]/sections/newLanding/HowWeDoItSection")
+const ThirdSection = dynamic(() =>
+  import("@/app/[locale]/sections/newLanding/ThirdSection")
 );
-const NewHeroSection = dynamic(() =>
-  import("@/app/[locale]/sections/newLanding/NewHeroSection")
+const FourthSection = dynamic(() =>
+  import("@/app/[locale]/sections/newLanding/FourthSection")
 );
-const TestimonialsSection = dynamic(() =>
-  import("@/app/[locale]/sections/newLanding/TestimonialsSection")
+const FifthSection = dynamic(() =>
+  import("@/app/[locale]/sections/newLanding/FifthSection")
 );
-const ContactFormSection = dynamic(() =>
-  import("@/app/[locale]/sections/newLanding/ContactFormSection")
+const SixthSection = dynamic(() =>
+  import("@/app/[locale]/sections/newLanding/SixthSection")
 );
 const NewFooter = dynamic(() =>
   import("@/app/[locale]/components/NewFooter")
@@ -56,12 +56,12 @@ const NewLanding = async ({ params }) => {
             <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white"></div>
           </div>
         }>
-          <HeroSection />
-          <CTASection />
-          <HowWeDoItSection />
-          <NewHeroSection />
-          <TestimonialsSection />
-          <ContactFormSection />
+          <FirstSection />
+          <SecondSection />
+          <ThirdSection />
+          <FourthSection />
+          <FifthSection />
+          <SixthSection />
           <NewFooter />
           <Toaster position="top-center" />
         </Suspense>

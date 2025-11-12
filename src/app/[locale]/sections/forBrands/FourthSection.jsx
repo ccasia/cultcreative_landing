@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const ForBrandsFeatures = () => {
+const FourthSection = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -417,7 +417,7 @@ const ForBrandsFeatures = () => {
   );
 };
 
-export default ForBrandsFeatures;
+export default FourthSection;
 
 
 

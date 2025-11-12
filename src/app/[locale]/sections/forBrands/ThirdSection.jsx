@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const ForBrandsProcess = () => {
+const ThirdSection = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -115,4 +115,4 @@ const ForBrandsProcess = () => {
   );
 };
 
-export default ForBrandsProcess;
+export default ThirdSection;

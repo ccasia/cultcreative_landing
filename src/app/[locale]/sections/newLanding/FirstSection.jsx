@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
-const HeroSection = () => {
+const FirstSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
   const [isMobile, setIsMobile] = useState(false);
@@ -302,7 +302,6 @@ const HeroSection = () => {
                 skewX: isInView ? 58 : 0,
                 skewY: isInView ? -15 : 0,
                 opacity: isInView ? 0 : 1,
-                // skewZ: isInView ? 60 : 0,
               }}
               transition={isMobile ? {} : { 
                 duration: 0.4, 
@@ -482,4 +481,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default FirstSection;

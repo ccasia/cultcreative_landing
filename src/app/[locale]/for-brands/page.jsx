@@ -8,26 +8,25 @@ const FloatingNavbar = dynamic(() =>
   import("@/app/[locale]/components/FloatingNavbar")
 );
 
-// Dynamic import for For Brands Hero
-const ForBrandsHero = dynamic(() =>
-  import("@/app/[locale]/sections/forBrands/ForBrandsHero")
+// Dynamic import for For Brands sections
+const FirstSection = dynamic(() =>
+  import("@/app/[locale]/sections/forBrands/FirstSection")
 );
 
-// Dynamic import for For Brands Stats
-const ForBrandsStats = dynamic(() =>
-  import("@/app/[locale]/sections/forBrands/ForBrandsStats")
+const SecondSection = dynamic(() =>
+  import("@/app/[locale]/sections/forBrands/SecondSection")
 );
-const ForBrandsProcess = dynamic(() =>
-  import("@/app/[locale]/sections/forBrands/ForBrandsProcess")
+const ThirdSection = dynamic(() =>
+  import("@/app/[locale]/sections/forBrands/ThirdSection")
 );
-const ForBrandsFeatures = dynamic(() =>
-  import("@/app/[locale]/sections/forBrands/ForBrandsFeatures")
+const FourthSection = dynamic(() =>
+  import("@/app/[locale]/sections/forBrands/FourthSection")
 );
-const PricingSection = dynamic(() =>
-  import("@/app/[locale]/sections/forBrands/PricingSection")
+const FifthSection = dynamic(() =>
+  import("@/app/[locale]/sections/forBrands/FifthSection")
 );
-const ContactFormSection2 = dynamic(() =>
-  import("@/app/[locale]/sections/forBrands/ContactFormSection2")
+const SixthSection = dynamic(() =>
+  import("@/app/[locale]/sections/forBrands/SixthSection")
 );
 const NewFooter = dynamic(() =>
   import("@/app/[locale]/components/NewFooter")
@@ -60,12 +59,12 @@ const ForBrandsPage = async ({ params }) => {
             <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white"></div>
           </div>
                }>
-                 <ForBrandsHero />
-                 <ForBrandsStats />
-                 <ForBrandsProcess />
-                 <ForBrandsFeatures />
-                 <PricingSection />
-                 <ContactFormSection2 />
+                 <FirstSection />
+                 <SecondSection />
+                 <ThirdSection />
+                 <FourthSection />
+                 <FifthSection />
+                 <SixthSection />
                  <NewFooter />
                  <Toaster position="top-center" />
                </Suspense>

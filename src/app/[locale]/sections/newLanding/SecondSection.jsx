@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 
-const CTASection = () => {
+const SecondSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const touchStartX = useRef(0);
@@ -282,4 +282,4 @@ const CTASection = () => {
   );
 };
 
-export default CTASection;
+export default SecondSection;

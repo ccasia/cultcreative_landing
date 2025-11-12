@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
-const HowWeDoItSection = () => {
+const ThirdSection = () => {
   const containerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   
@@ -275,4 +275,4 @@ const HowWeDoItSection = () => {
   );
 };
 
-export default HowWeDoItSection;
+export default ThirdSection;

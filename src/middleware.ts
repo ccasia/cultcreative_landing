@@ -9,7 +9,10 @@ export default function middleware(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
-  // Redirect /my and /sg to their new-landing pages
+  if (pathname === "/") {
+    return NextResponse.redirect(new URL("/my/new-landing", request.url));
+  }
+
   if (pathname === "/my" || pathname === "/sg") {
     return NextResponse.redirect(new URL(`${pathname}/new-landing`, request.url));
   }

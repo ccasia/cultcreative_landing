@@ -161,7 +161,7 @@ const AccordionItem = ({ question, answer, idx }) => {
   );
 };
 
-const FaqNewPage = () => {
+const FaqPage = () => {
   return (
     <>
     <FloatingNavbar />
@@ -216,7 +216,7 @@ const FaqNewPage = () => {
               textAlign: "center",
             }}
           >
-            We’ve got answers.
+            We've got answers.
           </p>
           <div
             className="pointer-events-none absolute left-1/2 -translate-x-1/2"
@@ -267,6 +267,4 @@ const FaqNewPage = () => {
   );
 };
 
-export default FaqNewPage;
-
-
+export default FaqPage;

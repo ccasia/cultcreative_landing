@@ -2,9 +2,12 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
-const PricingSection = () => {
+const FifthSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
+  const locale = pathname?.split('/')[1] || 'my';
 
   useEffect(() => {
     const checkMobile = () => {
@@ -15,7 +18,65 @@ const PricingSection = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-  const pricingPlans = [
+
+  const pricingPlans = locale === 'sg' ? [
+    {
+      id: 1,
+      name: "Trial",
+      price: "$3,100",
+      isHighlighted: false,
+      features: [
+        "<strong>5 CGC Credits</strong> (5 videos by nano-micro creators)",
+        "<strong>1 Campaign</strong>",
+        "<strong>1 month</strong> Credit Validity",
+        "<strong>Standard</strong> Support",
+        "Access to a Client Success Manager",
+        "<strong>Basic</strong> campaign report"
+      ]
+    },
+    {
+      id: 2,
+      name: "Basic",
+      price: "$8,900",
+      isHighlighted: false,
+      features: [
+        "<strong>15 CGC Credits</strong> (15 videos by nano-micro creators)",
+        "<strong>Up to 3</strong> Campaigns",
+        "<strong>2 months</strong> Credit Validity",
+        "<strong>Standard</strong> Support",
+        "Access to a Client Success Manager",
+        "<strong>Basic</strong> campaign report"
+      ]
+    },
+    {
+      id: 3,
+      name: "Essential",
+      price: "$17,500",
+      isHighlighted: true,
+      features: [
+        "<strong style='color: #1340FF'>30 CGC Credits</strong> (30 videos by nano-micro creators)",
+        "<strong style='color: #1340FF'>Up to 5</strong> Campaigns",
+        "<strong style='color: #1340FF'>3 months</strong> Credit Validity",
+        "<strong style='color: #1340FF'>On-going</strong> Support",
+        "<strong style='color: #1340FF'>Dedicated</strong> Client Success Manager",
+        "<strong style='color: #1340FF'>In-depth</strong> campaign report"
+      ]
+    },
+    {
+      id: 4,
+      name: "Pro",
+      price: "$29,000",
+      isHighlighted: false,
+      features: [
+        "<strong>50 CGC Credits</strong> (50 videos by nano-micro creators)",
+        "<strong>Up to 8</strong> Campaigns",
+        "<strong>5 months</strong> Credit Validity",
+        "<strong>On-going</strong> Support",
+        "<strong>Dedicated</strong> Client Success Manager",
+        "<strong>In-depth</strong> campaign report"
+      ]
+    }
+  ] : [
     {
       id: 1,
       name: "Trial",
@@ -358,4 +419,4 @@ const PricingSection = () => {
   );
 };
 
-export default PricingSection;
+export default FifthSection;

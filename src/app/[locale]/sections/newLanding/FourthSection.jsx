@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
-const NewHeroSection = () => {
+const FourthSection = () => {
   const [videoOrder, setVideoOrder] = useState([0, 1, 2, 3, 4]);
   const [currentMobileIndex, setCurrentMobileIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -286,7 +286,7 @@ const NewHeroSection = () => {
                       isCenter ? 'shadow-2xl' : ''
                     }`}>
                       {/* Video Element */}
-                      <div className="aspect-[9/16] bg-gray-200 flex items-center justify-center">
+                      <div className="aspect-9/16 bg-gray-200 flex items-center justify-center">
                         <video
                           className="w-full h-full object-cover"
                           autoPlay={isCenter}
@@ -375,7 +375,7 @@ const NewHeroSection = () => {
                           </video>
                           
                           {/* Bottom Overlay with Brand and Creator */}
-                          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                          <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/80 via-black/50 to-transparent">
                             <h3 className="text-white text-3xl font-bold mb-2">
                               {video.brand}
                             </h3>
@@ -414,4 +414,4 @@ const NewHeroSection = () => {
   );
 };
 
-export default NewHeroSection;
+export default FourthSection;
