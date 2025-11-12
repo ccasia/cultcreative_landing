@@ -30,10 +30,9 @@ const ForBrandsHero = () => {
       <div className="container mx-auto px-6 relative z-10 flex-1 flex items-end justify-center pb-10">
         <div className="text-center max-w-4xl mx-auto">
           <motion.h1
-            className="mb-4 leading-tight text-white relative"
+            className="mb-4 leading-tight text-white relative text-3xl md:text-[54px]"
             style={{ 
               textShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
-              fontSize: '54px',
               lineHeight: '57.86px',
               letterSpacing: '-6%',
               textTransform: 'capitalize'
@@ -54,20 +53,27 @@ const ForBrandsHero = () => {
                 backgroundColor: '#231f20',
                 zIndex: -1
               }}
+              className="hidden md:block"
             />
-            <span style={{
-              fontFamily: 'Aileron',
-              fontWeight: 700,
-              fontStyle: 'normal'
-            }}>Influencer marketing, </span>
-            <span style={{
-              fontFamily: 'Times New Roman',
-              fontWeight: 400,
-              fontStyle: 'italic',
-              fontSize: '54px',
-              lineHeight: '40px',
-              letterSpacing: '-4%'
-            }}>Simplified.</span>
+            <span 
+              className="block md:inline whitespace-nowrap"
+              style={{
+                fontFamily: 'Aileron',
+                fontWeight: 700,
+                fontStyle: 'normal'
+              }}
+            >Influencer marketing, </span>
+            <span 
+              className="block md:inline"
+              style={{
+                fontFamily: 'Times New Roman',
+                fontWeight: 400,
+                fontStyle: 'italic',
+                fontSize: 'inherit',
+                lineHeight: '40px',
+                letterSpacing: '-4%'
+              }}
+            >Simplified.</span>
           </motion.h1>
           
           <motion.p

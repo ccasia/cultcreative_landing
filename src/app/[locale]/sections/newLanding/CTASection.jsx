@@ -1,18 +1,88 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 
 const CTASection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const features = [
+    {
+      title: "All-In-One Platform",
+      description: "Simplifying the way creators and brands connect",
+      image: "/images/NewMain/iphonestatic.svg",
+    },
+    {
+      title: "Data-Based Results",
+      description: "Real-time data to see how your content or campaign is performing",
+      image: "/images/NewMain/iphonestatic.svg",
+    },
+    {
+      title: "Tailored Recommendations",
+      description: "Expert recommendations to maximise chances of success",
+      image: "/images/NewMain/iphonestatic.svg",
+    },
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % features.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + features.length) % features.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (distance > minSwipeDistance) {
+      // Swipe left - next slide
+      nextSlide();
+    } else if (distance < -minSwipeDistance) {
+      // Swipe right - previous slide
+      prevSlide();
+    }
+
+    // Reset
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={isMobile ? {} : { duration: 0.8 }}
           viewport={{ once: true }}
         >
           <div className="flex items-center justify-center mb-4">
@@ -51,14 +121,78 @@ const CTASection = () => {
           </p>
         </motion.div>
 
-        {/* Three Phone Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* Mobile Carousel */}
+        <div className="md:hidden max-w-md mx-auto">
+          <div 
+            className="relative overflow-hidden rounded-xl"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <motion.div
+              className="flex"
+              animate={{ x: `-${(currentSlide * 100) / features.length}%` }}
+              transition={isMobile ? {} : { 
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }}
+              style={{ width: `${features.length * 100}%` }}
+            >
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="text-center flex-shrink-0"
+                  style={{ width: `calc(100% / ${features.length})` }}
+                >
+                  <div className="rounded-xl p-8" style={{ backgroundColor: '#F4F4F4' }}>
+                    <div className="relative mx-auto mb-6 max-w-[200px]">
+                      <img 
+                        src={feature.image}
+                        alt={feature.title}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                    <div className="min-h-[80px] flex flex-col justify-center">
+                      <h3 className="text-xl text-black mb-2" style={{ fontFamily: 'Inter Display, sans-serif' }}>
+                        {feature.title}
+                      </h3>
+                      <p 
+                        className="text-gray-600 text-sm" 
+                        style={{ fontFamily: 'Inter Display, sans-serif' }}
+                      >
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {features.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentSlide ? 'bg-[#231f20] w-8' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid - Three Phone Features */}
+        <div className="hidden md:grid grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* All-In-One Platform */}
           <motion.div
             className="text-center group"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{}}
             viewport={{ once: true }}
           >
               <div className="rounded-xl p-8 transition-all duration-300 cursor-pointer group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-purple-600" style={{ backgroundColor: '#F4F4F4' }}>
@@ -86,9 +220,9 @@ const CTASection = () => {
           {/* Data-Based Results */}
           <motion.div
             className="text-center group"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{}}
             viewport={{ once: true }}
           >
               <div className="rounded-xl p-8 transition-all duration-300 cursor-pointer group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-purple-600" style={{ backgroundColor: '#F4F4F4' }}>
@@ -116,9 +250,9 @@ const CTASection = () => {
           {/* Tailored Recommendations */}
           <motion.div
             className="text-center group"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{}}
             viewport={{ once: true }}
           >
               <div className="rounded-xl p-8 transition-all duration-300 cursor-pointer group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-purple-600" style={{ backgroundColor: '#F4F4F4' }}>

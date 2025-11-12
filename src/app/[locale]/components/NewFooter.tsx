@@ -2,7 +2,7 @@
 
 const NewFooter = () => {
   return (
-    <section className="text-[#231F20] bg-[#E7E7E7] py-6">
+    <section className="text-[#231F20] bg-[#E7E7E7] py-6 footer-section">
       <div className="container mx-auto px-6">
         <div className="flex item-start gap-4 xl:gap-12 flex-wrap">
         <div className="grow">

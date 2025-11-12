@@ -1,25 +1,48 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const HowWeDoItSection = () => {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
   // Transform values for all cards visible initially, then stack when scrolled
-  const card1Y = useTransform(scrollYProgress, [0, 0.5, 1], [0, -20, -60]);
-  const card2Y = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, -40]);
-  const card3Y = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, -20]);
-  const card4Y = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 0]);
+  // Always call hooks (Rules of Hooks), then conditionally use values
+  const card1YTransform = useTransform(scrollYProgress, [0, 0.5, 1], [0, -20, -60]);
+  const card2YTransform = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, -40]);
+  const card3YTransform = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, -20]);
+  const card4YTransform = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 0]);
 
-  const card1Scale = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1, 0.96, 0.94, 0.92]);
-  const card2Scale = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1, 1, 0.96, 0.94]);
-  const card3Scale = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1, 1, 1, 0.96]);
-  const card4Scale = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1, 1, 1, 1]);
+  const card1ScaleTransform = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1, 0.96, 0.94, 0.92]);
+  const card2ScaleTransform = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1, 1, 0.96, 0.94]);
+  const card3ScaleTransform = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1, 1, 1, 0.96]);
+  const card4ScaleTransform = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1, 1, 1, 1]);
+
+  // Use static values on mobile, transform values on desktop
+  const card1Y = isMobile ? 0 : card1YTransform;
+  const card2Y = isMobile ? 0 : card2YTransform;
+  const card3Y = isMobile ? 0 : card3YTransform;
+  const card4Y = isMobile ? 0 : card4YTransform;
+
+  const card1Scale = isMobile ? 1 : card1ScaleTransform;
+  const card2Scale = isMobile ? 1 : card2ScaleTransform;
+  const card3Scale = isMobile ? 1 : card3ScaleTransform;
+  const card4Scale = isMobile ? 1 : card4ScaleTransform;
 
   return (
     <div ref={containerRef} className="bg-white py-8">
@@ -33,9 +56,9 @@ const HowWeDoItSection = () => {
             {/* Header Section */}
             <motion.div
               className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+              transition={isMobile ? {} : { duration: 0.8 }}
               viewport={{ once: true }}
             >
               <h2 className="text-5xl md:text-6xl font-bold font-aileron relative mb-8 text-white" style={{ letterSpacing: '-0.06em' }}>
@@ -53,7 +76,11 @@ const HowWeDoItSection = () => {
               {/* Creator Media Kit Card */}
               <motion.div
                 className="sticky top-2 bg-white shadow-lg overflow-hidden -mb-1 mx-auto md:mx-0 w-full max-w-sm md:max-w-none md:w-[955px] md:h-[276px] h-auto md:rounded-[20px] rounded-lg md:py-[18px] py-4 md:px-9 px-4 md:border-[0.75px] border border-gray-200 md:ml-[-22px] ml-0"
-                style={{ 
+                style={isMobile ? { 
+                  y: 0, 
+                  scale: 1, 
+                  zIndex: 1
+                } : { 
                   y: card1Y, 
                   scale: card1Scale, 
                   zIndex: 1
@@ -98,7 +125,11 @@ const HowWeDoItSection = () => {
               {/* Campaign Analytics Card */}
               <motion.div
                 className="sticky top-2 bg-white shadow-lg overflow-hidden mb-4 mx-auto md:mx-0 w-full max-w-sm md:max-w-none md:w-[925px] md:h-[276px] h-auto md:rounded-[20px] rounded-lg md:py-[18px] py-4 md:px-9 px-4 md:border-[0.75px] border border-gray-200 md:ml-[-8px] ml-0"
-                style={{ 
+                style={isMobile ? { 
+                  y: 0, 
+                  scale: 1, 
+                  zIndex: 2
+                } : { 
                   y: card2Y, 
                   scale: card2Scale, 
                   zIndex: 2
@@ -143,7 +174,11 @@ const HowWeDoItSection = () => {
               {/* Content & Creator Management Card */}
               <motion.div
                 className="sticky top-2 bg-white shadow-lg overflow-hidden mb-4 mx-auto w-full max-w-sm md:max-w-none md:w-[912px] md:h-[276px] h-auto md:rounded-[20px] rounded-lg md:py-[18px] py-4 md:px-9 px-4 md:border-[0.75px] border border-gray-200"
-                style={{ 
+                style={isMobile ? { 
+                  y: 0, 
+                  scale: 1, 
+                  zIndex: 3
+                } : { 
                   y: card3Y, 
                   scale: card3Scale, 
                   zIndex: 3
@@ -188,7 +223,11 @@ const HowWeDoItSection = () => {
               {/* Automated Workflow Card */}
               <motion.div
                 className="sticky top-2 bg-white shadow-lg overflow-hidden mb-4 mx-auto w-full max-w-sm md:max-w-none md:w-[912px] md:h-[276px] h-auto md:rounded-[20px] rounded-lg md:py-[18px] py-4 md:px-9 px-4 md:border-[0.75px] border border-gray-200"
-                style={{ 
+                style={isMobile ? { 
+                  y: 0, 
+                  scale: 1, 
+                  zIndex: 4
+                } : { 
                   y: card4Y, 
                   scale: card4Scale, 
                   zIndex: 4

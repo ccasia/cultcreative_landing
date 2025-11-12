@@ -121,7 +121,7 @@ const ForBrandsStats = () => {
       <div className="container mx-auto px-6">
         {/* Performance Statistics */}
         <motion.div
-          className="flex justify-center items-center gap-16 mb-16"
+          className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -131,36 +131,40 @@ const ForBrandsStats = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="text-center"
+              className="text-center w-full md:w-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <div
-                className="text-6xl font-bold mb-2"
-                style={{
-                  fontFamily: 'Aileron',
-                  fontWeight: 700,
-                  color: '#231f20'
-                }}
-              >
-                {counts[index].count.toFixed(stat.number % 1 !== 0 ? 1 : 0)}{stat.suffix}
-              </div>
-              <div
-                style={{
-                  fontFamily: 'Aileron',
-                  fontWeight: 400,
-                  fontStyle: 'normal',
-                  fontSize: '18px',
-                  lineHeight: '57.86px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  textTransform: 'capitalize',
-                  color: '#231f20'
-                }}
-              >
-                {stat.label}
+              <div className="flex flex-col md:block items-center">
+                <div
+                  className="text-4xl md:text-6xl font-bold mb-2"
+                  style={{
+                    fontFamily: 'Aileron',
+                    fontWeight: 700,
+                    color: '#231f20'
+                  }}
+                >
+                  {counts[index].count.toFixed(stat.number % 1 !== 0 ? 1 : 0)}{stat.suffix}
+                </div>
+                <div
+                  style={{
+                    fontFamily: 'Aileron',
+                    fontWeight: 400,
+                    fontStyle: 'normal',
+                    fontSize: '16px',
+                    lineHeight: '24px',
+                    letterSpacing: '0%',
+                    textAlign: 'center',
+                    textTransform: 'capitalize',
+                    color: '#231f20'
+                  }}
+                >
+                  {stat.label}
+                </div>
+                {/* Purple line after each stat - mobile only */}
+                <div className="md:hidden w-16 h-0.5 bg-[#1340FF] mt-4"></div>
               </div>
             </motion.div>
           ))}
@@ -168,7 +172,7 @@ const ForBrandsStats = () => {
 
         {/* Case Study Carousel */}
         <motion.div
-          className="max-w-6xl mx-auto mt-64 relative"
+          className="max-w-6xl mx-auto mt-16 md:mt-64 relative"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -176,7 +180,7 @@ const ForBrandsStats = () => {
         >
           {/* Three iPhones positioned above their respective containers */}
           <motion.div
-            className="absolute"
+            className="absolute hidden md:block"
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -190,7 +194,7 @@ const ForBrandsStats = () => {
           >
             <div className="flex">
               {caseStudies.map((study, phoneIndex) => (
-                <div key={phoneIndex} className="flex-shrink-0" style={{ width: '1139px' }}>
+                <div key={phoneIndex} className="shrink-0" style={{ width: '1139px' }}>
                   {/* iPhone Frame */}
                   <div
                     className="transform scale-[0.6] origin-top"
@@ -224,7 +228,9 @@ const ForBrandsStats = () => {
             </div>
           </motion.div>
 
-          <div className="relative overflow-hidden" style={{ width: '1139px', height: '500px' }}>
+
+          {/* Desktop Container */}
+          <div className="relative overflow-hidden hidden md:block" style={{ width: '1139px', height: '500px' }}>
             {/* Carousel Container */}
             <motion.div
               className="flex"
@@ -232,8 +238,8 @@ const ForBrandsStats = () => {
               transition={{ duration: 0.8, ease: "easeInOut" }}
             >
               {caseStudies.map((study, studyIndex) => (
-                <div key={studyIndex} className="flex-shrink-0 relative" style={{ width: '1139px', height: '500px' }}>
-                  {/* SVG Frame Background */}
+                <div key={studyIndex} className="shrink-0 relative" style={{ width: '1139px', height: '500px' }}>
+                  {/* SVG Frame Background - Desktop */}
                   <img
                     src="/images/ForBrands/framebrands.svg"
                     alt="Card frame"
@@ -321,6 +327,73 @@ const ForBrandsStats = () => {
                       </motion.div>
                     </div>
                   </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Mobile Container */}
+          <div className="relative overflow-hidden md:hidden" style={{ width: '355px', height: '680px', margin: '0 auto' }}>
+            {/* Carousel Container */}
+            <motion.div
+              className="flex"
+              animate={{ x: -currentSlide * 355 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            >
+              {caseStudies.map((study, studyIndex) => (
+                <div key={studyIndex} className="shrink-0 relative" style={{ width: '355px', height: '680px' }}>
+                  {/* SVG Frame Background - Mobile */}
+                  <img
+                    src="/images/ForBrands/mobile-framebrands.svg"
+                    alt="Card frame"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ zIndex: 1 }}
+                  />
+                  
+                  {/* Mobile iPhone - positioned inside the frame at bottom right */}
+                  <motion.div
+                    className="absolute md:hidden z-50"
+                    initial={{ opacity: 0, y: -50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    style={{ 
+                      bottom: '-20px',
+                      right: '-30px',
+                      transform: 'rotate(8deg)'
+                    }}
+                  >
+                    {/* iPhone Frame */}
+                    <div
+                      className="transform scale-[0.6] origin-bottom-right"
+                      style={{
+                        filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15))'
+                      }}
+                    >
+                      <DeviceFrameset device="iPhone X" color="black">
+                        <div className="h-full w-full bg-white">
+                          <video
+                            src={study.videoSrc}
+                            autoPlay={studyIndex === currentSlide}
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-full object-cover"
+                            ref={(el) => {
+                              if (el) {
+                                if (studyIndex === currentSlide) {
+                                  el.play().catch(() => {});
+                                } else {
+                                  el.pause();
+                                }
+                              }
+                            }}
+                          >
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </DeviceFrameset>
+                    </div>
+                  </motion.div>
                 </div>
               ))}
             </motion.div>

@@ -1,10 +1,14 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const NewHeroSection = () => {
   const [videoOrder, setVideoOrder] = useState([0, 1, 2, 3, 4]);
+  const [currentMobileIndex, setCurrentMobileIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
   
   // Video data - Cult Creative brand videos
   const videos = [
@@ -13,6 +17,8 @@ const NewHeroSection = () => {
       title: "Brand Video 1",
       creator: "Cult Creative",
       name: "Creator",
+      brand: "Nespresso",
+      quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/brands/cm83xazp602aomr019lvkg249_draft%20(1).mp4",
       description: "Cult Creative brand video"
     },
@@ -20,7 +26,9 @@ const NewHeroSection = () => {
       id: 2,
       title: "Brand Video 2",
       creator: "Cult Creative",
-      name: "Creator", 
+      name: "Manveer Singh", 
+      brand: "Spritzer",
+      quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/brands/598ac8604e064853a1bc16de81ad17ed.MOV",
       description: "Cult Creative brand video"
     },
@@ -29,6 +37,8 @@ const NewHeroSection = () => {
       title: "Brand Video 3",
       creator: "Cult Creative",
       name: "Creator",
+      brand: "Samsung",
+      quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/brands/cm7vxwa0j014tnu01f6ybqqan_draft%20(1).mp4",
       description: "Cult Creative brand video"
     },
@@ -37,6 +47,8 @@ const NewHeroSection = () => {
       title: "Brand Video 4",
       creator: "Cult Creative",
       name: "Creator",
+      brand: "Uniqlo",
+      quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/cult_production/FIRST_DRAFT/cmc1htz3h07c9lg015y08xujw_IBC%20le%20meridian.MOV?v=2025-08-04T10:08:02+00:00",
       description: "Cult Creative brand video"
     },
@@ -45,6 +57,8 @@ const NewHeroSection = () => {
       title: "Brand Video 5",
       creator: "Cult Creative", 
       name: "Creator",
+      brand: "Grab",
+      quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/brands/cm96oy47r02hcqe01mfl7ehsp_copy_3235B186-45B2-4061-B1F5-9D0E2AB93812%20(1).mp4",
       description: "Cult Creative brand video"
     }
@@ -111,6 +125,45 @@ const NewHeroSection = () => {
     return videoOrder[2] === videoIndex;
   };
 
+  // Mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Mobile swipe handlers
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (distance > minSwipeDistance) {
+      setCurrentMobileIndex((prev) => (prev + 1) % videos.length);
+    } else if (distance < -minSwipeDistance) {
+      setCurrentMobileIndex((prev) => (prev - 1 + videos.length) % videos.length);
+    }
+
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
+
+  const goToSlide = (index) => {
+    setCurrentMobileIndex(index);
+  };
+
   return (
     <section className="relative bg-white py-20 overflow-hidden">
       {/* Trusted By Section */}
@@ -160,7 +213,7 @@ const NewHeroSection = () => {
       </div>
 
       {/* Main Hero Content */}
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto md:px-6">
         <div className="text-center mb-16">
           <motion.h1
             className="text-4xl md:text-6xl text-black mb-8 relative leading-none"
@@ -193,8 +246,9 @@ const NewHeroSection = () => {
 
         {/* Video Carousel with Smooth Reordering */}
         <div className="py-20">
-          <div className="w-full px-4">
-            <div className="flex justify-center items-center relative h-[500px] max-w-7xl mx-auto">
+          <div className="w-full">
+            {/* Desktop Layout */}
+            <div className="hidden md:flex justify-center items-center relative h-[500px] max-w-7xl mx-auto">
               {videos.map((video, index) => {
                 const videoId = index + 1; // 1-based ID
                 const currentPosition = getVideoPosition(index);
@@ -259,6 +313,98 @@ const NewHeroSection = () => {
                   </motion.div>
                 );
               })}
+            </div>
+
+            {/* Mobile Layout - Swipeable Carousel with Side Peek */}
+            <div 
+              className="md:hidden relative w-full"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className="relative h-[600px] w-full overflow-x-clip">
+                <motion.div
+                  className="flex h-full items-center"
+                  style={{
+                    paddingLeft: 'calc(50vw - 170px)', // Balance left side visibility
+                    paddingRight: 'calc(50vw - 170px)', // Balance right side visibility
+                  }}
+                  animate={{
+                    x: `-${currentMobileIndex * 340}px`, // Card width (320px) + gap (20px)
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                  }}
+                >
+                  {videos.map((video, index) => (
+                    <div
+                      key={video.id}
+                      className="shrink-0 px-2.5"
+                      style={{ width: "340px" }}
+                    >
+                      <div 
+                        className={`relative rounded-[32px] overflow-hidden transition-all duration-300 ${
+                          index === currentMobileIndex ? 'shadow-2xl scale-100' : 'shadow-lg scale-90 opacity-60'
+                        }`}
+                        style={{ width: "320px", height: "550px" }}
+                        onClick={() => setCurrentMobileIndex(index)}
+                      >
+                        <div className="relative bg-gray-200 w-full h-full">
+                          <video
+                            className="w-full h-full object-cover"
+                            autoPlay={index === currentMobileIndex}
+                            muted
+                            loop={index === currentMobileIndex}
+                            playsInline
+                            controls={false}
+                            ref={(el) => {
+                              if (el) {
+                                if (index === currentMobileIndex) {
+                                  el.currentTime = 0;
+                                  el.play().catch(console.log);
+                                } else {
+                                  el.pause();
+                                }
+                              }
+                            }}
+                          >
+                            <source src={video.videoUrl} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                          
+                          {/* Bottom Overlay with Brand and Creator */}
+                          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                            <h3 className="text-white text-3xl font-bold mb-2">
+                              {video.brand}
+                            </h3>
+                            <p className="text-white/90 text-lg italic font-serif">
+                              {video.name}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Navigation Dots */}
+              <div className="flex justify-center gap-2 mt-6">
+                {videos.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentMobileIndex
+                        ? "bg-black w-8"
+                        : "bg-gray-300"
+                    }`}
+                    aria-label={`Go to video ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -1,14 +1,24 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const HeroSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-white relative overflow-hidden pt-64" style={{ backgroundColor: '#231f20' }}>
+    <section className="min-h-screen flex flex-col items-center justify-center text-white relative overflow-hidden pt-32 md:pt-64" style={{ backgroundColor: '#231f20' }}>
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated Moving Gradient Blobs - Bigger Size */}
@@ -23,13 +33,18 @@ const HeroSection = () => {
             left: '-10%',
             top: '10%',
           }}
-          animate={{
+          animate={isMobile ? {
+            x: 0,
+            y: 0,
+            scale: 1,
+            rotate: 0,
+          } : {
             x: [0, 200, -150, 100, 0],
             y: [0, -100, 150, -80, 0],
             scale: [1, 1.4, 0.8, 1.2, 1],
             rotate: [0, 90, 180, 270, 360],
           }}
-          transition={{
+          transition={isMobile ? {} : {
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
@@ -44,12 +59,16 @@ const HeroSection = () => {
             left: '10%',
             top: '10%',
           }}
-          animate={{
+          animate={isMobile ? {
+            x: 0,
+            y: 0,
+            scale: 1,
+          } : {
             x: [0, 200, 0],
             y: [0, 150, 0],
             scale: [1, 1.3, 1],
           }}
-          transition={{
+          transition={isMobile ? {} : {
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
@@ -64,12 +83,16 @@ const HeroSection = () => {
             right: '15%',
             top: '15%',
           }}
-          animate={{
+          animate={isMobile ? {
+            x: 0,
+            y: 0,
+            scale: 1,
+          } : {
             x: [0, -180, 0],
             y: [0, 120, 0],
             scale: [1, 1.2, 1],
           }}
-          transition={{
+          transition={isMobile ? {} : {
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
@@ -85,12 +108,16 @@ const HeroSection = () => {
             left: '20%',
             bottom: '20%',
           }}
-          animate={{
+          animate={isMobile ? {
+            x: 0,
+            y: 0,
+            scale: 1,
+          } : {
             x: [0, 150, 0],
             y: [0, -100, 0],
             scale: [1, 1.4, 1],
           }}
-          transition={{
+          transition={isMobile ? {} : {
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
@@ -106,12 +133,16 @@ const HeroSection = () => {
             right: '25%',
             bottom: '15%',
           }}
-          animate={{
+          animate={isMobile ? {
+            x: 0,
+            y: 0,
+            scale: 1,
+          } : {
             x: [0, -120, 0],
             y: [0, -80, 0],
             scale: [1, 1.3, 1],
           }}
-          transition={{
+          transition={isMobile ? {} : {
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
@@ -127,12 +158,16 @@ const HeroSection = () => {
             left: '45%',
             top: '40%',
           }}
-          animate={{
+          animate={isMobile ? {
+            x: 0,
+            y: 0,
+            scale: 1,
+          } : {
             x: [0, -50, 50, 0],
             y: [0, -30, 30, 0],
             scale: [1, 1.5, 1],
           }}
-          transition={{
+          transition={isMobile ? {} : {
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
@@ -159,86 +194,89 @@ const HeroSection = () => {
         <div
           className="absolute md:hidden"
           style={{
-            top: '17%',
-            right: '10%',
+            top: '4%',
+            right: '-20%',
           }}
         >
           <img 
             src="/images/NewMain/stars.svg" 
             alt="decorative stars" 
-            className="w-24 h-24 opacity-100"
+            className="w-70 h-70 opacity-100"
           />
         </div>
       </div>
 
       {/* Hero Content */}
-      <div className="container mx-auto px-6 relative z-10 flex-1 flex items-center justify-center">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex-1 flex items-center justify-center">
         <div className="text-center max-w-6xl mx-auto">
           <motion.h1
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight text-white font-aileron"
+            className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 leading-tight text-white font-aileron"
             style={{ 
               textShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
               letterSpacing: '-0.05em'
             }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={isMobile ? {} : { duration: 0.8 }}
           >
-            Connecting Brands With 
+            Connecting <span className="relative inline-block">Brands
+            </span> With 
             <br />
             <span className="relative inline-block mb-8">Creators
               <img 
                 src="/images/NewMain/curlyline.svg" 
                 alt="decorative line" 
-                className="absolute left-1/2 transform -translate-x-1/2 -bottom-8 w-72"
-                style={{ transform: 'translateX(-40%)' }}
+                className="absolute left-1/2 w-64 md:w-72"
+                style={{ 
+                  transform: isMobile ? 'translateX(-50%)' : 'translateX(-40%)',
+                  bottom: isMobile ? '-1rem' : '-2rem'
+                }}
               />
-            </span> Who Move Culture
+            </span> Who Move <span className="relative inline-block">Culture
+            </span>
           </motion.h1>
           
           <motion.p
-            className="text-xl md:text-3xl lg:text-4xl mb-12 text-white leading-relaxed italic"
+            className="text-base sm:text-xl md:text-3xl lg:text-4xl mb-8 md:mb-12 text-white leading-relaxed italic px-2"
             style={{ 
               fontFamily: '"Times New Roman", Times, serif',
               textShadow: '0 4px 6px rgba(0, 0, 0, 0.25)'
             }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={isMobile ? {} : { duration: 0.8, delay: 0.2 }}
           >
             SEA's Leading AI Platform for Content Collaboration
           </motion.p>
 
           <motion.div
-            className="flex justify-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex justify-center mb-12 md:mb-16"
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={isMobile ? {} : { duration: 0.8, delay: 0.4 }}
           >
             <motion.button 
-              className="px-16 py-3 text-white font-semibold rounded-full text-lg relative overflow-hidden"
+              className="px-8 md:px-16 py-2.5 md:py-3 text-white font-semibold rounded-full text-sm md:text-lg relative overflow-hidden"
               style={{
                 backgroundColor: '#1340ff',
                 background: '#1340ff',
                 boxShadow: '0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3), 0 8px 20px rgba(0, 0, 0, 0.2)',
                 filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))'
               }}
-              whileHover={{
+              whileHover={isMobile ? {} : {
                 scale: 1.05,
                 background: '#1340ff',
                 boxShadow: '0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6), 0 12px 30px rgba(0, 0, 0, 0.4)',
                 filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4))'
               }}
-              transition={{ duration: 0.3 }}
+              transition={isMobile ? {} : { duration: 0.3 }}
             >
               <span className="flex items-center gap-2">
                 JOIN US NOW 
                 <svg 
-                  width="20" 
-                  height="20" 
+                  className="w-4 h-4 md:w-5 md:h-5 inline-block"
                   viewBox="0 0 24 24" 
-                  fill="none" 
-                  className="inline-block"
+                  fill="none"
                 >
                   <path 
                     d="M7 17L17 7M17 7H7M17 7V17" 
@@ -255,27 +293,32 @@ const HeroSection = () => {
       </div>
 
       {/* Interactive Phone Images Section */}
-      <div className="container mx-auto px-6 relative z-10 pb-8">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 pb-8 md:pb-8">
         <div className="flex justify-center items-center">
           <motion.div
             ref={ref}
-            className="relative cursor-pointer"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            className="relative cursor-pointer w-full md:w-auto"
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={isMobile ? {} : { duration: 0.6 }}
             viewport={{ once: true }}
           >
             {/* Default state - show only ipmid.svg with skew effect */}
             <motion.div
-              className="relative"
-              animate={{
+              className="relative flex justify-center items-center"
+              animate={isMobile ? {
+                scale: 1,
+                skewX: 0,
+                skewY: 0,
+                opacity: isInView ? 0 : 1,
+              } : {
                 scale: isInView ? 0.5 : 1,
                 skewX: isInView ? 58 : 0,
                 skewY: isInView ? -15 : 0,
                 opacity: isInView ? 0 : 1,
                 // skewZ: isInView ? 60 : 0,
               }}
-              transition={{ 
+              transition={isMobile ? {} : { 
                 duration: 0.4, 
                 ease: [0.4, 0.0, 0.2, 1],
                 delay: isInView ? 0 : 0.15
@@ -284,10 +327,8 @@ const HeroSection = () => {
               <img 
                 src="/images/NewMain/ipmid.svg" 
                 alt="Platform overview" 
-                className="w-auto h-auto max-w-full"
+                className="w-auto h-auto max-w-full max-h-[280px] md:max-h-[600px] mx-auto"
                 style={{
-                  maxHeight: '600px',
-                  // width: '800px',
                   height: 'auto',
                   filter: isInView ? 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3))' : 'none',
                 }}
@@ -297,10 +338,12 @@ const HeroSection = () => {
             {/* Scroll-triggered state - show all three images exactly like ip3d.svg */}
             <motion.div
               className="absolute inset-0 flex items-center justify-center"
-              animate={{
+              animate={isMobile ? {
+                opacity: isInView ? 1 : 0,
+              } : {
                 opacity: isInView ? 1 : 0,
               }}
-              transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
+              transition={isMobile ? {} : { duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
               style={{ 
                 perspective: '1200px',
                 transformStyle: 'preserve-3d',
@@ -309,15 +352,22 @@ const HeroSection = () => {
               {/* Back image (ipbottom) - bottom center stacking */}
               <motion.div
                 className="absolute"
-                animate={{
+                animate={isMobile ? {
+                  x: 0,
+                  y: 80,
+                  scale: 1,
+                  rotateX: 0,
+                  rotateY: 0,
+                  rotateZ: 0,
+                } : {
                   x: isInView ? 0 : 0,
                   y: isInView ? 80 : 0,
-                  scale: isInView ? 2.0 : 1,
+                  scale: isInView ? 1.0 : 1,
                   rotateX: isInView ? 15 : 0,
                   rotateY: isInView ? 0 : 0,
                   rotateZ: isInView ? 0 : 0,
                 }}
-                transition={{ 
+                transition={isMobile ? {} : { 
                   duration: 0.35, 
                   delay: 0.08, 
                   ease: [0.4, 0.0, 0.2, 1]
@@ -331,9 +381,8 @@ const HeroSection = () => {
                  <img 
                    src="/images/NewMain/ipbottom1.svg" 
                    alt="Bottom analytics" 
-                   className="w-auto h-auto"
+                   className="w-full max-w-[280px] md:max-w-none md:w-[600px] h-auto"
                    style={{
-                     width: '800px',
                      height: 'auto',
                      filter: 'drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4))',
                    }}
@@ -343,15 +392,22 @@ const HeroSection = () => {
               {/* Middle image (ipmid) - center cascading */}
               <motion.div
                 className="absolute"
-                animate={{
+                animate={isMobile ? {
+                  x: 0,
+                  y: 0,
+                  scale: 1,
+                  rotateX: 0,
+                  rotateY: 0,
+                  rotateZ: 0,
+                } : {
                   x: isInView ? 0 : 0,
                   y: isInView ? 0 : 0,
-                  scale: isInView ? 2.0 : 1,
+                  scale: isInView ? 1.0 : 1,
                   rotateX: isInView ? 15 : 0,
                   rotateY: isInView ? 0 : 0,
                   rotateZ: isInView ? 0 : 0,
                 }}
-                transition={{ 
+                transition={isMobile ? {} : { 
                   duration: 0.35, 
                   delay: 0.12, 
                   ease: [0.4, 0.0, 0.2, 1]
@@ -365,9 +421,8 @@ const HeroSection = () => {
                  <img 
                    src="/images/NewMain/ipmid1.png" 
                    alt="Platform overview" 
-                   className="w-auto h-auto"
+                   className="w-full max-w-[280px] md:max-w-none md:w-[600px] h-auto"
                    style={{
-                     width: '800px',
                      height: 'auto',
                      filter: 'drop-shadow(0 35px 70px rgba(0, 0, 0, 0.35))',
                    }}
@@ -377,15 +432,22 @@ const HeroSection = () => {
               {/* Front image (iptop) - top center stacking */}
               <motion.div
                 className="absolute"
-                animate={{
+                animate={isMobile ? {
+                  x: 0,
+                  y: -80,
+                  scale: 1,
+                  rotateX: 0,
+                  rotateY: 0,
+                  rotateZ: 0,
+                } : {
                   x: isInView ? 0 : 0,
                   y: isInView ? -80 : 0,
-                  scale: isInView ? 2.0 : 1,
+                  scale: isInView ? 1.0 : 1,
                   rotateX: isInView ? 15 : 0,
                   rotateY: isInView ? 0 : 0,
                   rotateZ: isInView ? 0 : 0,
                 }}
-                transition={{ 
+                transition={isMobile ? {} : { 
                   duration: 0.35, 
                   delay: 0.18, 
                   ease: [0.4, 0.0, 0.2, 1]
@@ -399,9 +461,8 @@ const HeroSection = () => {
                  <img 
                    src="/images/NewMain/iptop1.svg" 
                    alt="Top engagement" 
-                   className="w-auto h-auto"
+                   className="w-full max-w-[280px] md:max-w-none md:w-[600px] h-auto"
                    style={{
-                     width: '800px',
                      height: 'auto',
                      filter: 'drop-shadow(0 40px 80px rgba(0, 0, 0, 0.5))',
                    }}
@@ -411,15 +472,17 @@ const HeroSection = () => {
           </motion.div>
         </div>
         
-        {/* Brands section */}
-        <div className="mt-16 flex justify-center">
+        {/* Brands section - "as seen on" */}
+        <div className="mt-12 md:mt-16 flex flex-col items-center justify-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={isMobile ? {} : { duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="max-w-4xl"
+            className="w-full max-w-4xl"
           >
+            {/* "as seen on" text for mobile */}
+            <p className="text-white text-sm mb-4 md:hidden text-center">as seen on</p>
             <img 
               src="/images/NewMain/logos.svg" 
               alt="Brands" 

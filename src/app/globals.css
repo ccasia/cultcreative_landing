@@ -44,3 +44,22 @@ body {
   font-family: 'Times New Roman Condensed', 'Times New Roman', serif;
   font-weight: 600;
 }
+
+/* Footer font weight override - reset to normal and allow classes to work */
+.footer-section {
+  font-weight: 400;
+}
+
+.footer-section * {
+  font-weight: inherit;
+}
+
+/* Ensure footer font-light works */
+.footer-section .font-light {
+  font-weight: 300;
+}
+
+/* Ensure footer font-bold works */
+.footer-section .font-bold {
+  font-weight: 700;
+}

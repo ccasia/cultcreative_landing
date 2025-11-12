@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,6 +9,7 @@ const FloatingNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   
   // Extract locale from pathname (e.g., "/my/new-landing" -> "my")
@@ -39,7 +40,7 @@ const FloatingNavbar = () => {
 
   return (
     <motion.div 
-      className="fixed top-6 left-0 right-0 z-50 flex justify-center"
+      className="fixed top-6 left-0 right-0 z-50 flex justify-center md:justify-center"
       initial={{ y: -100, opacity: 0 }}
       animate={{ 
         y: isVisible ? 0 : -100, 
@@ -48,13 +49,13 @@ const FloatingNavbar = () => {
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <motion.nav
-        className={`transition-all duration-300 ${
+        className={`transition-all duration-300 w-full md:w-auto ${
           isScrolled ? "scale-95" : "scale-100"
         }`}
       >
-      <div className="relative">
-        {/* Curvy Background */}
-        <div className="bg-white/90 backdrop-blur-md shadow-2xl border border-gray-200/50 px-6 py-2 rounded-full min-w-[800px]">
+      <div className="relative w-full md:w-auto">
+        {/* Desktop: Curvy Background */}
+        <div className="hidden md:block bg-white/90 backdrop-blur-md shadow-2xl border border-gray-200/50 px-6 py-2 rounded-full min-w-[800px]">
           
           {/* Navigation Items */}
           <div className="flex items-center justify-between w-full">
@@ -74,7 +75,7 @@ const FloatingNavbar = () => {
             </motion.div>
 
             {/* Navigation Links - Center with smaller margins */}
-            <div className="hidden md:flex items-center space-x-12 mx-40">
+            <div className="flex items-center space-x-12 mx-40">
               {navItems.map((item, index) => (
                 item.href.startsWith('#') ? (
                   <motion.a
@@ -135,22 +136,141 @@ const FloatingNavbar = () => {
             >
               LOGIN
             </motion.button>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              className="md:hidden p-2 text-gray-700 hover:text-[#231f20] transition-colors duration-200"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </motion.button>
           </div>
         </div>
 
-        {/* Floating Shadow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl -z-10 scale-110"></div>
+        {/* Mobile: White Rounded Rectangular Bar */}
+        <div className="md:hidden bg-white shadow-lg mx-2 px-4 py-3 rounded-full">
+          <div className="flex items-center justify-between w-full">
+            {/* Logo - Left */}
+            <motion.div
+              className="flex-shrink-0"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href={`/${locale}/new-landing`}>
+                <img
+                  src="/images/logo1.png"
+                  alt="Cult Creative"
+                  className="h-10 w-auto cursor-pointer"
+                />
+              </Link>
+            </motion.div>
+
+            {/* Right Side: LOGIN Button and Hamburger Menu */}
+            <div className="flex items-center gap-2">
+              {/* LOGIN Button */}
+              <motion.button
+                className="bg-[#231f20] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 flex-shrink-0"
+                style={{
+                  fontFamily: 'Aileron, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '14px',
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                LOGIN
+              </motion.button>
+
+              {/* Hamburger Menu Icon in White Rounded Square */}
+              <motion.button
+                className="bg-white p-2 rounded-full text-gray-700 hover:text-[#231f20] transition-colors duration-200 border border-gray-200"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </motion.button>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Mobile Menu Dropdown Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <>
+              {/* Background Overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
+              
+              {/* Dropdown Card */}
+              <motion.div
+                initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="fixed top-24 right-4 md:hidden bg-white shadow-2xl rounded-2xl p-6 z-50 min-w-[280px]"
+              >
+                {/* Close Button */}
+                <div className="flex justify-end mb-4">
+                  <motion.button
+                    className="bg-white p-2 rounded-lg text-gray-700 hover:text-[#231f20] transition-colors duration-200 border border-gray-200"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </motion.button>
+                </div>
+
+                {/* Menu Items */}
+                <div className="flex flex-col space-y-2">
+                  {navItems.map((item, index) => (
+                    item.href.startsWith('#') ? (
+                      <motion.a
+                        key={item.name}
+                        href={item.href}
+                        className="text-gray-700 hover:bg-gray-100 font-medium text-sm transition-colors duration-200 py-3 px-4 rounded-lg"
+                        style={{
+                          fontFamily: 'Aileron, sans-serif',
+                          fontWeight: 400,
+                          fontSize: '14px',
+                        }}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {item.name}
+                      </motion.a>
+                    ) : (
+                      <Link key={item.name} href={item.href}>
+                        <motion.span
+                          className="text-gray-700 hover:bg-gray-100 font-medium text-sm transition-colors duration-200 py-3 px-4 rounded-lg cursor-pointer block"
+                          style={{
+                            fontFamily: 'Aileron, sans-serif',
+                            fontWeight: 400,
+                            fontSize: '14px',
+                          }}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {item.name}
+                        </motion.span>
+                      </Link>
+                    )
+                  ))}
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+
+        {/* Floating Shadow - Desktop Only */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl -z-10 scale-110"></div>
       </div>
       </motion.nav>
     </motion.div>
