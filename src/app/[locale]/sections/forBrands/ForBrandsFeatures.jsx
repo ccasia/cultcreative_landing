@@ -1,118 +1,211 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const ForBrandsFeatures = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const features = [
     {
       id: 1,
-      title: "Campaign Management",
-      description: "Streamline your influencer campaigns with our comprehensive management tools",
+      title: "Brand Deal Access",
+      description: "Easily browse and apply to brand campaigns that fit your niche and interests.",
+      mobileTitle: "Brand Deal Access",
+      mobileDescription: "Easily browse and apply to brand campaigns that fit your niche and interests.",
       width: 721,
       height: 381,
       top: 0,
       left: 0,
-      background: "linear-gradient(180deg, #1340FF 0%, #001FA3 100%)"
+      background: "linear-gradient(180deg, #1340FF 0%, #001FA3 100%)",
+      image: "/images/ForBrands/unified.svg",
+      mobileImage: "/images/ForBrands/mobile-feature1.png"
     },
     {
       id: 2,
-      title: "Analytics Dashboard",
-      description: "Track performance with detailed analytics and insights",
+      title: "Admin Automation",
+      description: "Instantly generate, sign, and upload agreements.",
+      mobileTitle: "Admin Automation",
+      mobileDescription: "Instantly generate, sign, and upload agreements.",
       width: 453,
       height: 381,
       top: 0,
       left: 751,
-      background: "linear-gradient(180deg, #FF3500 0%, #A72300 100%)"
+      background: "linear-gradient(180deg, #026D54 0%, #025844 100%)",
+      image: "/images/ForBrands/campaignanalytics.svg",
+      mobileImage: "/images/ForBrands/mobile-feature2.png"
     },
     {
       id: 3,
-      title: "Creator Network",
-      description: "Access our vast network of verified creators",
+      title: "Media Kit",
+      description: "Showcase your hard work and achievements in a visually pleasing, downloadable Media Kit.",
+      mobileTitle: "Media Kit",
+      mobileDescription: "Showcase your hard work and achievements in a visually pleasing, downloadable Media Kit.",
       width: 445,
       height: 381,
       top: 400,
       left: 0,
-      background: "linear-gradient(180deg, #026D54 0%, #025844 100%)"
+      background: "linear-gradient(180deg, #FF3500 0%, #A72300 100%)",
+      image: "/images/ForBrands/guided.svg",
+      mobileImage: "/images/ForBrands/mobile-feature3.png"
     },
     {
       id: 4,
-      title: "Content Approval",
-      description: "Review and approve content before it goes live",
+      title: "Skill Elevation",
+      description: "Access courses and resources to master new platforms and scale your content business.",
+      mobileTitle: "Skill Elevation",
+      mobileDescription: "Access courses and resources to master new platforms and scale your content business.",
       width: 728,
       height: 381,
       top: 400,
       left: 476,
-      background: "linear-gradient(180deg, #8A5AFE 0%, #533698 100%)"
+      background: "linear-gradient(180deg, #8A5AFE 0%, #533698 100%)",
+      image: "/images/ForBrands/smartmatching.svg",
+      mobileImage: "/images/ForBrands/mobile-feature4.png"
     }
   ];
 
   return (
-    <div className="w-full flex justify-center py-8" style={{ background: '#FFFFFF' }}>
+    <div className="w-full flex justify-center py-4 md:py-8" style={{ background: '#FFFFFF' }}>
       <section 
-        className="relative"
+        className="relative w-full md:w-auto"
         style={{
-          width: '1440px',
-          height: '1172px',
-          paddingTop: '120px',
-          paddingRight: '120px',
-          paddingBottom: '140px',
-          paddingLeft: '120px',
+          maxWidth: isMobile ? '100%' : '1440px',
+          height: isMobile ? 'auto' : '1172px',
+          paddingTop: isMobile ? '40px' : '120px',
+          paddingRight: isMobile ? '20px' : '120px',
+          paddingBottom: isMobile ? '40px' : '140px',
+          paddingLeft: isMobile ? '20px' : '120px',
           gap: '60px',
           opacity: 1,
-          borderRadius: '20px',
-          background: 'radial-gradient(circle, rgba(35, 31, 32, 1) 0%, rgba(0, 9, 79, 1) 35%, rgba(0, 13, 46, 1) 100%)',
+          borderRadius: isMobile ? '0' : '20px',
+          background: isMobile ? '#FFFFFF' : 'radial-gradient(circle, rgba(35, 31, 32, 1) 0%, rgba(0, 9, 79, 1) 35%, rgba(0, 13, 46, 1) 100%)',
           overflow: 'hidden'
         }}
       >
       <div className="max-w-7xl mx-auto h-full flex flex-col">
         {/* Title Section */}
         <motion.div
-          className="text-left mb-16"
+          className="text-left mb-8 md:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           <h2 
-            className="text-white mb-4"
+            className="mb-4"
             style={{
               fontFamily: 'Aileron',
               fontWeight: 700,
               fontStyle: 'Bold',
-              fontSize: '58.32px',
-              lineHeight: '57.86px',
+              fontSize: isMobile ? '32px' : '58.32px',
+              lineHeight: isMobile ? '36px' : '57.86px',
               letterSpacing: '-0.06em',
               textTransform: 'capitalize',
-              background: '#FFFFFF',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              color: isMobile ? '#231f20' : '#FFFFFF',
+              background: isMobile ? 'none' : '#FFFFFF',
+              WebkitBackgroundClip: isMobile ? 'unset' : 'text',
+              WebkitTextFillColor: isMobile ? 'unset' : 'transparent',
+              backgroundClip: isMobile ? 'unset' : 'text'
             }}
           >
-            Our Key Features
+            {isMobile ? (
+              <>
+                <span className="flex items-center gap-2">
+                  <img src="/images/NewMain/singlestar.svg" alt="star" className="w-6 h-6" />
+                  Our Key <span style={{ background: '#FFEB3B', padding: '0 4px' }}>Features.</span>
+                </span>
+              </>
+            ) : (
+              "Our Key Features"
+            )}
           </h2>
           
-          {/* Curly yellow underline */}
-          <div className="relative inline-block ml-28">
-            <img 
-              src="/images/ForBrands/curlyyellow.svg" 
-              alt="Curly yellow underline" 
-              className="w-auto h-8 -mt-4"
-            />
-          </div>
+          {/* Curly yellow underline - desktop only */}
+          {!isMobile && (
+            <div className="relative inline-block ml-28">
+              <img 
+                src="/images/ForBrands/curlyyellow.svg" 
+                alt="Curly yellow underline" 
+                className="w-auto h-8 -mt-4"
+              />
+            </div>
+          )}
         </motion.div>
 
         {/* Features Grid */}
-        <motion.div
-          className="flex-1 relative"
-          style={{ height: '800px' }}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          {/* Top Row */}
-          <div className="flex gap-4 mb-4">
+        {isMobile ? (
+          /* Mobile Layout - Vertical Stack */
+          <div className="flex flex-col gap-4">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.id}
+                className="rounded-3xl p-6 relative overflow-hidden"
+                style={{
+                  background: feature.background,
+                  minHeight: '400px'
+                }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                {/* Image at top */}
+                <div className="mb-6 flex justify-center">
+                  <img 
+                    src={feature.image}
+                    alt={feature.mobileTitle}
+                    className="w-full h-auto"
+                    style={{ maxHeight: '200px', maxWidth: '280px', objectFit: 'contain' }}
+                  />
+                </div>
+                
+                {/* Text content at bottom */}
+                <div className="text-white">
+                  <h3 
+                    className="text-2xl font-bold mb-3"
+                    style={{
+                      fontFamily: 'Aileron',
+                      fontWeight: 700
+                    }}
+                  >
+                    {feature.mobileTitle}
+                  </h3>
+                  <p 
+                    className="text-base opacity-90"
+                    style={{
+                      fontFamily: 'Aileron',
+                      fontWeight: 400
+                    }}
+                  >
+                    {feature.mobileDescription}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          /* Desktop Layout - Grid */
+          <motion.div
+            className="flex-1 relative"
+            style={{ height: '800px' }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {/* Top Row */}
+            <div className="flex gap-4 mb-4">
             {/* Blue Card */}
             <motion.div
               className="p-8 flex flex-col justify-center relative overflow-hidden"
@@ -316,7 +409,8 @@ const ForBrandsFeatures = () => {
               </motion.div>
             </motion.div>
           </div>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
       </section>
     </div>

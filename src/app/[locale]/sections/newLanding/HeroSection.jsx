@@ -190,20 +190,6 @@ const HeroSection = () => {
           />
         </div>
 
-        {/* Mobile stars positioned above "Creators" */}
-        <div
-          className="absolute md:hidden"
-          style={{
-            top: '4%',
-            right: '-20%',
-          }}
-        >
-          <img 
-            src="/images/NewMain/stars.svg" 
-            alt="decorative stars" 
-            className="w-70 h-70 opacity-100"
-          />
-        </div>
       </div>
 
       {/* Hero Content */}

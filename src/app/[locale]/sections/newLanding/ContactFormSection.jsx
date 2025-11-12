@@ -339,11 +339,6 @@ const ContactFormSection = () => {
                 }}
               >
                 Finding Creators For Your Brand?
-                <img 
-                  src="/images/NewMain/singlestar.svg" 
-                  alt="Star decoration" 
-                  className="absolute top-0 right-0 w-6 h-6"
-                />
               </h2>
               <p 
                 className="text-white"

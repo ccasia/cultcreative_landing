@@ -163,8 +163,6 @@ const ForBrandsStats = () => {
                 >
                   {stat.label}
                 </div>
-                {/* Purple line after each stat - mobile only */}
-                <div className="md:hidden w-16 h-0.5 bg-[#1340FF] mt-4"></div>
               </div>
             </motion.div>
           ))}
@@ -333,11 +331,11 @@ const ForBrandsStats = () => {
           </div>
 
           {/* Mobile Container */}
-          <div className="relative overflow-hidden md:hidden" style={{ width: '355px', height: '680px', margin: '0 auto' }}>
+          <div className="relative overflow-visible md:hidden" style={{ width: '355px', height: '680px', margin: '0 auto' }}>
             {/* Carousel Container */}
             <motion.div
-              className="flex"
-              animate={{ x: -currentSlide * 355 }}
+              className="flex gap-8"
+              animate={{ x: -currentSlide * 395 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
             >
               {caseStudies.map((study, studyIndex) => (
@@ -350,21 +348,21 @@ const ForBrandsStats = () => {
                     style={{ zIndex: 1 }}
                   />
                   
-                  {/* Mobile iPhone - positioned inside the frame at bottom right */}
+                  {/* Mobile iPhone - positioned inside the frame centered */}
                   <motion.div
                     className="absolute md:hidden z-50"
-                    initial={{ opacity: 0, y: -50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     style={{ 
-                      bottom: '-20px',
-                      right: '-30px',
-                      transform: 'rotate(8deg)'
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)'
                     }}
                   >
                     {/* iPhone Frame */}
                     <div
-                      className="transform scale-[0.6] origin-bottom-right"
+                      className="transform scale-[0.55]"
                       style={{
                         filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15))'
                       }}

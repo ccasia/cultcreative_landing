@@ -200,7 +200,7 @@ const FloatingNavbar = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+                className="fixed inset-0 z-40 md:hidden"
                 onClick={() => setIsMobileMenuOpen(false)}
               />
               
@@ -210,18 +210,18 @@ const FloatingNavbar = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="fixed top-24 right-4 md:hidden bg-white shadow-2xl rounded-2xl p-6 z-50 min-w-[280px]"
+                className="fixed top-20 right-4 md:hidden bg-white shadow-2xl rounded-2xl p-4 z-50 w-64"
               >
                 {/* Close Button */}
                 <div className="flex justify-end mb-4">
                   <motion.button
-                    className="bg-white p-2 rounded-lg text-gray-700 hover:text-[#231f20] transition-colors duration-200 border border-gray-200"
+                    className="bg-white border-2 border-gray-300 p-3 rounded-xl text-gray-800 hover:border-gray-400 transition-colors duration-200"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </motion.button>
                 </div>
@@ -233,14 +233,14 @@ const FloatingNavbar = () => {
                       <motion.a
                         key={item.name}
                         href={item.href}
-                        className="text-gray-700 hover:bg-gray-100 font-medium text-sm transition-colors duration-200 py-3 px-4 rounded-lg"
+                        className="text-gray-900 hover:bg-gray-100 font-medium text-base transition-colors duration-200 py-3 px-4 rounded-lg"
                         style={{
                           fontFamily: 'Aileron, sans-serif',
-                          fontWeight: 400,
-                          fontSize: '14px',
+                          fontWeight: 500,
+                          fontSize: '16px',
                         }}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        whileHover={{ x: 5 }}
+                        whileHover={{ x: 3 }}
                         transition={{ duration: 0.2 }}
                       >
                         {item.name}
@@ -248,14 +248,14 @@ const FloatingNavbar = () => {
                     ) : (
                       <Link key={item.name} href={item.href}>
                         <motion.span
-                          className="text-gray-700 hover:bg-gray-100 font-medium text-sm transition-colors duration-200 py-3 px-4 rounded-lg cursor-pointer block"
+                          className="text-gray-900 hover:bg-gray-100 font-medium text-base transition-colors duration-200 py-3 px-4 rounded-lg cursor-pointer block"
                           style={{
                             fontFamily: 'Aileron, sans-serif',
-                            fontWeight: 400,
-                            fontSize: '14px',
+                            fontWeight: 500,
+                            fontSize: '16px',
                           }}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          whileHover={{ x: 5 }}
+                          whileHover={{ x: 3 }}
                           transition={{ duration: 0.2 }}
                         >
                           {item.name}

@@ -75,7 +75,7 @@ const HowWeDoItSection = () => {
             <div className="max-w-4xl mx-auto">
               {/* Creator Media Kit Card */}
               <motion.div
-                className="sticky top-2 bg-white shadow-lg overflow-hidden -mb-1 mx-auto md:mx-0 w-full max-w-sm md:max-w-none md:w-[955px] md:h-[276px] h-auto md:rounded-[20px] rounded-lg md:py-[18px] py-4 md:px-9 px-4 md:border-[0.75px] border border-gray-200 md:ml-[-22px] ml-0"
+                className="sticky top-2 bg-white shadow-lg overflow-hidden mb-4 md:-mb-1 mx-auto md:mx-0 w-full max-w-sm md:max-w-none md:w-[955px] md:h-[276px] h-auto md:rounded-[20px] rounded-lg md:py-[18px] py-4 md:px-9 px-4 md:border-[0.75px] border border-gray-200 md:ml-[-22px] ml-0"
                 style={isMobile ? { 
                   y: 0, 
                   scale: 1, 
