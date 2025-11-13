@@ -4,110 +4,246 @@
 
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-
-  /* Custom letter spacing */
-  --letter-spacing-4: -.2rem;
-  --letter-spacing-5: -.6rem;
-
-  /* Custom border widths */
-  --border-width-3: 3px;
-
-  /* Custom animations */
-  --animate-loop-scroll-optics: loop-scroll-optics 30s linear infinite;
-  --animate-loop-scroll-companies: loop-scroll-companies 40s linear infinite;
-  --animate-loop-scroll-companies-reverse: loop-scroll-companies-reverse 40s linear infinite;
-  --animate-form-animation: form-to-down .3s linear;
-  --animate-marquee: marquee 30s linear infinite;
-  --animate-marquee-reverse: marquee-reverse 30s linear infinite;
-  --animate-gradient: gradient 3s linear infinite;
-}
-
-/* Custom keyframes */
+/* IMPORTANT: Keyframes must be defined AFTER @import "tailwindcss" and BEFORE @theme */
 @keyframes loop-scroll-optics {
-  to { transform: translateX(calc(-100% - 8.5rem)); }
+	to {
+		transform: translateX(calc(-100% - 8.5rem));
+	}
 }
 
 @keyframes loop-scroll-companies {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
 }
 
 @keyframes loop-scroll-companies-reverse {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }
 
 @keyframes form-to-down {
-  from { opacity: 0; }
-  to { opacity: 1; }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
 }
 
 @keyframes marquee-reverse {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
 }
 
 @keyframes gradient {
-  to { background-position: 200% center; }
+	to {
+		background-position: 200% center;
+	}
+}
+
+@keyframes loop-scroll {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(calc(-50% - 4rem));
+	}
+}
+
+/* Alternative faster version for testing */
+@keyframes loop-scroll-fast {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(calc(-50% - 4rem));
+	}
+}
+
+@keyframes scroll-x {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+@theme {
+	/* Colors */
+	--color-cc-blue: #1340ff;
+	--color-cc-green: #026d54;
+	--color-cc-pink: #ff9fbd;
+	--color-cc-red: #e41d21;
+	--color-cc-light-grey: #f5f5f5;
+	--color-cc-dark-grey: #48484a;
+	--color-cc-onyx: #231f20;
+	--color-cc-orange: #ff3500;
+	--color-lavender: #cfb5f6;
+	--color-vibrant-purple: #8a5afe;
+	--color-bright-yellow: #ffee00;
+	--color-off-white: #ffffff;
+
+	/* Letter Spacing */
+	--letter-spacing-5: -0.6rem;
+
+	/* Font Families */
+	--font-family-aileron: "aileron", "sans-serif";
+	--font-family-serif: "ui-serif", "Georgia";
+	--font-family-times: "Times New Roman Condensed";
+	--font-family-times-condensed: '"Times New Roman Condensed"',
+		'"Times New Roman"', "serif";
+	--font-family-times-new-roman: '"Times New Roman"', "serif";
+
+	/* Border Widths */
+	--border-width-3: 3px;
+
+	/* Background Images */
+	--background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+	--background-image-gradient-conic: conic-gradient(
+		from 180deg at 50% 50%,
+		var(--tw-gradient-stops)
+	);
+	--background-image-star-creator-desktop: url("/images/NewCreator/starCreatorsDesktop.png");
+	--background-image-star-creator-mobile: url("/images/backgrounds/creatorStarCreatorsMobile.png");
+	--background-image-contact-desktop: url("/images/backgrounds/contactDesktop.png");
+	--background-image-contact-mobile: url("/images/backgrounds/contactMobile.png");
+	--background-image-about-mobile: url("/images/backgrounds/aboutMobile.png");
+	--background-image-about-desktop: url("/images/backgrounds/aboutDesktop.png");
+
+	/* Animations - reference the keyframes defined above */
+	--animation-loop-scroll-optics: loop-scroll-optics 30s linear infinite;
+	--animation-loop-scroll-companies: loop-scroll-companies 40s linear infinite;
+	--animation-loop-scroll-companies-reverse: loop-scroll-companies-reverse 40s
+		linear infinite;
+	--animation-form-animation: form-to-down 0.3s linear;
+	--animation-marquee: marquee 30s linear infinite;
+	--animation-marquee-reverse: marquee-reverse 30s linear infinite;
+	--animation-gradient: gradient 3s linear infinite;
+	--animation-loop-scroll: loop-scroll 30s linear infinite;
+	--animation-loop-scroll-reverse: loop-scroll 30s linear infinite reverse;
+	--animation-scroll-x: scroll-x 30s linear infinite;
+}
+
+:root {
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Aileron', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: "Aileron", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
 }
 
 .font-aileron {
-  font-family: 'Aileron', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	font-family: "Aileron", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
 }
 
 .font-baskerville {
-  font-family: 'Libre Baskerville', serif;
+	font-family: "Libre Baskerville", serif;
 }
 
 /* Custom gradient backgrounds */
 .bg-gradient-radial {
-  background-image: radial-gradient(var(--tw-gradient-stops));
+	background-image: radial-gradient(var(--tw-gradient-stops));
 }
 
 .bg-gradient-conic {
-  background-image: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+	background-image: conic-gradient(
+		from 180deg at 50% 50%,
+		var(--tw-gradient-stops)
+	);
 }
 
 /* Footer font weight override - reset to normal and allow classes to work */
 .footer-section {
-  font-weight: 400;
+	font-weight: 400;
 }
 
 .footer-section * {
-  font-weight: inherit;
+	font-weight: inherit;
 }
 
 /* Ensure footer font-light works */
 .footer-section .font-light {
-  font-weight: 300;
+	font-weight: 300;
 }
 
 /* Ensure footer font-bold works */
 .footer-section .font-bold {
-  font-weight: 700;
+	font-weight: 700;
+}
+
+/* Animation utility classes */
+.animate-loop-scroll-optics {
+	animation: loop-scroll-optics 30s linear infinite;
+}
+
+.animate-loop-scroll-companies {
+	animation: loop-scroll-companies 40s linear infinite;
+}
+
+.animate-loop-scroll-companies-reverse {
+	animation: loop-scroll-companies-reverse 40s linear infinite;
+}
+
+.animate-form-animation {
+	animation: form-to-down 0.3s linear;
+}
+
+.animate-marquee {
+	animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+	animation: marquee-reverse 30s linear infinite;
+}
+
+.animate-gradient {
+	animation: gradient 3s linear infinite;
+}
+
+.animate-loop-scroll {
+	animation: loop-scroll 30s linear infinite;
+}
+
+.animate-loop-scroll-reverse {
+	animation: loop-scroll 30s linear infinite reverse;
+}
+
+.animate-scroll-x {
+	animation: scroll-x 10s linear infinite;
 }
