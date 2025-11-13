@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import StatsSection from "../../components/Stats";
 import CreatorCardDeck from "../../components/CreatorCardDeck";
 import Image from "next/image";

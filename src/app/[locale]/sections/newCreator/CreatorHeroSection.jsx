@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { videoGallery } from "../../components/videoData";
 
-const Thumbnail = ({ videoData, onClick, isActive }) => (
+const Thumbnail = ({ videoData, onClick }) => (
 	<div className="w-24 md:w-36 flex-shrink-0">
 		<button
 			onClick={onClick}

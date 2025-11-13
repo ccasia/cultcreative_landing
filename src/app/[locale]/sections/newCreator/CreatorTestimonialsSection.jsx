@@ -107,7 +107,6 @@ const CreatorTestimonials = () => {
 	// Initialize state with the first creator's ID
 	const [activeId, setActiveId] = useState(testimonialsData[0].id);
 	const activeTestimonial = testimonialsData.find((t) => t.id === activeId);
-	const otherCreators = testimonialsData.filter((t) => t.id !== activeId);
 	const { isMdAndAbove } = useMediaQuery();
 
 	const [cardHeight, setCardHeight] = useState("auto");
@@ -275,7 +274,7 @@ const CreatorTestimonials = () => {
 									key={creator.id}
 									creator={creator}
 									onClick={() => setActiveId(creator.id)}
-									size="w-12 h-12" 
+									size="w-12 h-12"
 									isActive={creator.id === activeId}
 									isMobile={true}
 								/>
