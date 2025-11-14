@@ -34,7 +34,7 @@ const FloatingNavbar = () => {
 
   const navItems = [
     { name: "For Brands", href: `/${locale}/for-brands` },
-    { name: "For Creators", href: "#creators" },
+    { name: "For Creators", href: `/${locale}/new-creator` },
     { name: "Success Stories", href: `/${locale}/new-stories` }
   ];
 
@@ -61,11 +61,11 @@ const FloatingNavbar = () => {
           <div className="flex items-center justify-between w-full">
             {/* Logo - Far Left */}
             <motion.div
-              className="flex-shrink-0"
+              className="shrink-0"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <Link href={`/${locale}/new-landing`}>
+              <Link href={`/${locale}/home`}>
                 <img
                   src="/images/logo1.png"
                   alt="Cult Creative"
@@ -81,7 +81,7 @@ const FloatingNavbar = () => {
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-[#231f20] font-medium text-sm transition-colors duration-200 relative group"
+                    className="text-gray-700 hover:text-cc-onyx font-medium text-sm transition-colors duration-200 relative group"
                     style={{
                       fontFamily: 'Aileron',
                       fontWeight: 400,
@@ -94,12 +94,12 @@ const FloatingNavbar = () => {
                     transition={{ duration: 0.2 }}
                   >
                     {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#231f20] transition-all duration-200 group-hover:w-full"></span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cc-onyx transition-all duration-200 group-hover:w-full"></span>
                   </motion.a>
                 ) : (
                   <Link key={item.name} href={item.href}>
                     <motion.span
-                      className="text-gray-700 hover:text-[#231f20] font-medium text-sm transition-colors duration-200 relative group cursor-pointer block"
+                      className="text-gray-700 hover:text-cc-onyx font-medium text-sm transition-colors duration-200 relative group cursor-pointer block"
                       style={{
                         fontFamily: 'Aileron',
                         fontWeight: 400,
@@ -112,7 +112,7 @@ const FloatingNavbar = () => {
                       transition={{ duration: 0.2 }}
                     >
                       {item.name}
-                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#231f20] transition-all duration-200 group-hover:w-full"></span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cc-onyx transition-all duration-200 group-hover:w-full"></span>
                     </motion.span>
                   </Link>
                 )
@@ -121,7 +121,7 @@ const FloatingNavbar = () => {
 
             {/* CTA Button - Far Right */}
             <motion.button
-              className="bg-[#231f20] text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 shadow-lg hover:shadow-xl flex-shrink-0"
+              className="bg-cc-onyx text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 shadow-lg hover:shadow-xl shrink-0"
               style={{
                 fontFamily: 'Aileron',
                 fontWeight: 700,
@@ -144,11 +144,11 @@ const FloatingNavbar = () => {
           <div className="flex items-center justify-between w-full">
             {/* Logo - Left */}
             <motion.div
-              className="flex-shrink-0"
+              className="shrink-0"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <Link href={`/${locale}/new-landing`}>
+              <Link href={`/${locale}/home`}>
                 <img
                   src="/images/logo1.png"
                   alt="Cult Creative"
@@ -161,7 +161,7 @@ const FloatingNavbar = () => {
             <div className="flex items-center gap-2">
               {/* LOGIN Button */}
               <motion.button
-                className="bg-[#231f20] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 flex-shrink-0"
+                className="bg-cc-onyx text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 shrink-0"
                 style={{
                   fontFamily: 'Aileron, sans-serif',
                   fontWeight: 700,
@@ -176,7 +176,7 @@ const FloatingNavbar = () => {
 
               {/* Hamburger Menu Icon in White Rounded Square */}
               <motion.button
-                className="bg-white p-2 rounded-full text-gray-700 hover:text-[#231f20] transition-colors duration-200 border border-gray-200"
+                className="bg-white p-2 rounded-full text-gray-700 hover:text-cc-onyx transition-colors duration-200 border border-gray-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -279,7 +279,7 @@ const FloatingNavbar = () => {
         </AnimatePresence>
 
         {/* Floating Shadow - Desktop Only */}
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl -z-10 scale-110"></div>
+        <div className="hidden md:block absolute inset-0 bg-linear-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl -z-10 scale-110"></div>
       </div>
       </motion.nav>
     </motion.div>

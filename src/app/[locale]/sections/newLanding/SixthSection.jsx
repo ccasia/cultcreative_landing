@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const SixthSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
   const locale = pathname?.split('/')[1] || 'my';
   
+  const [isMobile, setIsMobile] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -141,7 +141,7 @@ const SixthSection = () => {
                   <img 
                     src="/images/NewMain/singlestar.svg" 
                     alt="Star decoration" 
-                    className="absolute top-0 right-0 w-[28rem] h-[28rem] transform -translate-y-52 translate-x-32"
+                    className="absolute top-0 right-0 w-96 h-96 transform -translate-y-52 translate-x-32"
                   />
                   <br />For Your Brand?
                 </h2>

@@ -9,6 +9,24 @@ const SecondSection = () => {
   const [displayedNumbers, setDisplayedNumbers] = useState([0, 0, 0]);
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slideDistance, setSlideDistance] = useState(0);
+
+  useEffect(() => {
+    const calculateSlideDistance = () => {
+      if (typeof window !== 'undefined') {
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+          const cardWidth = Math.min(window.innerWidth - 32, 355);
+          const gap = window.innerWidth > 640 ? 32 : 24;
+          setSlideDistance(cardWidth + gap);
+        }
+      }
+    };
+
+    calculateSlideDistance();
+    window.addEventListener('resize', calculateSlideDistance);
+    return () => window.removeEventListener('resize', calculateSlideDistance);
+  }, []);
 
   const stats = [
     {
@@ -331,15 +349,16 @@ const SecondSection = () => {
           </div>
 
           {/* Mobile Container */}
-          <div className="relative overflow-visible md:hidden" style={{ width: '355px', height: '680px', margin: '0 auto' }}>
+          <div className="relative overflow-hidden md:hidden px-4 sm:px-6" style={{ height: '680px' }}>
             {/* Carousel Container */}
             <motion.div
-              className="flex gap-8"
-              animate={{ x: -currentSlide * 395 }}
+              className="flex gap-6 sm:gap-8"
+              animate={{ x: -currentSlide * slideDistance }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
+              style={{ width: 'fit-content' }}
             >
               {caseStudies.map((study, studyIndex) => (
-                <div key={studyIndex} className="shrink-0 relative" style={{ width: '355px', height: '680px' }}>
+                <div key={studyIndex} className="shrink-0 relative" style={{ width: 'calc(100vw - 2rem)', maxWidth: '355px', height: '680px' }}>
                   {/* SVG Frame Background - Mobile */}
                   <img
                     src="/images/ForBrands/mobile-framebrands.svg"

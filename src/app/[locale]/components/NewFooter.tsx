@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const LocationSelector = dynamic(() => import("./LocationSelector"));
 
@@ -51,19 +52,19 @@ const NewFooter = () => {
             <p className="font-bold text-2xl -tracking-[.1rem]">Company</p>
             <ul className="font-light text-sm">
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="/about">About Us</a>
+                <a href={`/${locale}/new-about-us`}>About Us</a>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
                 <a href={`/${locale}/faq`}>FAQ</a>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="/contact">Contact Us</a>
+                <a href={`/${locale}/new-contact-us`}>Contact Us</a>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="/resources">Resources</a>
+                <Link href="/resources">Resources</Link>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="/newsroom">Newsroom</a>
+                <Link href={`/${locale}/newsroom`}>Newsroom</Link>
               </li>
             </ul>
               </div>
@@ -74,10 +75,10 @@ const NewFooter = () => {
             <p className="font-bold text-2xl -tracking-[.1rem]">Support</p>
             <ul className="font-light text-sm">
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="/privacy-policy">Privacy Policy</a>
+                <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="/terms-and-conditions">Terms of Service</a>
+                <Link href="/terms-and-conditions">Terms of Service</Link>
               </li>
             </ul>
           </div>
@@ -111,7 +112,7 @@ const NewFooter = () => {
         </div>
         </div>
 
-        <hr className="border-gray-300 my-5 border-1" />
+        <hr className="border-gray-300 my-5 border" />
       </div>
     </section>
   );

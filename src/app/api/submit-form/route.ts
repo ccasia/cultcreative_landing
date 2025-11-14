@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
           private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
           client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
           client_id: process.env.GOOGLE_CLIENT_ID,
-        } as any,
+        } as Record<string, string | undefined>,
         scopes: ["https://www.googleapis.com/auth/spreadsheets"],
       });
 

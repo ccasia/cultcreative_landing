@@ -1,5 +1,5 @@
 "use client";
-import { easeIn, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const HeroSection = ({ storyData }) => {
   const { title, subtitle, campaignGoal, stats, infoChips } = storyData;
