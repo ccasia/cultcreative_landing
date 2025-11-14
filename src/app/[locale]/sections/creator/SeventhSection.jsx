@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
@@ -40,7 +40,7 @@ const CreatorAvatar = ({
 	);
 };
 
-const CreatorTestimonials = () => {
+const SeventhSection = () => {
 	const testimonialsData = [
 		{
 			id: 1,
@@ -119,54 +119,6 @@ const CreatorTestimonials = () => {
 	}, [activeId]);
 
 	return (
-		// <section className="relative w-full bg-white pt-40 overflow-hidden">
-		// 	<div className="absolute left-20 top-0 w-1/4 h-full z-20 bg-black">
-		// 		<div
-		// 			className="absolute inset-0 max-w-7xl mx-auto z-20"
-		// 			aria-hidden="true"
-		// 		>
-		// 			{testimonialsData.slice(0, 3).map((creator) => (
-		// 				<CreatorAvatar
-		// 					key={creator.id}
-		// 					creator={creator}
-		// 					onClick={() => setActiveId(creator.id)}
-		// 					size={creator.size}
-		// 					positionClass={creator.position}
-		// 				/>
-		// 			))}
-		// 		</div>
-		// 	</div>
-
-		// 	<div className="absolute right-20 top-0 w-1/4 h-full z-20 bg-black">
-		// 		<div
-		// 			className="absolute inset-0 max-w-7xl mx-auto z-20"
-		// 			aria-hidden="true"
-		// 		>
-		// 			{testimonialsData.slice(3, 6).map((creator) => (
-		// 				<CreatorAvatar
-		// 					key={creator.id}
-		// 					creator={creator}
-		// 					onClick={() => setActiveId(creator.id)}
-		// 					size={creator.size}
-		// 					positionClass={creator.position}
-		// 				/>
-		// 			))}
-		// 		</div>
-		// 	</div>
-		// 	{/* Layer 2: The foreground content (z-10) */}
-		// 	<div className="relative z-10">
-		// 		<div className="container mx-auto max-w-4xl text-center">
-		// 			<h2 className="font-aileron text-[64px] font-bold leading-[57.86px] tracking-[-0.06em] text-center capitalize text-gray-900">
-		// 				What Our Creators Say
-		// 			</h2>
-		// 			<p className="mt-4 font-aileron font-normal text-2xl leading-[28px] text-center text-gray-600 max-w-2xl mx-auto">
-		// 				A short message reflecting our value of putting creators first. We
-		// 				love them!
-		// 			</p>
-		// 		</div>
-
-		// 	</div>
-		// </section>
 		<section className="relative w-full bg-white pt-28 md:pt-40 pb-28 overflow-hidden">
 			<div className="container mx-auto">
 				<div className="max-w-4xl text-center mx-auto">
@@ -328,4 +280,4 @@ const CreatorTestimonials = () => {
 	);
 };
 
-export default CreatorTestimonials;
+export default SeventhSection;

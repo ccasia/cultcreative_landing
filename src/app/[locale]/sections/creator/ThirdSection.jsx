@@ -60,7 +60,7 @@ const FeatureCard = ({ imageSrc, title, description, bgColor }) => (
 	</div>
 );
 
-const OurKeyFeaturesSection = () => {
+const ThirdSection = () => {
 	// State to track which side is being hovered
 	const [hoverZone, setHoverZone] = useState("center");
 
@@ -142,4 +142,4 @@ const OurKeyFeaturesSection = () => {
 	);
 };
 
-export default OurKeyFeaturesSection;
+export default ThirdSection;

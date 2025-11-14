@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-const CreatorAcademySection = () => {
+const SixthSection = () => {
 	const { isMdAndAbove } = useMediaQuery();
 	const [isExpanded, setIsExpanded] = useState(false);
 
@@ -149,4 +149,4 @@ const CreatorAcademySection = () => {
 	);
 };
 
-export default CreatorAcademySection;
+export default SixthSection;

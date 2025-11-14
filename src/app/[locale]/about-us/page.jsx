@@ -10,26 +10,26 @@ const FloatingNavbar = dynamic(() =>
 
 // Dynamic imports for better performance
 const AboutUsSection = dynamic(() =>
-	import("@/app/[locale]/sections/newAboutUs/AboutUsSection")
+	import("@/app/[locale]/sections/aboutUs/AboutUsSection")
 );
 
 const NewFooter = dynamic(() => import("@/app/[locale]/components/NewFooter"));
 
 export const metadata = {
 	title: {
-		absolute: "New About Us Page - Cult Creative",
+		absolute: "About Us Page - Cult Creative",
 	},
 	description:
 		"Experience our brand new landing page with modern design and enhanced features.",
 	openGraph: {
-		title: "New About Us Page",
+		title: "About Us Page",
 	},
 	alternates: {
-		canonical: "/new-about-us",
+		canonical: "/about-us",
 	},
 };
 
-const NewAboutUs = ({ params: { locale } }) => {
+const AboutUs = ({ params: { locale } }) => {
 	setRequestLocale(locale);
 
 	return (
@@ -52,4 +52,4 @@ const NewAboutUs = ({ params: { locale } }) => {
 	);
 };
 
-export default NewAboutUs;
+export default AboutUs;

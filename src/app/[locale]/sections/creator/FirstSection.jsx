@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { videoGallery } from "../../components/videoData";
@@ -24,7 +24,7 @@ const Thumbnail = ({ videoData, onClick }) => (
 	</div>
 );
 
-const CreatorHeroSection = () => {
+const FirstSection = () => {
 	const [currentVideoUrl, setCurrentVideoUrl] = useState(
 		videoGallery[0].videoUrl
 	);
@@ -181,4 +181,4 @@ const CreatorHeroSection = () => {
 	);
 };
 
-export default CreatorHeroSection;
+export default FirstSection;
