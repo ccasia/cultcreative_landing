@@ -101,8 +101,11 @@ const FirstSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <motion.button 
-              className="px-16 py-3 text-white font-semibold rounded-full text-lg relative overflow-hidden"
+            <motion.a 
+              href="https://api.whatsapp.com/send/?phone=60162678757&text=I%27m+interested+in+a+creator+marketing+package%21&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-16 py-3 text-white font-semibold rounded-full text-lg relative overflow-hidden inline-block"
               style={{
                 backgroundColor: '#1340ff',
                 background: '#1340ff',
@@ -135,7 +138,7 @@ const FirstSection = () => {
                   />
                 </svg>
               </span>
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </div>

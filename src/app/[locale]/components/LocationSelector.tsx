@@ -1,15 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
 
 const LocationSelector = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState("my");
-  const [tempLocation, setTempLocation] = useState("my");
   const router = useRouter();
   const pathname = usePathname();
+  
+  const currentLocale = pathname?.split('/')[1] || "my";
+  
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState(currentLocale);
+  const [tempLocation, setTempLocation] = useState(currentLocale);
+
+  useEffect(() => {
+    setSelectedLocation(currentLocale);
+    setTempLocation(currentLocale);
+  }, [currentLocale]);
 
   const locations = [
     { code: "my", name: "Malaysia", flag: "🇲🇾" },

@@ -31,12 +31,12 @@ const NewFooter = dynamic(() =>
 
 export const metadata = {
   title: {
-    absolute: "New Landing Page - Cult Creative",
+    absolute: "Cult Creative: Connecting Brands With Content Creators",
   },
   description:
     "Experience our brand new landing page with modern design and enhanced features.",
   openGraph: {
-    title: "New Landing Page - Revolutionary Experience",
+    title: "Cult Creative: Connecting Brands With Content Creators",
   },
   alternates: {
     canonical: "/new-landing",

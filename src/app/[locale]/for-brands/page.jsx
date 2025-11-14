@@ -34,12 +34,12 @@ const NewFooter = dynamic(() =>
 
 export const metadata = {
   title: {
-    absolute: "For Brands - Cult Creative",
+    absolute: "Hire Content Creators To Promote Your Brand - Cult Creative",
   },
   description:
     "Influencer Marketing, Simplified. Stop building manual reports and managing endless spreadsheets.",
   openGraph: {
-    title: "For Brands - Influencer Marketing Simplified",
+    title: "Hire Content Creators To Promote Your Brand - Cult Creative",
   },
   alternates: {
     canonical: "/for-brands",

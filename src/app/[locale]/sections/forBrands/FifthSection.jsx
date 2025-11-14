@@ -378,6 +378,7 @@ const FifthSection = () => {
 
             {/* Call to Action Button */}
             <motion.button
+              onClick={() => window.open('https://psg0xjbmy530.sg.larksuite.com/scheduler/ff2f9eae30e860b6', '_blank')}
               className="px-12 py-4 text-white font-bold rounded-full text-lg relative overflow-hidden flex items-center mx-auto"
               style={{
                 backgroundColor: '#1340ff',
