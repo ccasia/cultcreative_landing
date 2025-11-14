@@ -22,17 +22,19 @@ const VideosSection = ({ videos }) => {
           alt="Instagram"
           width={90}
           height={90}
-          className="relative w-18 md:w-[90px] h-18 md:h-[90px] right-14 md:right-0 -top-10 md:top-0"
+          className="relative w-18 md:w-[90px] h-18 md:h-[90px] right-14 md:right-0 -top-10 md:top-0 z-100"
         />
       </div>
 
-      {/* iPhone Frames Grid - 1 on mobile, 4 on desktop */}
+      {/* iPhone Frames Grid - 1 on mobile, 2 on tablet, 4 on desktop */}
       <div className="flex justify-center lg:-space-x-40 flex-wrap">
         {mockVideos.map((video, index) => (
           <div
             key={video.id}
             className={`shrink-0 relative -top-20 ${
-              index > 0 ? 'hidden lg:block' : ''
+              index === 0 ? '' :
+              index === 1 ? 'hidden md:block ' :
+              'hidden lg:block'
             }`}
           >
             {/* iPhone Frame - smaller on mobile, original size on desktop */}

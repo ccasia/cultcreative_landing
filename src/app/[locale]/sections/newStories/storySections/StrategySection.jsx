@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const StrategySection = ({ strategyTitle, strategyContent }) => {
   return (
-    <section className="py-20 bg-white">
+    <section className="lg:py-20 px-8 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Title with Icon */}
         <div className="mb-5 flex items-center gap-4">
