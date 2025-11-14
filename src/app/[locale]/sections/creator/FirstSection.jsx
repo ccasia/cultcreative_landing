@@ -9,9 +9,9 @@ const Thumbnail = ({ videoData, onClick }) => (
 	<div className="w-24 md:w-36 flex-shrink-0">
 		<button
 			onClick={onClick}
-			className="group w-full rounded-2xl overflow-hidden opacity-60 hover:opacity-100"
+			className="group w-full rounded-xl md:rounded-2xl overflow-hidden opacity-60 hover:opacity-100"
 		>
-			<div className="relative aspect-[4/5]">
+			<div className="relative aspect-[6/7] md:aspect-[16/18]">
 				<Image
 					src={videoData.thumbnail}
 					alt={videoData.alt}
@@ -39,7 +39,7 @@ const FirstSection = () => {
 
 	return (
 		<section className="min-h-screen flex justify-center items-center w-full bg-white pt-32 pb-0 lg:pt-56 md:pb-12">
-			<div className="container mx-auto px-6 flex flex-col items-center gap-y-28 md:gap-y-48">
+			<div className="container mx-auto px-6 flex flex-col items-center gap-y-24 md:gap-y-48">
 				<div className="relative text-center">
 					<div className="flex items-center justify-center">
 						<h2
@@ -114,7 +114,7 @@ const FirstSection = () => {
 						/>
 					</div>
 					{/* Iphone video player */}
-					<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-60 h-auto md:w-80 lg:w-80 drop-shadow-2xl pointer-events-none">
+					<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-52 h-auto md:w-80 lg:w-80 drop-shadow-2xl pointer-events-none">
 						<div className="aspect-[9/19]">
 							<Image
 								src="/images/NewCreator/iphone.svg"
@@ -125,7 +125,7 @@ const FirstSection = () => {
 							/>
 							<video
 								key={currentVideoUrl}
-								className="absolute top-0 left-0 w-full h-full object-cover px-[5.5%] py-[9.5%] rounded-[48px] md:rounded-[60px]"
+								className="absolute top-0 left-0 w-full h-full object-cover px-[5.5%] py-[9.5%] rounded-[40px] md:rounded-[60px]"
 								autoPlay
 								loop
 								muted

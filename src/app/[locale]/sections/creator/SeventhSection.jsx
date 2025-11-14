@@ -24,7 +24,7 @@ const CreatorAvatar = ({
 		>
 			{/* The colored ring */}
 			<div
-				className={`w-full h-full rounded-full border-3 ${creator.borderColor}`}
+				className={`w-full h-full rounded-full border-4 ${creator.borderColor}`}
 			>
 				<div className={`w-full h-full rounded-full`}>
 					<Image
@@ -49,7 +49,7 @@ const SeventhSection = () => {
 			testimonial:
 				"The analytics tools are a game-changer. I can finally see what content resonates with my audience and tailor my strategy accordingly. My engagement has gone up by 40%!",
 			borderColor: "border-lavender",
-			position: "top-32 left-16",
+			position: "top-1/5 left-1/7 ",
 			size: "w-28 h-28",
 		},
 		{
@@ -59,7 +59,7 @@ const SeventhSection = () => {
 			testimonial:
 				"As a photographer, managing contracts and payments was always a hassle. This platform automates everything, letting me focus on what I love—creating beautiful images.",
 			borderColor: "border-cc-green",
-			position: "top-56 right-8",
+			position: "bottom-1/2 right-20 -translate-y-1/2",
 			size: "w-20 h-20",
 		},
 		{
@@ -69,7 +69,7 @@ const SeventhSection = () => {
 			testimonial:
 				"I was hesitant to join another platform, but the community here is incredibly supportive. It’s more than a tool; it’s a network of like-minded creators.",
 			borderColor: "border-bright-yellow",
-			position: "top-32 right-40",
+			position: "top-1/5 right-1/6",
 			size: "w-12 h-12",
 		},
 		{
@@ -79,8 +79,8 @@ const SeventhSection = () => {
 			testimonial:
 				"The integration with other tools I already use is seamless. It has simplified my workflow and saved me hours every week. I can't recommend it enough.",
 			borderColor: "border-vibrant-purple",
-			position: "top-1/3 left-4",
-			size: "w-12 h-12",
+			position: "top-1/2 left-20 -translate-y-1/2",
+			size: "w-16 h-16",
 		},
 		{
 			id: 5,
@@ -89,7 +89,7 @@ const SeventhSection = () => {
 			testimonial:
 				"Finally, a platform that understands the financial needs of creators. The payment system is fast, reliable, and transparent.",
 			borderColor: "border-cc-blue",
-			position: "bottom-1/2 right-48",
+			position: "bottom-1/3 right-1/6",
 			size: "w-24 h-24",
 		},
 		{
@@ -99,8 +99,8 @@ const SeventhSection = () => {
 			testimonial:
 				"The user interface is so intuitive and beautiful. It's a joy to use every day, unlike other clunky software I've tried.",
 			borderColor: "border-cc-pink",
-			position: "bottom-64 left-48",
-			size: "w-15 h-15",
+			position: "bottom-1/5 left-1/5 -translate-y-1/2",
+			size: "w-18 h-18",
 		},
 	];
 
@@ -119,8 +119,8 @@ const SeventhSection = () => {
 	}, [activeId]);
 
 	return (
-		<section className="relative w-full bg-white pt-28 md:pt-40 pb-28 overflow-hidden">
-			<div className="container mx-auto">
+		<section className="relative w-full bg-white py-28 md:pt-40 overflow-hidden">
+			<div className="flex flex-col items-center md:mx-60">
 				<div className="max-w-4xl text-center mx-auto">
 					<h2 className="font-aileron text-4xl md:text-[64px] font-bold leading-[57.86px] tracking-[-0.06em] text-center capitalize text-cc-onyx">
 						What Our Creators Say
@@ -132,9 +132,9 @@ const SeventhSection = () => {
 					</p>
 				</div>
 				{isMdAndAbove ? (
-					<div className="relative">
+					<div>
 						<div
-							className="absolute inset-0 max-w-7xl mx-auto z-10"
+							className="absolute inset-0 w-full z-10"
 							aria-hidden="true"
 						>
 							{testimonialsData.map((creator) => (
@@ -204,7 +204,7 @@ const SeventhSection = () => {
 								{/* Large active avatar for desktop */}
 								<div className="absolute -top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
 									<div
-										className={`w-30 h-30 rounded-full border-4 ${activeTestimonial.borderColor}`}
+										className={`w-30 h-30 rounded-full border-6 ${activeTestimonial.borderColor}`}
 									>
 										<Image
 											src={activeTestimonial.svgPath}
