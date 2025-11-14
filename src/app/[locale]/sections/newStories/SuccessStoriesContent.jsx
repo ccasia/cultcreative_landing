@@ -6,7 +6,7 @@ import Image from "next/image";
 const SuccessStoriesContent = () => {
   const handleServicesClick = () => {
     // Navigate to services page - update this route as needed
-    window.location.href = "/services";
+    window.location.href = "/my/for-brands";
   };
 
   return (
