@@ -61,23 +61,23 @@ const SimilarStoriesSection = ({ similarStories }) => {
     <section className="py-12 md:py-20 px-6 md:px-40 bg-white">
       <div className="mx-auto">
         {/* Title */}
-        <div className="md:mb-8 flex items-center justify-center gap-2 md:gap-4">
-          <h2 className="text-4xl md:text-6xl italic font-baskerville tracking-tight text-black">
+        <div className="flex text-center items-center justify-center gap-2 md:gap-4">
+          <h2 className="text-3xl md:text-6xl italic font-baskerville tracking-tight text-black">
             Similar Stories
           </h2>
-          <Image
-            src="/images/newStories/asterisk-yellow.png"
-            alt="Asterisk"
-            width={50}
-            height={50}
-            className="relative bottom-1 md:bottom-2 md:w-[75px] md:h-[75px]"
-          />
         </div>
+        <Image
+          src="/images/newStories/asterisk-yellow.png"
+          alt="Asterisk"
+          width={30}
+          height={30}
+          className="relative justify-self-center bottom-10 md:bottom-20 left-64 md:left-54 md:w-[75px] md:h-[75px]"
+        />
 
         {/* Mobile: Horizontal Scroll | Desktop: 4 Column Grid */}
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto md:grid md:grid-cols-4 gap-6 md:gap-12 snap-x snap-mandatory md:snap-none scrollbar-hide p-10"
+          className="flex overflow-x-auto md:grid md:grid-cols-4 gap-6 md:gap-12 snap-x snap-mandatory md:snap-none scrollbar-hide md:p-5"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
