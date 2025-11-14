@@ -6,15 +6,11 @@ import { motion } from "framer-motion";
 
 // A reusable component for the stat boxes to keep the code clean
 const StatBox = ({ number, text, iconSrc = null, iconPosition, iconSize }) => (
-	<div className="relative w-full max-w-sm md:w-[419px] h-[132px] md:h-[200px] rounded-[20px] md:rounded-[40px] p-[2px] bg-gradient-to-r from-[#F4F4F4]/70 via-[#8F8E8C]/10 to-[#F4F4F4]/70 backdrop-opacity-0">
-		{/* The Inner Div: This is where we make the change */}
-		{/* Changed from bg-white/[.15] to bg-white/10 for more transparency */}
-		{/* Optionally, increased backdrop-blur-md to backdrop-blur-lg */}
+	<div className="relative w-full max-w-sm md:w-[419px] h-[132px] md:h-[200px] rounded-[20px] md:rounded-[40px] p-[2px] bg-gradient-to-br from-[#F4F4F4]/70 to-[#8F8E8C]/10  backdrop-opacity-0">
 		<div
-			className={`relative h-full w-full bg-gradient-to-r from-[#081b6c]/10 via-[#F5F4F0]/20 to-[#081b6c]/10 backdrop-blur-none rounded-[19px] md:rounded-[38px] flex flex-col backdrop-blur-lg items-center justify-center text-white text-center  backdrop-opacity-0`}
+			className={`relative h-full w-full bg-gradient-to-br from-[#081b6c]/10 to-[#F5F4F0]/20  backdrop-blur-none rounded-[19px] md:rounded-[38px] flex flex-col backdrop-blur-lg items-center justify-center text-white text-center  backdrop-opacity-0`}
 		>
-			<div className="relative h-full w-full rounded-[19px] md:rounded-[38px] bg-[#081b6c]/40 flex flex-col items-center justify-center backdrop-blur-sm text-white text-center px-16 py-8">
-				{/* ... icon and content remain the same ... */}
+			<div className="relative h-full w-full rounded-[19px] md:rounded-[38px] bg-[#081b6c]/50 flex flex-col items-center justify-center backdrop-blur-sm text-white text-center px-16 py-8">
 				{iconSrc && (
 					<div className={`absolute z-10 ${iconPosition}`}>
 						<Image
@@ -82,13 +78,13 @@ const AboutUsSection = () => {
 				{/* Self-Playing Video */}
 				<div className="mt-12 rounded-2xl overflow-hidden shadow-lg">
 					<video
-						src="/videos/about-us-placeholder.mp4" // Replace with your actual video path
+						src="https://storage.googleapis.com/landing-cultcreative/brands/cm96oy47r02hcqe01mfl7ehsp_copy_3235B186-45B2-4061-B1F5-9D0E2AB93812%20(1).mp4"
 						autoPlay
 						loop
 						muted
 						playsInline
-						className="w-full h-full object-cover"
-					></video>
+						className="aspect-16/9 w-full h-full object-cover"
+					/>
 				</div>
 
 				{/* About Us Text */}
@@ -153,13 +149,13 @@ const AboutUsSection = () => {
 				{/* - Desktop: md:flex-row (places them side-by-side) */}
 				<div className="flex flex-col md:flex-row items-center justify-center gap-6">
 					<motion.div
-						className="flex w-full justify-center  md:mb-16"
+						className="flex justify-center w-full md:w-auto md:mb-16"
 						initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
 						animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
 						transition={isMobile ? {} : { duration: 0.8, delay: 0.4 }}
 					>
 						<motion.button
-							className="px-8 w-full md:px-16 py-3 justify-center flex text-white font-semibold rounded-full text-base md:text-lg relative overflow-hidden "
+							className="px-8 w-full md:w-auto md:px-16 py-3 justify-center flex text-white font-semibold rounded-full text-base md:text-lg relative overflow-hidden "
 							style={{
 								backgroundColor: "#1340ff",
 								background: "#1340ff",
@@ -199,13 +195,13 @@ const AboutUsSection = () => {
 						</motion.button>
 					</motion.div>
 					<motion.div
-						className="flex justify-center w-full mb-12 md:mb-16"
+						className="flex justify-center w-full md:w-auto mb-12 md:mb-16"
 						initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
 						animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
 						transition={isMobile ? {} : { duration: 0.8, delay: 0.4 }}
 					>
 						<motion.button
-							className="px-8 md:px-16 w-full py-3 text-white font-semibold justify-center flex  rounded-full text-base md:text-lg relative overflow-hidden"
+							className="px-8 md:px-16 w-full md:w-auto py-3 text-white font-semibold justify-center flex  rounded-full text-base md:text-lg relative overflow-hidden"
 							style={{
 								backgroundColor: "#000000",
 								background: "#000000",

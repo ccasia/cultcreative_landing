@@ -110,15 +110,8 @@ const ContactSection = () => {
 	];
 
 	return (
-		<section className="bg-cover bg-center bg-no-repeat bg-contact-mobile md:bg-contact-desktop md:p-4  shadow-2xl items-start"
-			// style={{
-			// 	backgroundImage: "url(/images/backgrounds/contactDesktop.png)",
-			// 	backgroundSize: "cover",
-			// 	backgroundPosition: "center",
-			// 	backgroundRepeat: "no-repeat",
-			// }}
-		>
-			<div className="bg-cc-light-grey rounded-3xl md:rounded-[36px] p-6 md:px-20 py-[60px] md:py-[120px] my-24 md:my-48 mx-3 md:mx-6 z-10">
+		<section className="flex flex-col bg-cover bg-center bg-no-repeat bg-contact-mobile pt-28 pb-10 md:pt-60 md:pb-40 md:bg-contact-desktop md:p-4  shadow-2xl">
+			<div className="bg-cc-light-grey rounded-3xl md:rounded-[36px] p-6 md:px-20 py-[60px] md:py-[120px] mx-3 md:mx-6 z-10">
 				<div className="text-center mb-10 md:mb-16">
 					<h1 className="text-[2rem] md:text-[64px] font-aileron font-bold text-cc-onyx tracking-[-0.06em] leading-[0.8]">
 						Drop Us A Line
