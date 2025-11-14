@@ -8,7 +8,12 @@ const HeroSection = ({ storyData }) => {
     <section
       className="min-h-screen flex flex-col items-center justify-center px-4 lg:px-8 pt-20 pb-20 lg:pb-60"
       style={{
-        background: "linear-gradient(180deg, #1340FF 0%, #231F20 49.52%)",
+        backgroundImage: "url('/images/NewStories/bg-story-hero.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        borderBottomLeftRadius: "20px",
+        borderBottomRightRadius: "20px",
       }}
     >
       {/* MOBILE LAYOUT - Hidden on desktop */}
