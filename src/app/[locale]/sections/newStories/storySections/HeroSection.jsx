@@ -55,7 +55,7 @@ const HeroSection = ({ storyData }) => {
             {stats.map((stat, index) => (
               <div key={index} className="text-left">
                 <p className="text-white font-aileron font-bold text-xl tracking-tight">{stat.label}</p>
-                <p className="text-3xl tracking-tighter font-light text-white">{stat.value}</p>
+                <p className="text-3xl tracking-tighter font-aileron-light text-white">{stat.value}</p>
               </div>
             ))}
           </div>
@@ -143,11 +143,11 @@ const HeroSection = ({ storyData }) => {
         {/* Stats and Info Chips - Separate Container */}
         <div className="max-w-max">
           {/* Stats */}
-          <div className="mb-8 grid grid-cols-3 gap-24 max-w-2xl">
+          <div className="mb-6 grid grid-cols-3 gap-24 max-w-2xl">
             {stats.map((stat, index) => (
               <div key={index} className="text-left">
-                <p className="text-white font-aileron font-bold text-[36px] tracking-tight mb-3">{stat.label}</p>
-                <p className="text-6xl tracking-tighter font-light text-white">{stat.value}</p>
+                <p className="text-white font-family-aileron font-bold text-[36px] tracking-tight mb-1">{stat.label}</p>
+                <p className="text-6xl tracking-tighter font-aileron-light text-white">{stat.value}</p>
               </div>
             ))}
           </div>
