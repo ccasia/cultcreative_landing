@@ -3,8 +3,11 @@
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 const SimilarStoriesSection = ({ similarStories }) => {
+  const scrollContainerRef = useRef(null);
+
   // Mock data for similar stories
   const mockStories = similarStories || [
     {
@@ -33,31 +36,59 @@ const SimilarStoriesSection = ({ similarStories }) => {
     },
   ];
 
+  // Scroll to center on mobile
+  useEffect(() => {
+    const scrollToCenter = () => {
+      if (scrollContainerRef.current && window.innerWidth < 768) {
+        const container = scrollContainerRef.current;
+        const cardWidth = 280; // Width of each card on mobile
+        const gap = 24; // gap-6 = 24px
+        const centerIndex = Math.floor(mockStories.length / 2) - 1; // Start at index 1 for 4 items
+        const scrollPosition = centerIndex * (cardWidth + gap);
+
+        container.scrollTo({
+          left: scrollPosition,
+          behavior: "smooth",
+        });
+      }
+    };
+
+    // Small delay to ensure DOM is ready
+    setTimeout(scrollToCenter, 100);
+  }, [mockStories.length]);
+
   return (
-    <section className="py-20 px-40 bg-white">
+    <section className="py-12 md:py-20 px-6 md:px-40 bg-white">
       <div className="mx-auto">
         {/* Title */}
-        <div className="mb-16 flex items-center justify-center gap-4">
-          <h2 className="text-6xl italic font-baskerville tracking-tight text-black">
+        <div className="md:mb-8 flex items-center justify-center gap-2 md:gap-4">
+          <h2 className="text-4xl md:text-6xl italic font-baskerville tracking-tight text-black">
             Similar Stories
           </h2>
-          <Image 
-            src="/images/newStories/asterisk-yellow.png" 
+          <Image
+            src="/images/newStories/asterisk-yellow.png"
             alt="Asterisk"
-            width={75}
-            height={75}
-            className="relative bottom-2"
+            width={50}
+            height={50}
+            className="relative bottom-1 md:bottom-2 md:w-[75px] md:h-[75px]"
           />
         </div>
 
-        {/* 4 Column Grid */}
-        <div className="grid grid-cols-4 gap-12">
+        {/* Mobile: Horizontal Scroll | Desktop: 4 Column Grid */}
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto md:grid md:grid-cols-4 gap-6 md:gap-12 snap-x snap-mandatory md:snap-none scrollbar-hide p-10"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+          }}
+        >
           {mockStories.map((story) => (
             <motion.div
               key={story.id}
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="origin-center"
+              className="origin-center shrink-0 w-[280px] md:w-auto snap-center"
             >
               <Link
                 href={`/new-stories/${story.id}`}
@@ -84,6 +115,13 @@ const SimilarStoriesSection = ({ similarStories }) => {
           ))}
         </div>
       </div>
+
+      {/* Hide scrollbar with CSS */}
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };
