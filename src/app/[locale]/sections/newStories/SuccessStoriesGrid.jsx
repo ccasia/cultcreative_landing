@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 
 const SuccessStoriesGrid = () => {
 
@@ -78,9 +79,11 @@ const SuccessStoriesGrid = () => {
             className="group relative overflow-hidden rounded-2xl aspect-square block"
           >
             {/* Story Card */}
-            <img
+            <Image
               src={story.image}
               alt={story.title}
+              width={280}
+              height={280}
               className="w-[280px] md:w-full h-full object-cover"
             />
 

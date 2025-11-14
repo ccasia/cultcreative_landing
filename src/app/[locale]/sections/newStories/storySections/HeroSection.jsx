@@ -1,5 +1,6 @@
 "use client";
-import { easeIn, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const HeroSection = ({ storyData }) => {
   const { title, subtitle, campaignGoal, stats, infoChips } = storyData;
@@ -44,8 +45,9 @@ const HeroSection = ({ storyData }) => {
               delay: 0.2,
             }}
           >
-            <img
+            <Image
               width={200}
+              height={400}
               src="/images/newStories/iphone.png"
               alt="Campaign preview"
               className="object-contain"
@@ -106,8 +108,9 @@ const HeroSection = ({ storyData }) => {
             }}
             style={{ zIndex: 5 }}
           >
-            <img
+            <Image
               width={350}
+              height={700}
               src="/images/newStories/iphone.png"
               alt="Campaign preview"
               className="object-contain"

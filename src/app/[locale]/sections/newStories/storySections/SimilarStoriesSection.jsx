@@ -95,10 +95,11 @@ const SimilarStoriesSection = ({ similarStories }) => {
                 className="group relative overflow-hidden rounded-2xl aspect-square block"
               >
                 {/* Story Card */}
-                <img
+                <Image
                   src={story.image}
                   alt={story.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
 
                 {/* Overlay */}
