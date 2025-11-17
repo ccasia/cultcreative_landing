@@ -51,7 +51,7 @@ const LocationSelector = () => {
       {/* Location Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 transition-colors duration-200"
+        className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors duration-200"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
