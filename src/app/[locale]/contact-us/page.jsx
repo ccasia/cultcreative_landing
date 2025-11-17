@@ -9,25 +9,25 @@ const FloatingNavbar = dynamic(() =>
 );
 
 // Dynamic imports for better performance
-const ContactSection = dynamic(() => import("@/app/[locale]/sections/newContact/ContactSection"))
+const ContactSection = dynamic(() => import("@/app/[locale]/sections/contact/ContactSection"))
 
 const NewFooter = dynamic(() => import("@/app/[locale]/components/NewFooter"));
 
 export const metadata = {
     title: {
-        absolute: "New Contact Us Page - Cult Creative",
+        absolute: "Contact Us Page - Cult Creative",
     },
     description:
         "Experience our brand new landing page with modern design and enhanced features.",
     openGraph: {
-        title: "New Contact Us Page",
+        title: "Contact Us Page",
     },
     alternates: {
-        canonical: "/new-contact-us",
+        canonical: "/contact-us",
     },
 };
 
-const NewContactUs = ({ params: { locale } }) => {
+const ContactUs = ({ params: { locale } }) => {
     setRequestLocale(locale);
 
     return (
@@ -50,4 +50,4 @@ const NewContactUs = ({ params: { locale } }) => {
     );
 };
 
-export default NewContactUs;
+export default ContactUs;

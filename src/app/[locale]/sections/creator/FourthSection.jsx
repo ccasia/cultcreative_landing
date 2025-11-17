@@ -97,7 +97,7 @@ const MobileImageCarousel = ({ images }) => {
 	);
 };
 
-const YourCreativeSpaceSection = () => {
+const FourthSection = () => {
 	return (
 		<section className="relative h-screen bg-cc-onyx rounded-3xl md:rounded-2xl flex items-start md:items-center justify-center overflow-hidden p-4 md:p-8">
 			<div className="relative w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -145,4 +145,4 @@ const YourCreativeSpaceSection = () => {
 	);
 };
 
-export default YourCreativeSpaceSection;
+export default FourthSection;

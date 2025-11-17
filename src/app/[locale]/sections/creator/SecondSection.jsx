@@ -83,7 +83,7 @@ const creators_combined = [
 	...creators_col_3,
 ];
 
-const OurStarCreatorsSection = () => {
+const SecondSection = () => {
 	const { isMdAndAbove } = useMediaQuery();
 
 	return (
@@ -128,4 +128,4 @@ const OurStarCreatorsSection = () => {
 	);
 };
 
-export default OurStarCreatorsSection;
+export default SecondSection;

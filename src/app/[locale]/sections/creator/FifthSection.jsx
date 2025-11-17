@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const MonetizeYourContentSection = () => {
+const FifthSection = () => {
 	return (
 		<section className="relative min-h-screen bg-white flex flex-col items-center overflow-hidden md:py-32">
 			<div className="flex flex-col w-full items-center gap-y-4 py-32 md:py-0">
@@ -85,4 +85,4 @@ const MonetizeYourContentSection = () => {
 	);
 };
 
-export default MonetizeYourContentSection;
+export default FifthSection;

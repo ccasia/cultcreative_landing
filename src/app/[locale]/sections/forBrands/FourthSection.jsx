@@ -19,10 +19,10 @@ const FourthSection = () => {
   const features = [
     {
       id: 1,
-      title: "Brand Deal Access",
-      description: "Easily browse and apply to brand campaigns that fit your niche and interests.",
-      mobileTitle: "Brand Deal Access",
-      mobileDescription: "Easily browse and apply to brand campaigns that fit your niche and interests.",
+      title: "Unified Workflow",
+      description: "Manage creator content, communication and payments effortlessly",
+      mobileTitle: "Unified Workflow",
+      mobileDescription: "Manage creator content, communication and payments effortlessly",
       width: 721,
       height: 381,
       top: 0,
@@ -33,38 +33,38 @@ const FourthSection = () => {
     },
     {
       id: 2,
-      title: "Admin Automation",
-      description: "Instantly generate, sign, and upload agreements.",
-      mobileTitle: "Admin Automation",
-      mobileDescription: "Instantly generate, sign, and upload agreements.",
+      title: "Campaign Analytics",
+      description: "Access real-time campaign performance and ROI metrics in one clear dashboard.",
+      mobileTitle: "Campaign Analytics",
+      mobileDescription: "Access real-time campaign performance and ROI metrics in one clear dashboard.",
       width: 453,
       height: 381,
       top: 0,
       left: 751,
-      background: "linear-gradient(180deg, #026D54 0%, #025844 100%)",
+      background: "linear-gradient(180deg, #FF3500 0%, #A72300 100%)",
       image: "/images/ForBrands/campaignanalytics.svg",
       mobileImage: "/images/ForBrands/mobile-feature2.png"
     },
     {
       id: 3,
-      title: "Media Kit",
-      description: "Showcase your hard work and achievements in a visually pleasing, downloadable Media Kit.",
-      mobileTitle: "Media Kit",
-      mobileDescription: "Showcase your hard work and achievements in a visually pleasing, downloadable Media Kit.",
+      title: "Guided Strategy",
+      description: "Get expert recommendations and video direction from our dedicated Client Success team",
+      mobileTitle: "Guided Strategy",
+      mobileDescription: "Get expert recommendations and video direction from our dedicated Client Success team",
       width: 445,
       height: 381,
       top: 400,
       left: 0,
-      background: "linear-gradient(180deg, #FF3500 0%, #A72300 100%)",
+      background: "linear-gradient(180deg, #026D54 0%, #025844 100%)",
       image: "/images/ForBrands/guided.svg",
       mobileImage: "/images/ForBrands/mobile-feature3.png"
     },
     {
       id: 4,
-      title: "Skill Elevation",
-      description: "Access courses and resources to master new platforms and scale your content business.",
-      mobileTitle: "Skill Elevation",
-      mobileDescription: "Access courses and resources to master new platforms and scale your content business.",
+      title: "Smart Matching",
+      description: "Quickly connect with reliable, high-quality creators whose audience perfectly aligns with your brand goals.",
+      mobileTitle: "Smart Matching",
+      mobileDescription: "Quickly connect with reliable, high-quality creators whose audience perfectly aligns with your brand goals.",
       width: 728,
       height: 381,
       top: 400,
@@ -166,7 +166,7 @@ const FourthSection = () => {
                     src={feature.image}
                     alt={feature.mobileTitle}
                     className="w-full h-auto"
-                    style={{ maxHeight: '200px', maxWidth: '280px', objectFit: 'contain' }}
+                    style={{ maxHeight: '280px', maxWidth: '320px', objectFit: 'contain' }}
                   />
                 </div>
                 
@@ -274,7 +274,7 @@ const FourthSection = () => {
                 transition={{ duration: 0.8, delay: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="mb-6">
+                <div className="-mb-5">
                   <img 
                     src="/images/ForBrands/campaignanalytics.svg" 
                     alt="Campaign Analytics" 
@@ -327,7 +327,7 @@ const FourthSection = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                <div className="mb-6">
+                <div className="-mb-10">
                   <img 
                     src="/images/ForBrands/guided.svg" 
                     alt="Guided Strategy" 

@@ -189,17 +189,24 @@ const FaqPage = () => {
       />
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-40 sm:pt-48 md:pt-56 pb-24">
         {/* Header */}
-        <div className="relative text-center mb-52 sm:mb-64">
+        <div className="relative text-center mb-20 sm:mb-52 md:mb-64">
           <h1
             style={{
               fontFamily: "Aileron",
               fontWeight: 700,
               fontStyle: "Bold",
-              fontSize: "64px",
-              lineHeight: "57.86px",
+              fontSize: "clamp(40px, 10vw, 64px)",
+              lineHeight: "1.1",
               letterSpacing: "-0.06em",
               textTransform: "capitalize",
               color: "#FFFFFF",
+              whiteSpace: "nowrap",
+              backgroundImage: "url('/images/NewMain/faqpage.svg')",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right center",
+              position: "relative",
+              display: "inline-block",
             }}
           >
             What The FAQ?
@@ -214,12 +221,13 @@ const FaqPage = () => {
               letterSpacing: "-0.04em",
               color: "#FFFFFF",
               textAlign: "center",
+              marginTop: "24px",
             }}
           >
             We've got answers.
           </p>
           <div
-            className="pointer-events-none absolute left-1/2 -translate-x-1/2"
+            className="pointer-events-none absolute left-1/2 -translate-x-1/2 hidden md:block"
             style={{ top: "calc(100% - 120px)", zIndex: 0 }}
           >
             <img
