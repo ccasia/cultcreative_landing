@@ -15,19 +15,29 @@ const VideosSection = ({ videos }) => {
 
   return (
     <section className="relative bg-white h-[475px] flex justify-center items-center">
-      <div className="absolute left-16 top-[90%] -translate-y-44 flex flex-col gap-4">
+      {/* Thumb icon - hidden on mobile, shown on desktop */}
+      <div className="md:flex absolute left-16 top-[90%] -translate-y-44 flex-col gap-4">
         <Image
           src="/images/newStories/thumb.png"
           alt="Instagram"
           width={90}
           height={90}
+          className="relative w-18 md:w-[90px] h-18 md:h-[90px] right-14 md:right-0 -top-10 md:top-0 z-100"
         />
       </div>
-      {/* iPhone Frames Grid - Centered */}
-      <div className="flex justify-center -space-x-40 flex-wrap">
-        {mockVideos.map((video) => (
-          <div key={video.id} className="shrink-0 relative -top-24" >
-            {/* iPhone Frame */}
+
+      {/* iPhone Frames Grid - 1 on mobile, 2 on tablet, 4 on desktop */}
+      <div className="flex justify-center lg:-space-x-40 flex-wrap">
+        {mockVideos.map((video, index) => (
+          <div
+            key={video.id}
+            className={`shrink-0 relative -top-20 ${
+              index === 0 ? '' :
+              index === 1 ? 'hidden md:block ' :
+              'hidden lg:block'
+            }`}
+          >
+            {/* iPhone Frame - smaller on mobile, original size on desktop */}
             <div className="scale-[0.52] origin-center">
               <DeviceFrameset device='iPhone X' color="black">
                 <div className="h-full w-full bg-white">
@@ -48,20 +58,21 @@ const VideosSection = ({ videos }) => {
         ))}
       </div>
 
-      {/* Social Icons - Absolutely positioned on the right */}
-      <div className="absolute right-20 top-32 -translate-y-44 flex flex-col gap-4">
+      {/* Social Icons - hidden on mobile, shown on desktop */}
+      <div className="flex absolute right-20 top-32 -translate-y-44 flex-col gap-4">
         <Image
           src="/images/newStories/ig.png"
           alt="Instagram"
           width={100}
           height={100}
+          className="relative left-24 md:left-0 top-14 md:top-0 w-20 md:w-[100px] h-20 md:h-[100px]"
         />
         <Image
           src="/images/newStories/tiktok.png"
           alt="TikTok"
           width={100}
           height={100}
-          className="absolute left-16 top-20"
+          className="relative left-14 md:left-16 top-62 md:-top-8"
         />
       </div>
     </section>

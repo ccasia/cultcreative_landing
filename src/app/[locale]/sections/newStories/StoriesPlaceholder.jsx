@@ -1,6 +1,6 @@
 const StoriesPlaceholder = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
+    <section className="min-h-screen flex items-center justify-center bg-linear-to-b from-gray-50 to-white">
       <div className="max-w-4xl mx-auto px-4 py-16 text-center">
         <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
           Success Stories

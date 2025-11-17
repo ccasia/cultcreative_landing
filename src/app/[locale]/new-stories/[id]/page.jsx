@@ -242,7 +242,7 @@ export default async function StoryDetailPage({ params }) {
   return (
     <>
       <FloatingNavbar />
-      <main className="flex flex-col w-full overflow-x-clip">
+      <main className="flex flex-col w-full overflow-x-clip bg-white">
         {/* Hero Section */}
         <Suspense
           fallback={
