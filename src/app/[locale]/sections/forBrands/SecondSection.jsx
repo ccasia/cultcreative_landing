@@ -91,6 +91,28 @@ const SecondSection = () => {
   // Case study data
   const caseStudies = [
     {
+      title: "Spritzer",
+      metrics: [
+        { value: "900K", label: "Views" },
+        { value: "19", label: "Posts" },
+        { value: "90K", label: "Interactions" },
+        { value: "8.87%", label: "Avg Engagement Rate" }
+      ],
+      phoneContent: "restaurant",
+      videoSrc: "https://storage.googleapis.com/landing-cultcreative/brands/brand1.mp4"
+    },
+    {
+      title: "Marriott Hotels",
+      metrics: [
+        { value: "500K", label: "Views" },
+        { value: "38", label: "Posts" },
+        { value: "50K", label: "Interactions" },
+        { value: "6.06%", label: "Avg Engagement Rate" }
+      ],
+      phoneContent: "hotel",
+      videoSrc: "https://storage.googleapis.com/landing-cultcreative/brands/brand2.mp4"
+    },
+    {
       title: "Noir Fine Dining",
       metrics: [
         { value: "3.2M", label: "Views" },
@@ -98,30 +120,8 @@ const SecondSection = () => {
         { value: "360K", label: "Interactions" },
         { value: "8.2%", label: "Avg Engagement Rate" }
       ],
-      phoneContent: "restaurant",
-      videoSrc: "https://storage.googleapis.com/landing-cultcreative/successStories/DP%201.mov"
-    },
-    {
-      title: "Marriott Hotels",
-      metrics: [
-        { value: "143K", label: "Views" },
-        { value: "20", label: "Posts" },
-        { value: "36K", label: "Interactions" },
-        { value: "3.6%", label: "Avg Engagement Rate" }
-      ],
-      phoneContent: "hotel",
-      videoSrc: "https://storage.googleapis.com/landing-cultcreative/successStories/DP%201.mov"
-    },
-    {
-      title: "Samsung Mobile",
-      metrics: [
-        { value: "5.8M", label: "Views" },
-        { value: "120", label: "Posts" },
-        { value: "890K", label: "Interactions" },
-        { value: "12.4%", label: "Avg Engagement Rate" }
-      ],
       phoneContent: "tech",
-      videoSrc: "https://storage.googleapis.com/landing-cultcreative/successStories/DP%201.mov"
+      videoSrc: "https://storage.googleapis.com/landing-cultcreative/brands/brand3.mp4"
     }
   ];
 

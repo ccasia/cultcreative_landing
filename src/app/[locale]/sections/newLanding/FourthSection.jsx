@@ -19,7 +19,7 @@ const FourthSection = () => {
       name: "Creator",
       brand: "Nespresso",
       quote: "Lazy people don't",
-      videoUrl: "https://storage.googleapis.com/landing-cultcreative/brands/cm83xazp602aomr019lvkg249_draft%20(1).mp4",
+      videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp1.mp4",
       description: "Cult Creative brand video"
     },
     {
@@ -29,7 +29,7 @@ const FourthSection = () => {
       name: "Manveer Singh", 
       brand: "Spritzer",
       quote: "Lazy people don't",
-      videoUrl: "https://storage.googleapis.com/landing-cultcreative/brands/598ac8604e064853a1bc16de81ad17ed.MOV",
+      videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp2.mp4",
       description: "Cult Creative brand video"
     },
     {
@@ -39,7 +39,7 @@ const FourthSection = () => {
       name: "Creator",
       brand: "Samsung",
       quote: "Lazy people don't",
-      videoUrl: "https://storage.googleapis.com/landing-cultcreative/brands/cm7vxwa0j014tnu01f6ybqqan_draft%20(1).mp4",
+      videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp3.mp4",
       description: "Cult Creative brand video"
     },
     {
@@ -49,7 +49,7 @@ const FourthSection = () => {
       name: "Creator",
       brand: "Uniqlo",
       quote: "Lazy people don't",
-      videoUrl: "https://storage.googleapis.com/cult_production/FIRST_DRAFT/cmc1htz3h07c9lg015y08xujw_IBC%20le%20meridian.MOV?v=2025-08-04T10:08:02+00:00",
+      videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp4.mp4",
       description: "Cult Creative brand video"
     },
     {
@@ -59,7 +59,7 @@ const FourthSection = () => {
       name: "Creator",
       brand: "Grab",
       quote: "Lazy people don't",
-      videoUrl: "https://storage.googleapis.com/landing-cultcreative/brands/cm96oy47r02hcqe01mfl7ehsp_copy_3235B186-45B2-4061-B1F5-9D0E2AB93812%20(1).mp4",
+      videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp5.mp4",
       description: "Cult Creative brand video"
     }
   ];
