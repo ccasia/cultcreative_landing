@@ -45,7 +45,9 @@ function StatItem({ target, label, suffix = "", decimals = 0 }) {
 			>
 				0
 			</h2>
-			<p className="text-sm md:text-2xl  md:mt-2 font-light font-aileron">{label}</p>
+			<p className="text-sm md:text-2xl  md:mt-2 font-light font-aileron">
+				{label}
+			</p>
 		</div>
 	);
 }
@@ -54,15 +56,15 @@ function StatItem({ target, label, suffix = "", decimals = 0 }) {
 export default function StatsSection() {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 max-w-5xl mx-auto text-white font-aileron">
-			<StatItem target={123} label="Campaigns Completed" suffix="+" />
+			<StatItem target={300} label="Campaigns Completed" suffix="+" />
 			<StatItem
-				target={4.5}
-				label="Payments Processed"
-				suffix="M+"
-				decimals={1}
+				target={600}
+				label="Payments Processed (USD)"
+				suffix="K+"
+				decimals={0}
 			/>
 			<StatItem
-				target={67.8}
+				target={7.5}
 				label="Creators On Our Platform"
 				suffix="K+"
 				decimals={1}

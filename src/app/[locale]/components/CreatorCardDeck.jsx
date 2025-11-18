@@ -5,54 +5,45 @@ import Image from "next/image";
 
 const CreatorCardDeck = ({ creators = [] }) => {
 	const [deck, setDeck] = useState(creators);
-	const [isAnimating, setIsAnimating] = useState(false);
 	const [dragRotation, setDragRotation] = useState(0);
 
 	useEffect(() => {
 		setDeck(creators);
 	}, [creators]);
 
-	const [swipeDirection, setSwipeDirection] = useState(null);
+	// This function now immediately reorders the deck state
+	const moveCardToEnd = () => {
+		if (deck.length < 2) return;
 
-	const swipe = async (direction) => {
-		if (deck.length < 2 || isAnimating) return;
-
-		setIsAnimating(true);
-		setSwipeDirection(direction);
-
-		// Wait a bit for the animation to complete
-		setTimeout(() => {
-			setDeck((currentDeck) => {
-				const [firstCard, ...restOfCards] = currentDeck;
-				return [...restOfCards, firstCard];
-			});
-			setIsAnimating(false);
-			setSwipeDirection(null);
-		}, 300);
+		setDeck((currentDeck) => {
+			const [firstCard, ...restOfCards] = currentDeck;
+			return [...restOfCards, firstCard];
+		});
 	};
 
 	const onDragEnd = (event, info) => {
 		const swipeThreshold = 100;
-		if (info.offset.x > swipeThreshold) {
-			swipe("right");
-		} else if (info.offset.x < -swipeThreshold) {
-			swipe("left");
+		if (Math.abs(info.offset.x) > swipeThreshold) {
+			moveCardToEnd();
 		}
-		setDragRotation(0); // Reset rotation when drag ends
+		// No need to reset dragRotation here; the animate prop will handle it smoothly
 	};
 
 	const getCardAnimation = (index) => {
+		// Hide cards beyond the third one to improve performance and avoid visual clutter
 		if (index > 2) {
-			return { opacity: 0, scale: 0, y: 0, x: 0 };
+			return { opacity: 0, scale: 0.8, y: 60, x: 0, display: "none" };
 		}
 
-		// Add drag rotation for the top card
-		const baseRotation = index === 0 ? 0 : index === 1 ? 8 : -6;
-		const finalRotation =
-			index === 0 ? baseRotation + dragRotation : baseRotation;
+		const isTop = index === 0;
+
+		const baseRotation = isTop ? 0 : index === 1 ? 8 : -6;
+		// Add drag-induced rotation only to the top card
+		const finalRotation = isTop ? baseRotation + dragRotation : baseRotation;
 
 		return {
-			x: index * 15,
+			display: "block",
+			x: isTop ? 0 : index * 15,
 			opacity: 1,
 			rotate: finalRotation,
 			y: (deck.length - 1 - index) * 15,
@@ -71,24 +62,17 @@ const CreatorCardDeck = ({ creators = [] }) => {
 						style={{ zIndex: deck.length - index }}
 						initial={false}
 						animate={getCardAnimation(index)}
-						exit={
-							isTop && isAnimating
-								? {
-										x: swipeDirection === "right" ? 300 : -300,
-										rotate: swipeDirection === "right" ? 20 : -20,
-										opacity: 0,
-								  }
-								: {}
-						}
+						// The layout prop enables smooth animation on reordering
+						layout
 						transition={{
 							type: "spring",
-							stiffness: 200,
-							damping: 25,
+							stiffness: 300,
+							damping: 30,
 						}}
 						onTap={() => {
-							if (isTop) swipe("right");
+							if (isTop) moveCardToEnd();
 						}}
-						drag={isTop && !isAnimating ? "x" : false}
+						drag={isTop ? "x" : false}
 						dragConstraints={{ left: 0, right: 0 }}
 						dragElastic={0.3}
 						onDragEnd={onDragEnd}
@@ -101,9 +85,8 @@ const CreatorCardDeck = ({ creators = [] }) => {
 								: {}
 						}
 						onDrag={(event, info) => {
-							// Update rotation state based on drag distance
 							if (isTop) {
-								const rotation = info.offset.x * 0.03; // Adjust multiplier for more/less rotation
+								const rotation = info.offset.x * 0.03;
 								setDragRotation(rotation);
 							}
 						}}

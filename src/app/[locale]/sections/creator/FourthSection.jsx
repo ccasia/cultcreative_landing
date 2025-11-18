@@ -3,21 +3,21 @@
 import Image from "next/image";
 
 const column1 = [
-	"/images/newCreator/shermaine-wong.jpg",
-	"/images/newCreator/shermaine-wong.jpg",
-	"/images/newCreator/shermaine-wong.jpg",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo2.jpeg",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo1.jpeg",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo3.jpg",
 ];
 
 const column2 = [
-	"/images/newCreator/placeholder2.png",
-	"/images/newCreator/placeholder2.png",
-	"/images/newCreator/placeholder2.png",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo5.jpg",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo6.JPG",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo4.JPG",
 ];
 
 const column3 = [
-	"/images/newCreator/placeholder1.jpg",
-	"/images/newCreator/placeholder1.jpg",
-	"/images/newCreator/placeholder1.jpg",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo9.jpg",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo10.jpg",
+	"https://storage.googleapis.com/landing-cultcreative/creator/new/images/photo11.jpg",
 ];
 
 const allColumns = [...column1, ...column2, ...column3];
@@ -70,7 +70,7 @@ const MobileImageCarousel = ({ images }) => {
 					`} //stagger images
 				>
 					{/* Use aspect ratio to maintain a consistent shape */}
-					<div className="aspect-[9/16]">
+					<div className="relative aspect-[9/16]">
 						<Image
 							src={src}
 							alt={`Gallery image ${index + 1}`}
@@ -92,6 +92,7 @@ const MobileImageCarousel = ({ images }) => {
 			>
 				{imageBlock}
 				{imageBlock}
+				{imageBlock}
 			</div>
 		</div>
 	);
@@ -101,12 +102,12 @@ const FourthSection = () => {
 	return (
 		<section className="relative h-screen bg-cc-onyx rounded-3xl md:rounded-2xl flex items-start md:items-center justify-center overflow-hidden p-4 md:p-8">
 			<div className="relative w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-				<div className="relative z-20 h-[280px] md:h-[600px] flex flex-col md:justify-center items-center">
+				<div className="relative z-20 h-[280px] md:h-[600px] bg-blue flex flex-col md:justify-center items-center">
 					<Image
 						src="/images/newCreator/csGalaxy.svg"
 						alt="Galaxy background"
 						fill
-						className="object-contain translate-y-10 translate-x-36"
+						className="md:absolute object-contain translate-y-10 translate-x-36 md:-translate-x-0 "
 					/>
 					<Image
 						src="/images/newCreator/csSun.svg"
@@ -125,7 +126,7 @@ const FourthSection = () => {
 					<h1 className="relative z-30 font-baskerville italic text-5xl md:text-8xl text-white text-nowrap drop-shadow-lg leading-tight tracking-[-0.06em] top-20 md:top-0">
 						Your creative space,
 					</h1>
-					<h1 className="relative z-30 font-aileron font-bold text-[2.5rem] md:text-7xl text-white drop-shadow-lg leading-tight tracking-[-0.06em] top-20 md:top-0">
+					<h1 className="relative z-30 font-aileron font-bold text-[2.5rem] md:text-7xl text-white text-nowrap drop-shadow-lg leading-tight tracking-[-0.06em] top-20 md:top-0">
 						Not Just A Platform.
 					</h1>
 				</div>
