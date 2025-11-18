@@ -141,7 +141,7 @@ const SixthSection = () => {
                   <img 
                     src="/images/NewMain/singlestar.svg" 
                     alt="Star decoration" 
-                    className="absolute top-0 right-0 w-[28rem] h-[28rem] transform -translate-y-36 translate-x-32"
+                    className="absolute top-0 right-0 w-80 h-80 transform -translate-y-36 translate-x-32"
                   />
                   <br />Content Creators
                   <br />Today!

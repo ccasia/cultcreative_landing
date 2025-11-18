@@ -200,7 +200,7 @@ const FourthSection = () => {
           >
             {/* Duplicate brands for seamless loop */}
             {[...trustedBrands, ...trustedBrands, ...trustedBrands, ...trustedBrands].map((brand, index) => (
-              <div key={index} className="flex-shrink-0">
+              <div key={index} className="shrink-0">
                 <img
                   src={brand.logo}
                   alt={brand.name}

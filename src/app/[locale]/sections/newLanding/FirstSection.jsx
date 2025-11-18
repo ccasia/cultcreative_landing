@@ -186,7 +186,7 @@ const FirstSection = () => {
           <img 
             src="/images/NewMain/stars.svg" 
             alt="decorative stars" 
-            className="w-[32rem] h-[32rem] opacity-100 hidden md:block"
+            className="w-96 h-96 opacity-100 hidden md:block"
           />
         </div>
 
