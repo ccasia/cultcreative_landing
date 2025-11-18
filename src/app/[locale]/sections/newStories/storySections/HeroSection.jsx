@@ -9,7 +9,7 @@ const HeroSection = ({ storyData }) => {
     <section
       className="min-h-screen flex flex-col items-center justify-center px-4 lg:px-8 pt-20 pb-20 lg:pb-60"
       style={{
-        backgroundImage: "url('/images/NewStories/bg-story-hero.png')",
+        backgroundImage: "url('/images/newStories/bg-story-hero.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
