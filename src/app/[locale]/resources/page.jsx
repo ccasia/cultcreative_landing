@@ -14,7 +14,7 @@ const ResourcesPage = async ({ params }) => {
   try {
     const fs = require('fs');
     const path = require('path');
-    const filePath = path.join(process.cwd(), 'public/data/resources.json');
+    const filePath = path.join(process.cwd(), 'src/data/resources.json');
     const fileContents = fs.readFileSync(filePath, 'utf8');
     articles = JSON.parse(fileContents);
   } catch (error) {
