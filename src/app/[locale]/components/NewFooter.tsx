@@ -52,13 +52,13 @@ const NewFooter = () => {
             <p className="font-bold text-2xl -tracking-[.1rem]">Company</p>
             <ul className="font-light text-sm">
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href={`/${locale}/new-about-us`}>About Us</a>
+                <a href={`/${locale}/about-us`}>About Us</a>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
                 <a href={`/${locale}/faq`}>FAQ</a>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href={`/${locale}/new-contact-us`}>Contact Us</a>
+                <a href={`/${locale}/contact-us`}>Contact Us</a>
               </li>
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
                 <Link href="/resources">Resources</Link>
