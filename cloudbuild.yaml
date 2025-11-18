@@ -35,9 +35,9 @@ steps:
       - "-t"
       - "gcr.io/cult-creative-421007/github.com:latest"
       - "--build-arg"
-      - "DATABASE_URL=${_DATABASE_URL}"
+      - "DATABASE_URL=$$DATABASE_URL"
       - "."
-    secretEnv: ['_DATABASE_URL']
+    secretEnv: ['DATABASE_URL']
 
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/cult-creative-421007/github.com:latest"]
@@ -73,10 +73,7 @@ images:
 availableSecrets:
   secretManager:
   - versionName: projects/cult-creative-421007/secrets/DATABASE_URL/versions/latest
-    env: '_DATABASE_URL'
-
-substitutions:
-  _DATABASE_URL: ''
+    env: 'DATABASE_URL'
 
 options:
   defaultLogsBucketBehavior: "REGIONAL_USER_OWNED_BUCKET"
