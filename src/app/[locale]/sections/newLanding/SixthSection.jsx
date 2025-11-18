@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 
 const SixthSection = () => {
   const pathname = usePathname();
@@ -68,7 +69,7 @@ const SixthSection = () => {
       });
 
       if (response.ok) {
-        alert("Form submitted successfully!");
+        toast.success("Form submitted successfully!");
         // Reset form
         setFormData({
           name: "",
@@ -80,11 +81,11 @@ const SixthSection = () => {
         });
       } else {
         const error = await response.json();
-        alert(`Error: ${error.error}`);
+        toast.error(`Error: ${error.error}`);
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      alert("Failed to submit form");
+      toast.error("Failed to submit form");
     }
   };
 

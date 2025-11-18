@@ -52,17 +52,26 @@ export const createCreator = async (values) => {
 export const createContact = async (values) => {
   const service = await getService();
   try {
+    // Order values to match sheet headers: Created On | Company Name | Work Email | Subject | Message
+    const orderedValues = [
+      values.createdOn,
+      values.name,
+      values.email,
+      values.subject,
+      values.message,
+    ];
+    
     await service.spreadsheets.values.append({
       spreadsheetId: spreadsheetId,
       valueInputOption: "RAW",
-      range: "Contacts!A2",
+      range: "Contact Us!A2",
       requestBody: {
-        values: [[...Object.values(values)]],
+        values: [orderedValues],
       },
     });
-    console.log(values);
+    console.log("Contact saved to sheet:", orderedValues);
   } catch (error) {
-    console.log(error);
+    console.log("Error appending to sheet:", error);
     return error;
   }
 };
