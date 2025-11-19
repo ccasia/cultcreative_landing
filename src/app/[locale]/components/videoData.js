@@ -88,7 +88,7 @@ export const videoGallery = [
 		// dummy id
 		id: 11,
 		thumbnail:
-			"https://storage.googleapis.com/landing-cultcreative/creator/new/images/thumbnails/Dressing%20Paula%203.png",
+			"https://storage.googleapis.com/landing-cultcreative/creator/new/images/thumbnails/Dressing%20Paula%202.png",
 		videoUrl:
 			"https://storage.googleapis.com/landing-cultcreative/creator/new/videos/DressingPaula3.mp4",
 		alt: "Dressing Paula",
@@ -96,7 +96,7 @@ export const videoGallery = [
 	{
 		id: 12,
 		thumbnail:
-			"https://storage.googleapis.com/landing-cultcreative/creator/new/images/thumbnails/Dressing%20Paula%203.png",
+			"https://storage.googleapis.com/landing-cultcreative/creator/new/images/thumbnails/Dressing%20Paula%202.png",
 		videoUrl:
 			"https://storage.googleapis.com/landing-cultcreative/creator/new/videos/DressingPaula3.mp4",
 		alt: "Dressing Paula",

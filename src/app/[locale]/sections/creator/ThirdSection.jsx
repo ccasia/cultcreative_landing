@@ -27,7 +27,7 @@ const featuresData = [
 		title: "Media Kit",
 		description:
 			"Showcase your hard work and achievements in a visually-pleasing, downloadable Media Kit.",
-		imageSrc: "/images/NewCreator/okfMediakit.svg",
+		imageSrc: "/images/NewCreator/okfMediaKit.svg",
 		bgColor: "bg-cc-orange",
 	},
 	{
