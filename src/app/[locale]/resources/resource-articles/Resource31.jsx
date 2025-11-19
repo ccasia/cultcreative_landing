@@ -1,36 +1,61 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[2];
-const relatedResources = [resources[1], resources[3], resources[4]];
+const resource = resources[1];
+const relatedResources = [resources[0], resources[2], resources[9]]; // Pick 3 related articles
 
-const title = "Your Guide to a Creator Portfolio";
-const date = "16 April 2025";
-const readTime = "6 min";
+const title = "Starting Your Signature Series";
+const date = "23 April 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "What's a signature series?",
+  "How does your favourite show to binge-watch keep you coming back for more?",
+  "Consistency, entertainment, value–these keywords come to mind. <br /> <br /> It's the same case for a signature series. <br /> <br /> A signature series is a set of recurring content that centers around a theme, posted at a consistent schedule.",
+  "It lets you explore your niche, offers value to your audience, and builds consistency in your content strategy.",
+  "It's something audiences will recognise and associate with you, turning you into the go-to-creator of your niche.",
+  "Starting your signature series Content ideas for a series must be consistent and sustainable, which is why it's important to plan and strategise your content production and execution. <br /> <br /> First, identify your theme and keep it in mind at every stage of planning.",
+  "Then, whip out your content calendar to see how your series can fit between your usual personal and campaign content.",
+  "Try shooting a few ideas before you continue strategising.",
+  "It might be more (or less) complex than you imagined. <br /> <br /> Any content can go into a signature series–GRWMs, reviews, vlogs–as long as it's still within your niche and it has a strong theme that's consistent throughout the series. <br /> <br /> Try going deeper into your niche by going through its branches, and see where it takes you. <br /> <br /> <i> https://vt.tiktok.com/ZS6bnPApT/ </i> <br /> <br /> <i> <b>Caption:</b> Try adapting series ideas from other niches to fit yours. </i> Brainstorming series ideas When you start brainstorming content ideas for your signature series, remember that what makes a series is the <i>theme</i>.",
+  "Stay consistent with the chosen theme so your series doesn't lose direction. <br /> <br /> Can't think of content ideas?",
+  "The solution might be right in front of you–in fact, you might be living it. <br /> <br /> Think about your daily life–work commute, workout routine, hangouts with friends–and ask yourself: are there aspects that you can spin into fun, juicy content for a series? <br /> <br /> Consider the value that it can bring to your audience, and how it can shape your identity as a content creator.",
+  "Additionally, content derived from your routine is a safe bet to ensure consistency, but you have to put in work to ensure it doesn't get boring. <br /> <br /> Here are some ideas: Reviewing breakfast spots along your work commute Workout vlogs trying out different sports with different friends 7-day challenge of meal prepping under a set budget You can also take inspiration from other niches or creators, and adapt it to align with your content theme, personal branding, niche, location, or audience.",
+  "Remember: don&apos;t plagiarise. <br /> <br /> <i> https://vt.tiktok.com/ZS6gpepTb/ </i> <br /> <br /> <i> <b>Caption:</b> @kaitlyneats is an NYC-based creator who reviews NYT's 100 best restaurants.",
+  "Can you think of a way to put a local spin on this? </i> Making your signature series valuable Your signature series is your defining feature as a creator.",
+  "And as a creator, your content should have value that your audience can benefit from–be it inspiring or educational. <br /> <br /> When naming your series, frame it in a way that's beneficial for your audience.",
+  "For example, \"My Morning Routine\" doesn't bring value to them.",
+  "But, \"The Routine That Gets Me Out Of Bed In The AM\" implies that you have a great morning routine, and they want that too. <br /> <br /> <b>Tip:</b> Have a unique, short hashtag so your followers can find your series easily",
+  "Execution and gathering feedback Feedback is also an important aspect of kickstarting a signature series.&nbsp; Pay attention to your engagement metrics – saves and shares are good indicators of the value and lifespan of your series. <br /> <br /> Besides that, interact with your audience in the comments.",
+  "Acknowledge their feedback, and try incorporating it into your series wherever you see fit.",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "Portfolio",
-    "Brand deals",
-    "Content management",
-    "Collaborations",
+    "Signature series",
+    "Content planning",
+    "Content strategy",
+    "Signature content",
 ];
 
 export const metadata = {
     title: title,
-    description: "Learn how to create a creator portfolio",
+    description: "Learn how to start your signature series",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Learn how to create a creator portfolio",
+        description: "Learn how to start your signature series",
     },
     alternates: {
         canonical: resource.path,
     },
 };
 
-const Resource31 = async ({ params }) => {
+const Resource32 = async ({ params }) => {
     const { locale } = await params;
     setRequestLocale(locale);
     return (
@@ -44,125 +69,146 @@ const Resource31 = async ({ params }) => {
                 image={resource.image}
             >
                 <rp.h2>
-                    Why you need a portfolio
+                    What's a signature series?
                 </rp.h2>
                 <rp.p>
-                    You have the engaging content and the results, so now is the time to show
-                    them off in your portfolio.
+                    How does your favourite show to binge-watch keep you coming back for
+                    more? Consistency, entertainment, value–these keywords come to mind.
                 <br />
                 <br />
-                    A strong portfolio is the key to establishing yourself as a credible
-                    content creator. It highlights your expertise and lets brands see if you
-                    are a great match.
+                    It's the same case for a signature series.
                 <br />
                 <br />
-                    Our platform's built-in Media Kit is a fuss-free, seamless way to display
-                    your highlighted works and metrics in one place. Just by linking your
-                    socials, you will have a portfolio built for you.
-                <br />
-                <br />
-                    But if you want a more customised feel, we have you covered. Keep reading
-                    to learn how to create your portfolio.
+                    A signature series is a set of recurring content that centers
+                    around a theme, posted at a consistent schedule. It lets you explore
+                    your niche, offers value to your audience, and builds consistency in
+                    your content strategy. It's something audiences will recognise and
+                    associate with you, turning you into the go-to-creator of your niche.
                 </rp.p>
-                <rp.h3>
-                    Introducing yourself and your niche
-                </rp.h3>
+                <rp.h2>
+                    Starting your signature series
+                </rp.h2>
                 <rp.p>
-                    Just like how your content needs{" "}
-                    <rp.a href="https://www.cultcreativeasia.com/my/resources/how-to-hook-why-you-need-to-nail-the-first-3-seconds-of-your-content">
-                        great hooks
-                    </rp.a>
-                    , your portfolio needs a punchy (and professional) introduction of who
-                    you are as a creator and, most importantly, what you can do for brands
-                    that work with you.
+                    Content ideas for a series must be consistent and sustainable, which
+                    is why it's important to plan and strategise your content production
+                    and execution.
                 <br />
                 <br />
-                    This section includes your name, picture, and a brief summary of what
-                    services you offer and your specialty. Do you have a distinct editing
-                    style, or do you bring a touch of humor to every post? Now is the time to
-                    say it.
+                    First, identify your theme and keep it in mind at every stage of
+                    planning. Then, whip out your content calendar to see how your series
+                    can fit between your usual personal and campaign content. Try shooting
+                    a few ideas before you continue strategising. It might be more (or
+                    less) complex than you imagined.
                 <br />
                 <br />
-                    It is important to showcase your niche and unique selling proposition
-                    (USP) to ensure you stand out as a creator.
+                    Any content can go into a signature series–GRWMs, reviews, vlogs–as
+                    long as it's still within your niche and it has a strong theme that's
+                    consistent throughout the series.
                 <br />
                 <br />
-                    <b>Tip:</b> Focus on your niche. It might be tempting to present yourself
-                    as a jack-of-all-trades, but that could indicate a lack of focus.
+                    Try going deeper into your niche by going through its branches, and
+                    see where it takes you.
+                <br />
+                <br />
+                    <i>
+                        <rp.a href="https://vt.tiktok.com/ZS6bnPApT/">
+                            https://vt.tiktok.com/ZS6bnPApT/{" "}
+                        </rp.a>
+                    </i>
+                <br />
+                <br />
+                    <i>
+                        <b>Caption:</b> Try adapting series ideas from other niches to fit
+                        yours.
+                    </i>
                 </rp.p>
-                <rp.h3>
-                    Highlighting your best campaign content
-                </rp.h3>
+                <rp.h2>
+                    Brainstorming series ideas
+                </rp.h2>
                 <rp.p>
-                    The work highlights section is the main event of your portfolio.
+                    When you start brainstorming content ideas for your signature series,
+                    remember that what makes a series is the <i>theme</i>. Stay consistent
+                    with the chosen theme so your series doesn't lose direction.
                 <br />
                 <br />
-                    It not only demonstrates your expertise and creativity in creating
-                    content, but it also shows potential collaborators what you are capable of
-                    achieving for them.
+                    Can't think of content ideas? The solution might be right in front of
+                    you–in fact, you might be living it.
                 <br />
                 <br />
-                    How do you begin curating your selection of work samples? Two words: be
-                    strategic. Take your time to choose content that best showcases your
-                    style, skills, and niche.
+                    Think about your daily life–work commute, workout routine, hangouts
+                    with friends–and ask yourself: are there aspects that you can spin
+                    into fun, juicy content for a series?
                 <br />
                 <br />
-                    Organise your work by categories, like topics (your microniches or areas
-                    related to your niche) or formats (reviews, unboxings, problem-and-solution
-                    format, day-in-the-life videos, GRWMs, etc.), to showcase your
-                    versatility.
+                    Consider the value that it can bring to your audience, and how it can
+                    shape your identity as a content creator. Additionally, content
+                    derived from your routine is a safe bet to ensure consistency, but you
+                    have to put in work to ensure it doesn't get boring.
                 <br />
                 <br />
-                    <b>Tip:</b> Avoid including every campaign you have created to make your
-                    portfolio seem meatier. Remember: quality over quantity.
+                    Here are some ideas:
                 </rp.p>
-                <rp.h3>
-                    Presenting your metrics
-                </rp.h3>
+                <rp.ul>
+                    <rp.li>Reviewing breakfast spots along your work commute</rp.li>
+                    <rp.li>
+                        Workout vlogs trying out different sports with different friends
+                    </rp.li>
+                    <rp.li>7-day challenge of meal prepping under a set budget</rp.li>
+                </rp.ul>
                 <rp.p>
-                    Metrics are the supporting act to your main event. By showcasing numbers,
-                    you reinforce your credibility as a creator and assure brands that you can
-                    produce results.
+                    You can also take inspiration from other niches or creators, and adapt
+                    it to align with your content theme, personal branding, niche,
+                    location, or audience. Remember: don&apos;t plagiarise.
                 <br />
                 <br />
-                    Display your average engagement rate (our Media Kit does the calculations
-                    for you!) and highlight your reach and impressions numbers, as these are
-                    prioritised in brand campaigns.
+                    <i>
+                        <rp.a href="https://vt.tiktok.com/ZS6gpepTb/">
+                            https://vt.tiktok.com/ZS6gpepTb/{" "}
+                        </rp.a>
+                    </i>
                 <br />
                 <br />
-                    <b>Tip:</b> Do not forget your follower count - it helps collaborators gauge
-                    how large your audience is.
+                    <i>
+                        <b>Caption:</b> @kaitlyneats is an NYC-based creator who reviews
+                        NYT's 100 best restaurants. Can you think of a way to put a local
+                        spin on this?
+                    </i>
                 </rp.p>
-                <rp.h3>
-                    Sharing reviews and testimonials
-                </rp.h3>
+                <rp.h2>
+                    Making your signature series valuable
+                </rp.h2>
                 <rp.p>
-                    Reviews from past collaborators are the cherry on top. Testimonials about
-                    your creativity and professionalism are valuable, but reviews with
-                    measurable results are even better. For instance, a brand could mention a
-                    specific percentage increase in their conversion or click-through rates,
-                    credited to their collaboration with you.
+                    Your signature series is your defining feature as a creator. And as a
+                    creator, your content should have value that your audience can benefit
+                    from–be it inspiring or educational.
                 <br />
                 <br />
-                    <b>Tip:</b> For convenience and consistency, provide a template or a set of
-                    questions when asking for reviews from brands.
+                    When naming your series, frame it in a way that's beneficial for your
+                    audience. For example, "My Morning Routine" doesn't bring value to
+                    them. But, "The Routine That Gets Me Out Of Bed In The AM" implies
+                    that you have a great morning routine, and they want that too.
+                <br />
+                <br />
+                    <b>Tip:</b> Have a unique, short hashtag so your followers can find
+                    your series easily
                 </rp.p>
-                <rp.h3>
-                    Customising your portfolio
-                </rp.h3>
+                <rp.h2>
+                    Execution and gathering feedback
+                </rp.h2>
                 <rp.p>
-                    Customising your portfolio is fun, but remember to keep it practical.
-                    Whether you are hosting on a site or creating a deck, make sure it has good
-                    readability and that the visual branding, like colours and fonts, stays
-                    consistent.
+                    Feedback is also an important aspect of kickstarting a signature
+                    series.&nbsp; Pay attention to your engagement metrics – saves and
+                    shares are good indicators of the value and lifespan of your series.
                 <br />
                 <br />
-                    <b>Tip:</b> If you have strong web design skills, host your portfolio on a
-                    site so you can show off your creativity.
+                    Besides that, interact with your audience in the comments. Acknowledge
+                    their feedback, and try incorporating it into your series wherever you
+                    see fit.
                 </rp.p>
             </rp.Page>
+            
         </>
     );
 };
 
-export default Resource31;
+export default Resource32;

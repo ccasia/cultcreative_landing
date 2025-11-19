@@ -1,36 +1,56 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[6];
-const relatedResources = [resources[4], resources[5], resources[7]];
+const resource = resources[5];
+const relatedResources = [resources[3], resources[4], resources[6]];
 
-const title = "Mastering the Social Media Metrics that Matter";
-const date = "19 March 2025";
-const readTime = "7 min";
+const title = "What Makes Good Content? Insights From 3 Creators";
+const date = "26 March 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "Cracking the code in content creation What makes engaging content?",
+  "Three creators broke the code with a mix of authenticity, balanced formats, and strong visual branding.",
+  "Their approaches show how to hold attention and grow a loyal audience.",
+  "Authentic connections through storytelling <b>Creator:</b> @zhysin <b>Niche:</b> Food and beverage business <b>Platforms:</b> Instagram, TikTok, YouTube Claire invites viewers into her bakery, blending personal moments with brand collaborations.",
+  "From the first day, she turned running the business into content, proving that transparency builds trust. https://www.instagram.com/p/DCbqGTFCmqI/?hl=en Her cafe renovation series documents the reality of launching a bakery, giving followers a reason to stick around for more behind-the-scenes stories. https://m.youtube.com/shorts/V9TA_KEhqX8 The shift from flight attendant to baker is Claire's signature story.",
+  "It reinforces her credibility and delivers a unique selling point that brands and audiences remember.",
+  "Balancing branded and personal content <b>Creator:</b> @thenictionary (Nicole) <b>Niche:</b> Lifestyle and beauty <b>Platforms:</b> Instagram, TikTok, Facebook Nicole keeps branded posts aligned with her personal brand by partnering with companies that fit her tone and visuals.",
+  "That alignment keeps her feed cohesive.",
+  "Brand alignment guide https://www.instagram.com/p/DCjOHgay4Ov/?hl=en Her organic series on home ownership sets the stage for sponsored content.",
+  "A Sony partnership video slots naturally into that narrative, showing how a campaign can enhance personal storytelling. https://www.instagram.com/p/C-RhtbJSNdt/?hl=en Nicole aims for roughly a 70:30 split between personal and branded posts and keeps engagement authentic by replying to comments on sponsored work.",
+  "Leveraging visual branding <b>Creator:</b> @jordietaan <b>Niche:</b> Lifestyle and fashion <b>Platform:</b> Instagram Jordan's photography background powers a distinctive visual identity.",
+  "His reels, carousels, and PR features all follow a cinematic editing style with a consistent palette. https://www.instagram.com/p/C6VhJ8ov37J/?hl=en&img_index=1 That consistency helps brands understand what a collaboration will look like and keeps his audience coming back for the storytelling-first approach. https://www.instagram.com/p/C8WtSuNPPjZ/ A clear visual signature boosts discoverability.",
+  "When viewers know what to expect, they connect faster and stick around longer.",
+  "Putting the lessons into practice Takeaways from these creators are simple: tell authentic stories, blend branded work with personal narratives, and develop a visual language your audience can instantly recognise.",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "social media metrics",
-    "content analytics",
-    "social media analytics",
-    "content strategy",
+    "Creator insights",
+    "Content strategy",
+    "Content creators",
+    "Creator community",
 ];
 
 export const metadata = {
     title: title,
-    description: "Learn which social media metrics matter most and how to turn insights into growth.",
+    description: "Crack the code to scroll-stopping content with learnings from three creators.",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Learn which social media metrics matter most and how to turn insights into growth.",
+        description: "Crack the code to scroll-stopping content with learnings from three creators.",
     },
     alternates: {
         canonical: resource.path,
     },
 };
 
-const Resource27 = async ({ params }) => {
+const Resource28 = async ({ params }) => {
     const { locale } = await params;
     setRequestLocale(locale);
     return (
@@ -44,103 +64,143 @@ const Resource27 = async ({ params }) => {
                 image={resource.image}
             >
                 <rp.h2>
-                    The importance of tracking key metrics
+                    Cracking the code in content creation
                 </rp.h2>
                 <rp.p>
-                    You already know your content pillars and target audience. The next step is
-                    understanding the numbers that prove what works. TikTok Studio and Instagram
-                    Insights package those metrics into dashboards you can act on.
-                </rp.p>
-                <rp.p>
-                    Watching the right signals helps you refine engagement, build stronger content
-                    strategies, and report results that matter to brands.
+                    What makes engaging content? Three creators broke the code with a mix of
+                    authenticity, balanced formats, and strong visual branding. Their
+                    approaches show how to hold attention and grow a loyal audience.
                 </rp.p>
                 <rp.h3>
-                    Core engagement benchmarks
+                    Authentic connections through storytelling
                 </rp.h3>
+                <rp.ul>
+                    <rp.li>
+                        <b>Creator:</b> <rp.a href="https://www.instagram.com/zhysin/?hl=en">@zhysin</rp.a>
+                    </rp.li>
+                    <rp.li>
+                        <b>Niche:</b> Food and beverage business
+                    </rp.li>
+                    <rp.li>
+                        <b>Platforms:</b> Instagram, TikTok, YouTube
+                    </rp.li>
+                </rp.ul>
                 <rp.p>
-                    Likes, comments, views, shares, and saves form the foundation of engagement
-                    analysis. Benchmarks shift by platform, niche, and follower size, but as a guide
-                    nano creators average 4.8% engagement on Instagram according to{" "}
-                    <rp.a href="https://hypeauditor.com/free-tools/instagram-engagement-calculator/">
-                        HypeAuditor
+                    Claire invites viewers into her bakery, blending personal moments with
+                    brand collaborations. From the first day, she turned running the business
+                    into content, proving that transparency builds trust.
+                </rp.p>
+                <rp.p>
+                    <rp.a href="https://www.instagram.com/p/DCbqGTFCmqI/?hl=en">
+                        https://www.instagram.com/p/DCbqGTFCmqI/?hl=en
                     </rp.a>
-                    , while{" "}
-                    <rp.a href="https://www.socialinsider.io/blog/tiktok-benchmarks/">
-                        Socialinsider
+                </rp.p>
+                <rp.p>
+                    Her cafe renovation series documents the reality of launching a bakery,
+                    giving followers a reason to stick around for more behind-the-scenes
+                    stories.
+                </rp.p>
+                <rp.p>
+                    <rp.a href="https://m.youtube.com/shorts/V9TA_KEhqX8">
+                        https://m.youtube.com/shorts/V9TA_KEhqX8
                     </rp.a>
-                    reports 4% on TikTok. Compare those benchmarks with your own data to see where you
-                    stand.
+                </rp.p>
+                <rp.p>
+                    The shift from flight attendant to baker is Claire's signature story. It
+                    reinforces her credibility and delivers a unique selling point that brands
+                    and audiences remember.
                 </rp.p>
                 <rp.h3>
-                    Calculate your engagement rate
+                    Balancing branded and personal content
                 </rp.h3>
+                <rp.ul>
+                    <rp.li>
+                        <b>Creator:</b> <rp.a href="https://www.instagram.com/thenictionary/?hl=en">@thenictionary</rp.a> (Nicole)
+                    </rp.li>
+                    <rp.li>
+                        <b>Niche:</b> Lifestyle and beauty
+                    </rp.li>
+                    <rp.li>
+                        <b>Platforms:</b> Instagram, TikTok, Facebook
+                    </rp.li>
+                </rp.ul>
                 <rp.p>
-                    A simple formula shows whether your content sparks interaction:
+                    Nicole keeps branded posts aligned with her personal brand by partnering
+                    with companies that fit her tone and visuals. That alignment keeps her feed
+                    cohesive.
                 </rp.p>
                 <rp.p>
-                    Engagement rate = (Likes + Comments + Shares) / Followers x 100
-                </rp.p>
-                <rp.p>
-                    Log that number each week so you can tie performance swings to the hooks, topics, or
-                    formats you experimented with.
-                </rp.p>
-                <rp.h3>
-                    Understand your audience
-                </rp.h3>
-                <rp.p>
-                    Growth hinges on knowing who watches your content. Track age, gender, location, and
-                    active times so your next post lands when your audience is online. Our guide on{" "}
-                    <rp.a href="https://www.cultcreativeasia.com/my/resources/4-ways-to-tap-into-your-target-audience">
-                        tapping into your target audience
+                    <rp.a href="https://docs.google.com/document/d/10AywoLQMTD-E0RhjnqQELne0E36_3E2twy_JT9-Vdpk/edit?usp=sharing">
+                        Brand alignment guide
                     </rp.a>
-                    shares more ways to dig deeper.
                 </rp.p>
                 <rp.p>
-                    TikTok Studio highlights other clips your viewers enjoy and the creators they watch.
-                    Use that behaviour data to confirm you are speaking to the right crowd or to uncover
-                    adjacent niches worth testing.
+                    <rp.a href="https://www.instagram.com/p/DCjOHgay4Ov/?hl=en">
+                        https://www.instagram.com/p/DCjOHgay4Ov/?hl=en
+                    </rp.a>
                 </rp.p>
                 <rp.p>
-                    Armed with that context, experiment with new posting times or content angles and note
-                    how the metrics respond.
-                </rp.p>
-                <rp.h3>
-                    Measure content value and longevity
-                </rp.h3>
-                <rp.p>
-                    Saves and shares reveal whether your content delivers real value. A save signals the
-                    viewer wants to revisit later, while a share exposes your work to fresh eyes without a
-                    paid boost.
+                    Her organic series on home ownership sets the stage for sponsored content.
+                    A Sony partnership video slots naturally into that narrative, showing how a
+                    campaign can enhance personal storytelling.
                 </rp.p>
                 <rp.p>
-                    Instagram Insights and TikTok Studio list saves and shares per post. Add those metrics
-                    to your report and watch for patterns around hooks or editing styles that consistently
-                    earn more of them.
+                    <rp.a href="https://www.instagram.com/p/C-RhtbJSNdt/?hl=en">
+                        https://www.instagram.com/p/C-RhtbJSNdt/?hl=en
+                    </rp.a>
+                </rp.p>
+                <rp.p>
+                    Nicole aims for roughly a 70:30 split between personal and branded posts
+                    and keeps engagement authentic by replying to comments on sponsored work.
                 </rp.p>
                 <rp.h3>
-                    Track follower growth the smart way
+                    Leveraging visual branding
                 </rp.h3>
+                <rp.ul>
+                    <rp.li>
+                        <b>Creator:</b> <rp.a href="https://www.instagram.com/jordietaan/?hl=en">@jordietaan</rp.a>
+                    </rp.li>
+                    <rp.li>
+                        <b>Niche:</b> Lifestyle and fashion
+                    </rp.li>
+                    <rp.li>
+                        <b>Platform:</b> Instagram
+                    </rp.li>
+                </rp.ul>
                 <rp.p>
-                    Follower growth becomes useful once you connect it to content experiments or campaign
-                    pushes. Plot your rate over time and overlay major launches or series to see what moved
-                    the needle.
+                    Jordan's photography background powers a distinctive visual identity. His
+                    reels, carousels, and PR features all follow a cinematic editing style with
+                    a consistent palette.
                 </rp.p>
                 <rp.p>
-                    Follower growth rate = Followers gained during a period / Followers at the start of that
-                    period x 100
+                    <rp.a href="https://www.instagram.com/p/C6VhJ8ov37J/?hl=en&img_index=1">
+                        https://www.instagram.com/p/C6VhJ8ov37J/?hl=en&img_index=1
+                    </rp.a>
+                </rp.p>
+                <rp.p>
+                    That consistency helps brands understand what a collaboration will look
+                    like and keeps his audience coming back for the storytelling-first approach.
+                </rp.p>
+                <rp.p>
+                    <rp.a href="https://www.instagram.com/p/C8WtSuNPPjZ/">
+                        https://www.instagram.com/p/C8WtSuNPPjZ/
+                    </rp.a>
+                </rp.p>
+                <rp.p>
+                    A clear visual signature boosts discoverability. When viewers know what to
+                    expect, they connect faster and stick around longer.
                 </rp.p>
                 <rp.h3>
-                    Turn metrics into action
+                    Putting the lessons into practice
                 </rp.h3>
                 <rp.p>
-                    Analytics can feel overwhelming, but the creators who monitor these numbers regularly are
-                    the ones who iterate faster. Track the metrics, compare them with your experiments, and
-                    refine your playbook with every post.
+                    Takeaways from these creators are simple: tell authentic stories, blend
+                    branded work with personal narratives, and develop a visual language your
+                    audience can instantly recognise.
                 </rp.p>
             </rp.Page>
         </>
     );
 };
 
-export default Resource27;
+export default Resource28;

@@ -1,37 +1,66 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[10];
-const relatedResources = [resources[8], resources[9], resources[11]];
+const resource = resources[9];
+const relatedResources = [resources[7], resources[8], resources[10]];
 
-const title = "UGC Ideas To Hook Your Viewers This CNY";
-const date = "12 February 2025";
-const readTime = "6 min";
+const title = "Why Brands Need To Tap Into Internet Culture";
+const date = "26 February 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "Internet culture moves faster than campaign decks A few words can take over TikTok overnight.",
+  "Creator Jools Lebron proved it with the now iconic \"very demure, very mindful\" sound that dominated feeds, stitches, and comment sections.",
+  "The brands that jumped in quickly, including Colour Wow and Patrick Ta , rode the wave by collaborating with Lebron herself and earned millions of organic impressions in the process.",
+  "These moments show that cultural literacy is no longer a nice to have.",
+  "It is a competitive edge for marketers who want to speak the same language as their community.",
+  "Trends deliver more than reach Joining the right conversation signals that your brand understands its audience.",
+  "The payoff goes beyond vanity metrics; it builds social currency and keeps your brand top of mind when consumers are ready to buy.",
+  "Duolingo grew a fan base of millions by anchoring its TikTok presence around chaotic, meme-driven content.",
+  "By tapping into references like The Bear, BRAT Summer, and creator catchphrases, the brand turned a language app into a pop culture icon.",
+  "Luxury labels such as Marc Jacobs have followed suit, pairing designer drops with creator-generated stories to stay relevant to Gen Z.",
+  "Speak the community's language Memes fall flat when they feel like forced ads.",
+  "Brands earn credibility when they immerse themselves in the jokes, comment threads, and creator-driven lore that their audience already loves.",
+  "That context makes it easier to co-create content that feels authentic instead of opportunistic.",
+  "Listen before you post.",
+  "Track the creators, keywords, and sounds your target audience interacts with every day.",
+  "Partner with culture shapers, not just influencers with reach.",
+  "They provide the nuance that keeps your campaigns from feeling like brand-speak.",
+  "Add your brand twist while staying true to the original bit.",
+  "The best executions feel like an inside joke you were invited to, not a billboard.",
+  "Measure cultural relevance Traditional metrics such as impressions and click-through rate still matter, but layering on qualitative signals gives you the full picture.",
+  "Monitor comment sentiment, saves, duets, and creator shoutouts to gauge whether your brand feels like part of the community.",
+  "Keep a swipe file of the cultural moments you joined, what resonated, and the creators who helped you break through.",
+  "Over time you will build a playbook that lets you move faster without losing alignment. <div> <a > Connect with creators who speak internet culture </a> </div>",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "ugc",
-    "chinese new year",
-    "content strategy",
-    "festive campaigns",
+    "internet culture",
+    "brand strategy",
+    "social media trends",
     "creator marketing",
+    "tiktok",
 ];
 
 export const metadata = {
     title: title,
-    description: "Plan Chinese New Year UGC campaigns that cut through the noise and inspire festive purchases.",
+    description: "Learn how brands can earn cultural credibility by embracing internet trends with the right creators.",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Plan Chinese New Year UGC campaigns that cut through the noise and inspire festive purchases.",
+        description: "Learn how brands can earn cultural credibility by embracing internet trends with the right creators.",
     },
     alternates: {
         canonical: resource.path,
     },
 };
 
-const Resource23 = async ({ params }) => {
+const Resource24 = async ({ params }) => {
     const { locale } = await params;
     setRequestLocale(locale);
     return (
@@ -45,85 +74,80 @@ const Resource23 = async ({ params }) => {
                 image={resource.image}
             >
                 <rp.h2>
-                    Festive spending surges on social feeds
+                    Internet culture moves faster than campaign decks
                 </rp.h2>
                 <rp.p>
-                    Malaysians love gearing up for Chinese New Year. Search interest around outfits, gifting, and
-                    reunion dining spikes weeks before the celebration, which means the creators you partner with can
-                    influence buying decisions right now.
+                    A few words can take over TikTok overnight. Creator Jools Lebron proved it with the now iconic
+                    "very demure, very mindful" sound that dominated feeds, stitches, and comment sections. The
+                    brands that jumped in quickly, including
+                    <rp.a href="https://www.tiktok.com/@colorwow.hair/video/7403397128451624238?is_from_webapp=1&sender_device=pc&web_id=7418086993306945030">
+                        Colour Wow
+                    </rp.a>
+                    and
+                    <rp.a href="https://www.tiktok.com/@patrickta/video/7403511464062995755?is_from_webapp=1&sender_device=pc&web_id=7418086993306945030">
+                        Patrick Ta
+                    </rp.a>
+                    , rode the wave by collaborating with Lebron herself and earned millions of organic impressions in
+                    the process.
                 </rp.p>
                 <rp.p>
-                    Smart user generated content keeps the hype building while paid spots like TV and billboards run in
-                    the background. Here are CNY storylines to brief your creators on so their videos land quickly and
-                    feel authentic.
+                    These moments show that cultural literacy is no longer a nice to have. It is a competitive edge for
+                    marketers who want to speak the same language as their community.
                 </rp.p>
                 <rp.h3>
-                    Spotlight reunion dinners and staycations
+                    Trends deliver more than reach
                 </rp.h3>
                 <rp.p>
-                    Food and hospitality brands can lean into the rise of foodie creators who document dining
-                    adventures. Invite them to film tasting menus, behind the scenes prep, or limited time reunion sets
-                    that viewers can book instantly.
+                    Joining the right conversation signals that your brand understands its audience. The payoff goes
+                    beyond vanity metrics; it builds social currency and keeps your brand top of mind when consumers are
+                    ready to buy.
+                </rp.p>
+                <rp.p>
+                    <rp.a href="https://www.tiktok.com/@duolingo?is_from_webapp=1&sender_device=pc">
+                        Duolingo
+                    </rp.a>
+                    grew a fan base of millions by anchoring its TikTok presence around chaotic, meme-driven content.
+                    By tapping into references like The Bear, BRAT Summer, and creator catchphrases, the brand turned a
+                    language app into a pop culture icon. Luxury labels such as
+                    <rp.a href="https://www.tiktok.com/@marcjacobs?is_from_webapp=1&sender_device=pc">
+                        Marc Jacobs
+                    </rp.a>
+                    have followed suit, pairing designer drops with creator-generated stories to stay relevant to Gen Z.
+                </rp.p>
+                <rp.h3>
+                    Speak the community's language
+                </rp.h3>
+                <rp.p>
+                    Memes fall flat when they feel like forced ads. Brands earn credibility when they immerse
+                    themselves in the jokes, comment threads, and creator-driven lore that their audience already loves.
+                    That context makes it easier to co-create content that feels authentic instead of opportunistic.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        Film a creator led kitchen tour that shows how signature prosperity dishes are made.
+                        Listen before you post. Track the creators, keywords, and sounds your target audience interacts
+                        with every day.
                     </rp.li>
                     <rp.li>
-                        Capture family style plating and plating hacks viewers can recreate at home.
+                        Partner with culture shapers, not just influencers with reach. They provide the nuance that
+                        keeps your campaigns from feeling like brand-speak.
                     </rp.li>
                     <rp.li>
-                        Turn reviews into reservation nudges by including booking links in captions or overlays.
+                        Add your brand twist while staying true to the original bit. The best executions feel like an
+                        inside joke you were invited to, not a billboard.
                     </rp.li>
                 </rp.ul>
                 <rp.h3>
-                    Celebrate personal style and gifting moments
+                    Measure cultural relevance
                 </rp.h3>
                 <rp.p>
-                    Fashion and beauty shoppers hunt for inspiration the moment red lanterns appear in malls. Partner
-                    with creators who have a recognisable look and briefing them to produce storytelling content rather
-                    than simple hauls.
-                </rp.p>
-                <rp.ul>
-                    <rp.li>
-                        Build transition edits that take viewers from casual errands to reunion dinner glam using your
-                        hero pieces.
-                    </rp.li>
-                    <rp.li>
-                        Share gift guides sorted by relationship or budget so shoppers can copy the cart.
-                    </rp.li>
-                    <rp.li>
-                        Encourage creators to mix archive items with new arrivals to highlight versatility.
-                    </rp.li>
-                </rp.ul>
-                <rp.h3>
-                    Lean into traditions and symbolism
-                </rp.h3>
-                <rp.p>
-                    Cultural context matters. Work with storytellers who can explain why specific colours, ingredients,
-                    or rituals matter so the content resonates with viewers across generations.
-                </rp.p>
-                <rp.ul>
-                    <rp.li>
-                        Break down the meaning behind reunion dishes, house visits, or angpow etiquette.
-                    </rp.li>
-                    <rp.li>
-                        Highlight philanthropic or community initiatives your brand supports during the season.
-                    </rp.li>
-                    <rp.li>
-                        Pair traditional elements with modern twists so the content feels fresh but respectful.
-                    </rp.li>
-                </rp.ul>
-                <rp.h3>
-                    Track what success looks like
-                </rp.h3>
-                <rp.p>
-                    Festive content moves quickly, so set goals that cover both reach and action. Monitor saves, shares,
-                    comment sentiment, and click through rates to see which creators and hooks are driving conversions.
+                    Traditional metrics such as impressions and click-through rate still matter, but layering on
+                    qualitative signals gives you the full picture. Monitor comment sentiment, saves, duets, and creator
+                    shoutouts to gauge whether your brand feels like part of the community.
                 </rp.p>
                 <rp.p>
-                    Keep a running library of winning concepts. When Hari Raya and Deepavali approach, you will already
-                    know which creators to rebook and how to brief them faster.
+                    Keep a swipe file of the cultural moments you joined, what resonated, and the creators who helped
+                    you break through. Over time you will build a playbook that lets you move faster without losing
+                    alignment.
                 </rp.p>
                 <div className="text-center mt-10">
                     <a
@@ -132,7 +156,7 @@ const Resource23 = async ({ params }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Plan your CNY campaign with Cult Creative
+                        Connect with creators who speak internet culture
                     </a>
                 </div>
             </rp.Page>
@@ -140,4 +164,4 @@ const Resource23 = async ({ params }) => {
     );
 };
 
-export default Resource23;
+export default Resource24;

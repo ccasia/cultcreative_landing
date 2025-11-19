@@ -1,37 +1,66 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[11];
-const relatedResources = [resources[9], resources[10], resources[12]];
+const resource = resources[10];
+const relatedResources = [resources[8], resources[9], resources[11]];
 
-const title = "Why You Should Crosspost Your Content";
-const date = "29 January 2025";
-const readTime = "6 min";
+const title = "UGC Ideas To Hook Your Viewers This CNY";
+const date = "12 February 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "Festive spending surges on social feeds Malaysians love gearing up for Chinese New Year.",
+  "Search interest around outfits, gifting, and reunion dining spikes weeks before the celebration, which means the creators you partner with can influence buying decisions right now.",
+  "Smart user generated content keeps the hype building while paid spots like TV and billboards run in the background.",
+  "Here are CNY storylines to brief your creators on so their videos land quickly and feel authentic.",
+  "Spotlight reunion dinners and staycations Food and hospitality brands can lean into the rise of foodie creators who document dining adventures.",
+  "Invite them to film tasting menus, behind the scenes prep, or limited time reunion sets that viewers can book instantly.",
+  "Film a creator led kitchen tour that shows how signature prosperity dishes are made.",
+  "Capture family style plating and plating hacks viewers can recreate at home.",
+  "Turn reviews into reservation nudges by including booking links in captions or overlays.",
+  "Celebrate personal style and gifting moments Fashion and beauty shoppers hunt for inspiration the moment red lanterns appear in malls.",
+  "Partner with creators who have a recognisable look and briefing them to produce storytelling content rather than simple hauls.",
+  "Build transition edits that take viewers from casual errands to reunion dinner glam using your hero pieces.",
+  "Share gift guides sorted by relationship or budget so shoppers can copy the cart.",
+  "Encourage creators to mix archive items with new arrivals to highlight versatility.",
+  "Lean into traditions and symbolism Cultural context matters.",
+  "Work with storytellers who can explain why specific colours, ingredients, or rituals matter so the content resonates with viewers across generations.",
+  "Break down the meaning behind reunion dishes, house visits, or angpow etiquette.",
+  "Highlight philanthropic or community initiatives your brand supports during the season.",
+  "Pair traditional elements with modern twists so the content feels fresh but respectful.",
+  "Track what success looks like Festive content moves quickly, so set goals that cover both reach and action.",
+  "Monitor saves, shares, comment sentiment, and click through rates to see which creators and hooks are driving conversions.",
+  "Keep a running library of winning concepts.",
+  "When Hari Raya and Deepavali approach, you will already know which creators to rebook and how to brief them faster. <div> <a > Plan your CNY campaign with Cult Creative </a> </div>",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "crossposting",
+    "ugc",
+    "chinese new year",
     "content strategy",
-    "creator workflow",
-    "social media growth",
-    "repurposing content",
+    "festive campaigns",
+    "creator marketing",
 ];
 
 export const metadata = {
     title: title,
-    description: "Learn how to crosspost strategically so every video works harder across TikTok, Instagram, and YouTube.",
+    description: "Plan Chinese New Year UGC campaigns that cut through the noise and inspire festive purchases.",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Learn how to crosspost strategically so every video works harder across TikTok, Instagram, and YouTube.",
+        description: "Plan Chinese New Year UGC campaigns that cut through the noise and inspire festive purchases.",
     },
     alternates: {
         canonical: resource.path,
     },
 };
 
-const Resource22 = async ({ params }) => {
+const Resource23 = async ({ params }) => {
     const { locale } = await params;
     setRequestLocale(locale);
     return (
@@ -45,72 +74,85 @@ const Resource22 = async ({ params }) => {
                 image={resource.image}
             >
                 <rp.h2>
-                    Crossposting multiplies your reach
+                    Festive spending surges on social feeds
                 </rp.h2>
                 <rp.p>
-                    Growing as a creator is easier when each idea lives on more than one platform. Crossposting gives your content
-                    a second and third chance to be discovered, introduces you to new demographics, and keeps your feeds active
-                    without doubling your production hours.
+                    Malaysians love gearing up for Chinese New Year. Search interest around outfits, gifting, and
+                    reunion dining spikes weeks before the celebration, which means the creators you partner with can
+                    influence buying decisions right now.
                 </rp.p>
                 <rp.p>
-                    Winning at crossposting is about planning the story once, then editing it so it feels native to TikTok, Instagram,
-                    and YouTube. With a streamlined workflow, you can cover more platforms and stay consistent all year long.
-                </rp.p>
-                <rp.h3>
-                    Map your goals and platforms
-                </rp.h3>
-                <rp.p>
-                    Start by choosing which channels matter most to your audience and the brands you want to work with. TikTok skews
-                    younger and rewards discovery; Instagram blends community and curation; YouTube builds long term search traffic and
-                    ad revenue. Decide what you want each feed to achieve so you can tailor intros, CTAs, and editing pace.
+                    Smart user generated content keeps the hype building while paid spots like TV and billboards run in
+                    the background. Here are CNY storylines to brief your creators on so their videos land quickly and
+                    feel authentic.
                 </rp.p>
                 <rp.h3>
-                    Build a reusable content toolkit
+                    Spotlight reunion dinners and staycations
                 </rp.h3>
                 <rp.p>
-                    Systemise your workflow so your core asset can be adapted in minutes instead of hours. Create templates for cover
-                    slides, caption formats, and hook variations so you are not starting from scratch every time you export.
+                    Food and hospitality brands can lean into the rise of foodie creators who document dining
+                    adventures. Invite them to film tasting menus, behind the scenes prep, or limited time reunion sets
+                    that viewers can book instantly.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        Shoot in 4K vertical when possible. You can crop wider shots for Reels or Shorts without losing quality.
+                        Film a creator led kitchen tour that shows how signature prosperity dishes are made.
                     </rp.li>
                     <rp.li>
-                        Save a library of hook lines, CTAs, and on screen prompts that fit each platform's tone.
+                        Capture family style plating and plating hacks viewers can recreate at home.
                     </rp.li>
                     <rp.li>
-                        Keep brand elements like fonts, colour blocks, and logos in reusable project files.
+                        Turn reviews into reservation nudges by including booking links in captions or overlays.
                     </rp.li>
                 </rp.ul>
                 <rp.h3>
-                    Optimise for each algorithm
+                    Celebrate personal style and gifting moments
                 </rp.h3>
                 <rp.p>
-                    Small adjustments go a long way. Swap trending audio for platform specific sounds, reframe thumbnails so they pop, and
-                    adjust length to match attention spans. TikTok and Reels thrive on fast hooks, while YouTube Shorts benefits from a more
-                    narrative build.
+                    Fashion and beauty shoppers hunt for inspiration the moment red lanterns appear in malls. Partner
+                    with creators who have a recognisable look and briefing them to produce storytelling content rather
+                    than simple hauls.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        Align captions with the search terms viewers use on that platform.
+                        Build transition edits that take viewers from casual errands to reunion dinner glam using your
+                        hero pieces.
                     </rp.li>
                     <rp.li>
-                        Use native features like stickers, polls, or carousel posts to boost engagement signals.
+                        Share gift guides sorted by relationship or budget so shoppers can copy the cart.
                     </rp.li>
                     <rp.li>
-                        Test different posting times, then document the slots that consistently deliver reach.
+                        Encourage creators to mix archive items with new arrivals to highlight versatility.
                     </rp.li>
                 </rp.ul>
                 <rp.h3>
-                    Track performance and iterate
+                    Lean into traditions and symbolism
                 </rp.h3>
                 <rp.p>
-                    Review analytics weekly so you know which edits, hooks, or thumbnails carried the most weight. When a video performs
-                    unusually well on one platform, break down why and replicate that format elsewhere.
+                    Cultural context matters. Work with storytellers who can explain why specific colours, ingredients,
+                    or rituals matter so the content resonates with viewers across generations.
+                </rp.p>
+                <rp.ul>
+                    <rp.li>
+                        Break down the meaning behind reunion dishes, house visits, or angpow etiquette.
+                    </rp.li>
+                    <rp.li>
+                        Highlight philanthropic or community initiatives your brand supports during the season.
+                    </rp.li>
+                    <rp.li>
+                        Pair traditional elements with modern twists so the content feels fresh but respectful.
+                    </rp.li>
+                </rp.ul>
+                <rp.h3>
+                    Track what success looks like
+                </rp.h3>
+                <rp.p>
+                    Festive content moves quickly, so set goals that cover both reach and action. Monitor saves, shares,
+                    comment sentiment, and click through rates to see which creators and hooks are driving conversions.
                 </rp.p>
                 <rp.p>
-                    Record your learnings in a simple tracker. Over time you will build a crossposting playbook that keeps your feeds fresh
-                    without burning you out.
+                    Keep a running library of winning concepts. When Hari Raya and Deepavali approach, you will already
+                    know which creators to rebook and how to brief them faster.
                 </rp.p>
                 <div className="text-center mt-10">
                     <a
@@ -119,7 +161,7 @@ const Resource22 = async ({ params }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Streamline your crossposting with Cult Creative
+                        Plan your CNY campaign with Cult Creative
                     </a>
                 </div>
             </rp.Page>
@@ -127,4 +169,4 @@ const Resource22 = async ({ params }) => {
     );
 };
 
-export default Resource22;
+export default Resource23;

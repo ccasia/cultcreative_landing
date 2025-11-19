@@ -1,36 +1,50 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[5];
-const relatedResources = [resources[3], resources[4], resources[6]];
+const resource = resources[4];
+const relatedResources = [resources[2], resources[3], resources[5]];
 
-const title = "What Makes Good Content? Insights From 3 Creators";
-const date = "26 March 2025";
-const readTime = "8 min";
+const title = "How-To: Instagram Creator Account";
+const date = "2 April 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "Why switch to a creator account Switching to an Instagram creator account unlocks valuable insights, audience demographics, ad tools, and other features that help you manage your presence and create better content. <br /> <br /> These tools help you understand which content resonates, so you can reach the right people with the right stories.",
+  "What sets the creator account apart Tailored for creators, public figures, and anyone building community, the creator account surfaces the data you need to grow. <br /> <br /> Detailed insights, such as campaign engagement rates or your followers' top locations, become easier to track.",
+  "When you know what works, you can strengthen your connection with your audience.",
+  "Core tools at your fingertips <b>Insights:</b> View performance trends, engagement rates, reach, and impressions in one place. <b>Content management:</b> Track ads, partnership posts, and branded campaigns with dedicated dashboards. <b>Professional dashboard:</b> Access tools, tips, and resources that keep your content strategy on track.",
+  "How to make the switch Changing from a personal profile to a creator account takes less than a minute. <br /> <br /> Tap the <b>three lines</b> at the top of your profile, choose <b>Account type and tools</b>, then select <b>Switch to professional account</b>. <br /> <br /> Pick the <b>Creator</b> option and choose the category that describes you best.",
+  "Once saved, Instagram unlocks its professional toolset for you.",
+  "Navigating your professional dashboard From your profile, open the <b>Professional dashboard</b> to find <b>Insights</b>, <b>Your tools</b>, and <b>Tips and resources</b>. <br /> <br /> Start with the <b>Accounts reached</b> tab to see how many people your content touches and to review top-performing posts. <br /> <br /> Tap <b>View insights</b> on any post for a breakdown of reach, impressions, and engagement.",
+  "Look beyond likes and track <b>Saves</b> to gauge lasting value. <br /> <br /> Explore the <b>Total followers</b> tab to learn about your follower growth, demographics, and the <b>Most active times</b> data that helps you post when your audience is online.",
+  "More tools to explore Branded content labels, partnership ad tracking, and DM filtering come bundled with the creator account, making campaign management easier. <br /> <br /> The Inspiration tab surfaces reels and trending audio, giving you a steady flow of ideas to test in your own content strategy.",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "Creator insights",
-    "Content strategy",
-    "Content creators",
-    "Creator community",
+    "Instagram",
+    "Instagram creator account",
+    "Creator tools",
 ];
 
 export const metadata = {
     title: title,
-    description: "Crack the code to scroll-stopping content with learnings from three creators.",
+    description: "Learn how to create an Instagram creator account",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Crack the code to scroll-stopping content with learnings from three creators.",
+        description: "Learn how to create an Instagram creator account",
     },
     alternates: {
         canonical: resource.path,
     },
 };
 
-const Resource28 = async ({ params }) => {
+const Resource29 = async ({ params }) => {
     const { locale } = await params;
     setRequestLocale(locale);
     return (
@@ -44,143 +58,96 @@ const Resource28 = async ({ params }) => {
                 image={resource.image}
             >
                 <rp.h2>
-                    Cracking the code in content creation
+                    Why switch to a creator account
                 </rp.h2>
                 <rp.p>
-                    What makes engaging content? Three creators broke the code with a mix of
-                    authenticity, balanced formats, and strong visual branding. Their
-                    approaches show how to hold attention and grow a loyal audience.
+                    Switching to an Instagram creator account unlocks valuable insights,
+                    audience demographics, ad tools, and other features that help you manage
+                    your presence and create better content.
+                <br />
+                <br />
+                    These tools help you understand which content resonates, so you can reach
+                    the right people with the right stories.
                 </rp.p>
                 <rp.h3>
-                    Authentic connections through storytelling
+                    What sets the creator account apart
+                </rp.h3>
+                <rp.p>
+                    Tailored for creators, public figures, and anyone building community,
+                    the creator account surfaces the data you need to grow.
+                <br />
+                <br />
+                    Detailed insights, such as campaign engagement rates or your followers'
+                    top locations, become easier to track. When you know what works, you can
+                    strengthen your connection with your audience.
+                </rp.p>
+                <rp.h3>
+                    Core tools at your fingertips
                 </rp.h3>
                 <rp.ul>
                     <rp.li>
-                        <b>Creator:</b> <rp.a href="https://www.instagram.com/zhysin/?hl=en">@zhysin</rp.a>
+                        <b>Insights:</b> View performance trends, engagement rates, reach,
+                        and impressions in one place.
                     </rp.li>
                     <rp.li>
-                        <b>Niche:</b> Food and beverage business
+                        <b>Content management:</b> Track ads, partnership posts, and branded
+                        campaigns with dedicated dashboards.
                     </rp.li>
                     <rp.li>
-                        <b>Platforms:</b> Instagram, TikTok, YouTube
+                        <b>Professional dashboard:</b> Access tools, tips, and resources that
+                        keep your content strategy on track.
                     </rp.li>
                 </rp.ul>
-                <rp.p>
-                    Claire invites viewers into her bakery, blending personal moments with
-                    brand collaborations. From the first day, she turned running the business
-                    into content, proving that transparency builds trust.
-                </rp.p>
-                <rp.p>
-                    <rp.a href="https://www.instagram.com/p/DCbqGTFCmqI/?hl=en">
-                        https://www.instagram.com/p/DCbqGTFCmqI/?hl=en
-                    </rp.a>
-                </rp.p>
-                <rp.p>
-                    Her cafe renovation series documents the reality of launching a bakery,
-                    giving followers a reason to stick around for more behind-the-scenes
-                    stories.
-                </rp.p>
-                <rp.p>
-                    <rp.a href="https://m.youtube.com/shorts/V9TA_KEhqX8">
-                        https://m.youtube.com/shorts/V9TA_KEhqX8
-                    </rp.a>
-                </rp.p>
-                <rp.p>
-                    The shift from flight attendant to baker is Claire's signature story. It
-                    reinforces her credibility and delivers a unique selling point that brands
-                    and audiences remember.
-                </rp.p>
                 <rp.h3>
-                    Balancing branded and personal content
-                </rp.h3>
-                <rp.ul>
-                    <rp.li>
-                        <b>Creator:</b> <rp.a href="https://www.instagram.com/thenictionary/?hl=en">@thenictionary</rp.a> (Nicole)
-                    </rp.li>
-                    <rp.li>
-                        <b>Niche:</b> Lifestyle and beauty
-                    </rp.li>
-                    <rp.li>
-                        <b>Platforms:</b> Instagram, TikTok, Facebook
-                    </rp.li>
-                </rp.ul>
-                <rp.p>
-                    Nicole keeps branded posts aligned with her personal brand by partnering
-                    with companies that fit her tone and visuals. That alignment keeps her feed
-                    cohesive.
-                </rp.p>
-                <rp.p>
-                    <rp.a href="https://docs.google.com/document/d/10AywoLQMTD-E0RhjnqQELne0E36_3E2twy_JT9-Vdpk/edit?usp=sharing">
-                        Brand alignment guide
-                    </rp.a>
-                </rp.p>
-                <rp.p>
-                    <rp.a href="https://www.instagram.com/p/DCjOHgay4Ov/?hl=en">
-                        https://www.instagram.com/p/DCjOHgay4Ov/?hl=en
-                    </rp.a>
-                </rp.p>
-                <rp.p>
-                    Her organic series on home ownership sets the stage for sponsored content.
-                    A Sony partnership video slots naturally into that narrative, showing how a
-                    campaign can enhance personal storytelling.
-                </rp.p>
-                <rp.p>
-                    <rp.a href="https://www.instagram.com/p/C-RhtbJSNdt/?hl=en">
-                        https://www.instagram.com/p/C-RhtbJSNdt/?hl=en
-                    </rp.a>
-                </rp.p>
-                <rp.p>
-                    Nicole aims for roughly a 70:30 split between personal and branded posts
-                    and keeps engagement authentic by replying to comments on sponsored work.
-                </rp.p>
-                <rp.h3>
-                    Leveraging visual branding
-                </rp.h3>
-                <rp.ul>
-                    <rp.li>
-                        <b>Creator:</b> <rp.a href="https://www.instagram.com/jordietaan/?hl=en">@jordietaan</rp.a>
-                    </rp.li>
-                    <rp.li>
-                        <b>Niche:</b> Lifestyle and fashion
-                    </rp.li>
-                    <rp.li>
-                        <b>Platform:</b> Instagram
-                    </rp.li>
-                </rp.ul>
-                <rp.p>
-                    Jordan's photography background powers a distinctive visual identity. His
-                    reels, carousels, and PR features all follow a cinematic editing style with
-                    a consistent palette.
-                </rp.p>
-                <rp.p>
-                    <rp.a href="https://www.instagram.com/p/C6VhJ8ov37J/?hl=en&img_index=1">
-                        https://www.instagram.com/p/C6VhJ8ov37J/?hl=en&img_index=1
-                    </rp.a>
-                </rp.p>
-                <rp.p>
-                    That consistency helps brands understand what a collaboration will look
-                    like and keeps his audience coming back for the storytelling-first approach.
-                </rp.p>
-                <rp.p>
-                    <rp.a href="https://www.instagram.com/p/C8WtSuNPPjZ/">
-                        https://www.instagram.com/p/C8WtSuNPPjZ/
-                    </rp.a>
-                </rp.p>
-                <rp.p>
-                    A clear visual signature boosts discoverability. When viewers know what to
-                    expect, they connect faster and stick around longer.
-                </rp.p>
-                <rp.h3>
-                    Putting the lessons into practice
+                    How to make the switch
                 </rp.h3>
                 <rp.p>
-                    Takeaways from these creators are simple: tell authentic stories, blend
-                    branded work with personal narratives, and develop a visual language your
-                    audience can instantly recognise.
+                    Changing from a personal profile to a creator account takes less than a
+                    minute.
+                <br />
+                <br />
+                    Tap the <b>three lines</b> at the top of your profile, choose <b>Account
+                    type and tools</b>, then select <b>Switch to professional account</b>.
+                <br />
+                <br />
+                    Pick the <b>Creator</b> option and choose the category that describes you
+                    best. Once saved, Instagram unlocks its professional toolset for you.
+                </rp.p>
+                <rp.h3>
+                    Navigating your professional dashboard
+                </rp.h3>
+                <rp.p>
+                    From your profile, open the <b>Professional dashboard</b> to find
+                    <b>Insights</b>, <b>Your tools</b>, and <b>Tips and resources</b>.
+                <br />
+                <br />
+                    Start with the <b>Accounts reached</b> tab to see how many people your
+                    content touches and to review top-performing posts.
+                <br />
+                <br />
+                    Tap <b>View insights</b> on any post for a breakdown of reach, impressions,
+                    and engagement. Look beyond likes and track <b>Saves</b> to gauge lasting
+                    value.
+                <br />
+                <br />
+                    Explore the <b>Total followers</b> tab to learn about your follower growth,
+                    demographics, and the <b>Most active times</b> data that helps you post when
+                    your audience is online.
+                </rp.p>
+                <rp.h3>
+                    More tools to explore
+                </rp.h3>
+                <rp.p>
+                    Branded content labels, partnership ad tracking, and DM filtering come
+                    bundled with the creator account, making campaign management easier.
+                <br />
+                <br />
+                    The Inspiration tab surfaces reels and trending audio, giving you a steady
+                    flow of ideas to test in your own content strategy.
                 </rp.p>
             </rp.Page>
         </>
     );
 };
 
-export default Resource28;
+export default Resource29;

@@ -1,29 +1,55 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[1];
-const relatedResources = [resources[0], resources[2], resources[9]]; // Pick 3 related articles
+const resource = resources[0];
+const relatedResources = [resources[4], resources[5], resources[1]]; // Pick 3 related articles
 
-const title = "Starting Your Signature Series";
-const date = "23 April 2025";
-const readTime = "5 min";
+const title = "Cheatsheet: Creating Killer Campaign Content";
+const date = "24 April 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "The creator economy in Southeast Asia is expected to reach&nbsp; an estimated market size of 1,068 billion USD by 2028.",
+  "That’s a lot of numbers.",
+  "But what this means is that brands are seeing the effectiveness of creator marketing, and expectations for good, authentic content are at an all-time high. <br /> <br /> In this cheat sheet, we’ll unpack the must-dos in creating killer campaign content–from analysing brand guidelines and content strategy to ways you can authentically incorporate branding into your content, we’ve got it covered.",
+  "Understanding campaign goals and target audience Campaign goals could be anything from increasing brand awareness, growing revenue, improving website traffic to creating an engaged community.",
+  "Ensure that you’re incorporating content strategies and analysing metrics that align with the campaign objectives. <br /> <br /> When a brand taps you for a campaign, it’s because their target audience can be found in <i>your</i> audience.",
+  "Keep this in mind as you strategise–you understand your followers best, after all, and you know what kind of content they like to see.",
+  "Decoding brand brief and guidelines The brief is where expectations, boundaries, and guidelines are set.",
+  "The typical key elements included are: Campaign goals (campaign overview, KPIs, target audience) Brand guidelines (tone of voice, visual branding, dos-and-don’ts) Key talking points (products to highlight, main messages, CTAs) Specs (post format, caption, hashtags) Campaign timeline (content approval dates, publishing dates) Study and understand the brand brief before producing content, so any misinterpretation can be handled effectively.",
+  "Don’t shy away from asking for clarification and voicing your concerns.",
+  "This is also when you ensure you’re on the same page when it comes to disclosures, like using the paid partnership label or using #ad #sponsored hashtags. <br /> <br /> You might feel like the brand has the upper hand, but as creators, you have just as much right in communicating your expectations to ensure a smooth campaign.",
+  "Strategic content ideation and planning When presenting ideas to the brand, make sure that you have a strategy backing up your concept for the campaign.",
+  "For example, negative, clickbait-y hooks always work best in your content and you want to implement the same strat in the campaign.",
+  "Present stats like increased engagement rates that can support your claim. <br /> <br /> Now’s the time to whip out your content calendar, and plan out content schedule for the duration of the campaign.",
+  "Figure out how you can seamlessly integrate campaign content with the rest of your content.",
+  "Prioritising high-quality production High quality doesn’t necessarily mean fancy editing styles or super-HD cameras.",
+  "It just means that there’s no room for errors like low-quality audio, typos, bad lighting, or deviating from pre-approved scripts.",
+  "Brands expect you to be professional as you’re representing their products.",
+  "Incorporating effective branding Brands go to content creators for authenticity, so you have to create campaign content that’s real <i>and</i> that sells. <br /> <br /> Integrate your daily life into the campaign content, so that you’re showing actual usage of the campaign product.",
+  "For example, a skincare brand could seamlessly fit into your GRWM videos, or fitness apparel could be naturally featured in one of your workout routines. <br /> <br /> Review your past content that has performed well, and find out how you can incorporate that same style into your campaign content.",
+  "For example, humorous storytelling or your aesthetically pleasing DITL content usually does well–integrating the branded product with your successful content styles could increase the chance of achieving killer results.",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "Signature series",
-    "Content planning",
+    "Campaign content",
+    "Brand deals",
     "Content strategy",
-    "Signature content",
+    "Content planning",
 ];
 
 export const metadata = {
     title: title,
-    description: "Learn how to start your signature series",
+    description: "Learn how to create killer campaign content",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Learn how to start your signature series",
+        description: "Learn how to create killer campaign content",
     },
     alternates: {
         canonical: resource.path,
@@ -43,142 +69,99 @@ const Resource32 = async ({ params }) => {
                 relatedResources={relatedResources}
                 image={resource.image}
             >
-                <rp.h2>
-                    What's a signature series?
-                </rp.h2>
                 <rp.p>
-                    How does your favourite show to binge-watch keep you coming back for
-                    more? Consistency, entertainment, value–these keywords come to mind.
+                    The creator economy in Southeast Asia is expected to reach&nbsp;
+                    <rp.a href="https://www.insg.co/en/influencer-marketing-southeast-asia/">
+                    an estimated market size of 1,068 billion USD by 2028</rp.a>. 
+                    That’s a lot of numbers. But what this means is that brands are seeing the effectiveness of creator marketing, 
+                    and expectations for good, authentic content are at an all-time high.
                 <br />
                 <br />
-                    It's the same case for a signature series.
-                <br />
-                <br />
-                    A signature series is a set of recurring content that centers
-                    around a theme, posted at a consistent schedule. It lets you explore
-                    your niche, offers value to your audience, and builds consistency in
-                    your content strategy. It's something audiences will recognise and
-                    associate with you, turning you into the go-to-creator of your niche.
+                    In this cheat sheet, we’ll unpack the must-dos in creating killer 
+                    campaign content–from analysing brand guidelines and content strategy to ways 
+                    you can authentically incorporate branding into your content, we’ve got it covered.
                 </rp.p>
                 <rp.h2>
-                    Starting your signature series
+                    Understanding campaign goals and target audience
                 </rp.h2>
                 <rp.p>
-                    Content ideas for a series must be consistent and sustainable, which
-                    is why it's important to plan and strategise your content production
-                    and execution.
+                    Campaign goals could be anything from increasing brand awareness, growing revenue, 
+                    improving website traffic to creating an engaged community. Ensure that you’re 
+                    incorporating content strategies and analysing metrics that align with the campaign objectives.
                 <br />
                 <br />
-                    First, identify your theme and keep it in mind at every stage of
-                    planning. Then, whip out your content calendar to see how your series
-                    can fit between your usual personal and campaign content. Try shooting
-                    a few ideas before you continue strategising. It might be more (or
-                    less) complex than you imagined.
-                <br />
-                <br />
-                    Any content can go into a signature series–GRWMs, reviews, vlogs–as
-                    long as it's still within your niche and it has a strong theme that's
-                    consistent throughout the series.
-                <br />
-                <br />
-                    Try going deeper into your niche by going through its branches, and
-                    see where it takes you.
-                <br />
-                <br />
-                    <i>
-                        <rp.a href="https://vt.tiktok.com/ZS6bnPApT/">
-                            https://vt.tiktok.com/ZS6bnPApT/{" "}
-                        </rp.a>
-                    </i>
-                <br />
-                <br />
-                    <i>
-                        <b>Caption:</b> Try adapting series ideas from other niches to fit
-                        yours.
-                    </i>
+                    When a brand taps you for a campaign, it’s because their target audience can be 
+                    found in <i>your</i> audience. Keep this in mind as you strategise–you understand your followers best, 
+                    after all, and you know what kind of content they like to see.
                 </rp.p>
                 <rp.h2>
-                    Brainstorming series ideas
+                    Decoding brand brief and guidelines
                 </rp.h2>
                 <rp.p>
-                    When you start brainstorming content ideas for your signature series,
-                    remember that what makes a series is the <i>theme</i>. Stay consistent
-                    with the chosen theme so your series doesn't lose direction.
-                <br />
-                <br />
-                    Can't think of content ideas? The solution might be right in front of
-                    you–in fact, you might be living it.
-                <br />
-                <br />
-                    Think about your daily life–work commute, workout routine, hangouts
-                    with friends–and ask yourself: are there aspects that you can spin
-                    into fun, juicy content for a series?
-                <br />
-                <br />
-                    Consider the value that it can bring to your audience, and how it can
-                    shape your identity as a content creator. Additionally, content
-                    derived from your routine is a safe bet to ensure consistency, but you
-                    have to put in work to ensure it doesn't get boring.
-                <br />
-                <br />
-                    Here are some ideas:
+                    The brief is where expectations, boundaries, and guidelines are set. The typical key elements included are:
                 </rp.p>
                 <rp.ul>
-                    <rp.li>Reviewing breakfast spots along your work commute</rp.li>
                     <rp.li>
-                        Workout vlogs trying out different sports with different friends
+                        Campaign goals (campaign overview, KPIs, target audience)
                     </rp.li>
-                    <rp.li>7-day challenge of meal prepping under a set budget</rp.li>
+                    <rp.li>
+                        Brand guidelines (tone of voice, visual branding, dos-and-don’ts) 
+                    </rp.li>
+                    <rp.li>
+                        Key talking points (products to highlight, main messages, CTAs)
+                    </rp.li>
+                    <rp.li>
+                        Specs (post format, caption, hashtags)
+                    </rp.li>
+                    <rp.li>
+                        Campaign timeline (content approval dates, publishing dates)
+                    </rp.li>
                 </rp.ul>
                 <rp.p>
-                    You can also take inspiration from other niches or creators, and adapt
-                    it to align with your content theme, personal branding, niche,
-                    location, or audience. Remember: don&apos;t plagiarise.
+                    Study and understand the brand brief before producing content, so any misinterpretation can be handled effectively. 
+                    Don’t shy away from asking for clarification and voicing your concerns. This is also when you ensure you’re on the 
+                    same page when it comes to disclosures, like using the paid partnership label or using #ad #sponsored hashtags.
                 <br />
                 <br />
-                    <i>
-                        <rp.a href="https://vt.tiktok.com/ZS6gpepTb/">
-                            https://vt.tiktok.com/ZS6gpepTb/{" "}
-                        </rp.a>
-                    </i>
-                <br />
-                <br />
-                    <i>
-                        <b>Caption:</b> @kaitlyneats is an NYC-based creator who reviews
-                        NYT's 100 best restaurants. Can you think of a way to put a local
-                        spin on this?
-                    </i>
+                    You might feel like the brand has the upper hand, but as creators, you have just as much right in communicating 
+                    your expectations to ensure a smooth campaign.
                 </rp.p>
                 <rp.h2>
-                    Making your signature series valuable
+                    Strategic content ideation and planning
                 </rp.h2>
                 <rp.p>
-                    Your signature series is your defining feature as a creator. And as a
-                    creator, your content should have value that your audience can benefit
-                    from–be it inspiring or educational.
+                    When presenting ideas to the brand, make sure that you have a strategy backing up your concept for the campaign. 
+                    For example, negative, clickbait-y hooks always work best in your content and you want to implement the same 
+                    strat in the campaign. Present stats like increased engagement rates that can support your claim.
                 <br />
                 <br />
-                    When naming your series, frame it in a way that's beneficial for your
-                    audience. For example, "My Morning Routine" doesn't bring value to
-                    them. But, "The Routine That Gets Me Out Of Bed In The AM" implies
-                    that you have a great morning routine, and they want that too.
-                <br />
-                <br />
-                    <b>Tip:</b> Have a unique, short hashtag so your followers can find
-                    your series easily
+                    Now’s the time to whip out your content calendar, and plan out content schedule for the duration of the campaign. 
+                    Figure out how you can <rp.a href="https://www.cultcreativeasia.com/my/resources/balancing-personal-content-with-campaign-content">
+                    seamlessly integrate campaign content with the rest of your content. </rp.a>
                 </rp.p>
                 <rp.h2>
-                    Execution and gathering feedback
+                    Prioritising high-quality production
                 </rp.h2>
                 <rp.p>
-                    Feedback is also an important aspect of kickstarting a signature
-                    series.&nbsp; Pay attention to your engagement metrics – saves and
-                    shares are good indicators of the value and lifespan of your series.
+                High quality doesn’t necessarily mean fancy editing styles or super-HD cameras. It just means that there’s no room for errors 
+                like low-quality audio, typos, bad lighting, or deviating from pre-approved scripts. Brands expect you to be professional 
+                as you’re representing their products.
+                </rp.p>
+                <rp.h2>
+                    Incorporating effective branding
+                </rp.h2>
+                <rp.p>
+                    Brands go to content creators for authenticity, so you have to create campaign content that’s real <i>and</i> that sells.
                 <br />
                 <br />
-                    Besides that, interact with your audience in the comments. Acknowledge
-                    their feedback, and try incorporating it into your series wherever you
-                    see fit.
+                    Integrate your daily life into the campaign content, so that you’re showing actual usage of the campaign product. 
+                    For example, a skincare brand could seamlessly fit into your GRWM videos, or fitness apparel could be naturally 
+                    featured in one of your workout routines. 
+                <br />
+                <br />
+                Review your past content that has performed well, and find out how you can incorporate that same style into your 
+                campaign content. For example, humorous storytelling or your aesthetically pleasing DITL content usually does well–integrating 
+                the branded product with your successful content styles could increase the chance of achieving killer results.
                 </rp.p>
             </rp.Page>
             

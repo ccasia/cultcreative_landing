@@ -89,7 +89,7 @@ const SeventhSection = () => {
 			name: "Ujay Dani",
 			svgPath: "/images/NewCreator/UjayDani.png",
 			testimonial:
-				"All of the processes in the hplatform has helped me in my content journey. It's been great!",
+				"All of the processes in the platform has helped me in my content journey. It's been great!",
 			borderColor: "border-cc-blue",
 			position: "bottom-1/3 right-1/6",
 			size: "w-24 h-24",

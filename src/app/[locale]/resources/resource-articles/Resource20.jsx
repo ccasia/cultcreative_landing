@@ -1,37 +1,70 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[13];
-const relatedResources = [resources[11], resources[12], resources[14]];
+const resource = resources[12];
+const relatedResources = [resources[10], resources[11], resources[13]];
 
-const title = "How To: TikTok Creator Search Insights";
-const date = "8 January 2025";
-const readTime = "5 min";
+const title = "4 Ways to Tap Into Your Target Audience";
+const date = "15 January 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "Know exactly who you are speaking to Viral moments are great, but sustained growth comes from understanding the people who come back for every upload.",
+  "When you study their routines, pain points, and goals, you can tailor content that feels like it was made just for them.",
+  "Use these four tactics to get closer to your target audience and build a feedback loop that evolves with them. 1.",
+  "Audit the signals you already have Start with the data sitting inside your dashboards.",
+  "Platform analytics reveal the basics: age ranges, locations, retention drop-offs, and the posts that triggered follows.",
+  "Combine those numbers with the qualitative clues in your DMs and comments.",
+  "Export monthly analytics and highlight the top performers by watch time or saves.",
+  "Log the questions viewers repeat so you can prioritise content that answers them.",
+  "Track which collaborations sent the most new followers your way and why they converted. 2.",
+  "Listen where your community hangs out Your audience is talking even when they are not on your profile.",
+  "Join the subreddits, Facebook groups, and Discord servers where they swap tips or vent frustrations.",
+  "Those conversations surface the topics you should cover next.",
+  "Set up keyword alerts for your niche so you get notified when new threads pop up.",
+  "Host casual community polls to confirm assumptions before building a new series.",
+  "Capture the exact words your audience uses so your scripts mirror their language. 3.",
+  "Test formats with purpose A clear hypothesis makes experimentation useful.",
+  "Try new hooks, video lengths, or storytelling styles with a specific goal in mind, then review the metrics that connect to that goal.",
+  "Run A and B versions of the same tip: one as a rapid fire list, the other as a deeper case study.",
+  "Compare retention graphs to see which version held attention longer.",
+  "Repurpose the winning format across other platforms to confirm it resonates elsewhere. 4.",
+  "Collaborate with creators who share your audience Partnering with creators who already speak to your ideal audience accelerates trust.",
+  "Look for hosts, podcast guests, or co creators whose values align with yours so the introduction feels organic.",
+  "Create joint content that solves a problem from two perspectives.",
+  "Share audience insights after the collaboration to understand what resonated for both sides.",
+  "Follow up with personalised offers or lead magnets to onboard new viewers smoothly.",
+  "Staying close to your audience is an ongoing process.",
+  "Document what you learn, revisit your findings each quarter, and keep refining your approach so your content always meets people where they are. <div> <a > Discover more audience insights with Cult Creative </a> </div>",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "tiktok search",
-    "creator insights",
-    "content analytics",
+    "target audience",
+    "creator strategy",
+    "community insights",
     "audience research",
-    "short form video",
+    "content marketing",
 ];
 
 export const metadata = {
     title: title,
-    description: "Learn how to use TikTok Creator Search Insights to refine your content, hooks, and posting strategy.",
+    description: "Identify, understand, and engage your audience with four practical tactics creators can use right now.",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Learn how to use TikTok Creator Search Insights to refine your content, hooks, and posting strategy.",
+        description: "Identify, understand, and engage your audience with four practical tactics creators can use right now.",
     },
     alternates: {
         canonical: resource.path,
     },
 };
 
-const Resource20 = async ({ params }) => {
+const Resource21 = async ({ params }) => {
     const { locale } = await params;
     setRequestLocale(locale);
     return (
@@ -45,88 +78,94 @@ const Resource20 = async ({ params }) => {
                 image={resource.image}
             >
                 <rp.h2>
-                    Turn search data into scroll stopping content
+                    Know exactly who you are speaking to
                 </rp.h2>
                 <rp.p>
-                    TikTok Creator Search Insights shows you what the platform wants more of. When you understand the keywords people
-                    are typing into the search bar, you can craft videos that line up with those queries and increase your discoverability.
+                    Viral moments are great, but sustained growth comes from understanding the people who come back for
+                    every upload. When you study their routines, pain points, and goals, you can tailor content that feels
+                    like it was made just for them.
                 </rp.p>
                 <rp.p>
-                    Use this feature to sharpen your hooks, validate ideas before filming, and position yourself in categories TikTok is actively
-                    promoting.
+                    Use these four tactics to get closer to your target audience and build a feedback loop that evolves
+                    with them.
                 </rp.p>
                 <rp.h3>
-                    Step 1: Access the insights dashboard
+                    1. Audit the signals you already have
                 </rp.h3>
                 <rp.p>
-                    Open TikTok and search for your niche or primary keyword. Tap the filter icon and select “Creator Search Insights” to view
-                    trending terms linked to that topic. The dashboard highlights the exact questions viewers want answered right now.
+                    Start with the data sitting inside your dashboards. Platform analytics reveal the basics: age ranges,
+                    locations, retention drop-offs, and the posts that triggered follows. Combine those numbers with the
+                    qualitative clues in your DMs and comments.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        Switch between global and local results to understand regional nuances.
+                        Export monthly analytics and highlight the top performers by watch time or saves.
                     </rp.li>
                     <rp.li>
-                        Bookmark relevant keywords so you can revisit them when planning your content calendar.
+                        Log the questions viewers repeat so you can prioritise content that answers them.
                     </rp.li>
                     <rp.li>
-                        Screenshot the results to track how demand shifts week to week.
+                        Track which collaborations sent the most new followers your way and why they converted.
                     </rp.li>
                 </rp.ul>
                 <rp.h3>
-                    Step 2: Analyse intent behind the keywords
+                    2. Listen where your community hangs out
                 </rp.h3>
                 <rp.p>
-                    Look beyond the surface phrase. Identify whether viewers are looking for tutorials, product comparisons, or inspiration. That
-                    intent determines the format and call to action you should use.
+                    Your audience is talking even when they are not on your profile. Join the subreddits, Facebook groups,
+                    and Discord servers where they swap tips or vent frustrations. Those conversations surface the topics
+                    you should cover next.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        “How to…” searches call for step by step breakdowns with on screen captions.
+                        Set up keyword alerts for your niche so you get notified when new threads pop up.
                     </rp.li>
                     <rp.li>
-                        “Best…” or “Top…” signals list style videos with quick cuts and social proof.
+                        Host casual community polls to confirm assumptions before building a new series.
                     </rp.li>
                     <rp.li>
-                        “Ideas for…” invites storytelling or behind the scenes clips that showcase your process.
+                        Capture the exact words your audience uses so your scripts mirror their language.
                     </rp.li>
                 </rp.ul>
                 <rp.h3>
-                    Step 3: Optimise your scripts and metadata
+                    3. Test formats with purpose
                 </rp.h3>
                 <rp.p>
-                    Mirror the wording from search insights in your hook, captions, and text overlays so TikTok recognises your video as a match.
-                    Pair your keywords with clear visuals that demonstrate the answer quickly.
+                    A clear hypothesis makes experimentation useful. Try new hooks, video lengths, or storytelling styles
+                    with a specific goal in mind, then review the metrics that connect to that goal.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        Mention the key phrase in the first three seconds to boost relevance.
+                        Run A and B versions of the same tip: one as a rapid fire list, the other as a deeper case study.
                     </rp.li>
                     <rp.li>
-                        Add supporting keywords in your caption and pin a comment with additional context or links.
+                        Compare retention graphs to see which version held attention longer.
                     </rp.li>
                     <rp.li>
-                        Use auto captions so the algorithm and viewers can follow along even with sound off.
+                        Repurpose the winning format across other platforms to confirm it resonates elsewhere.
                     </rp.li>
                 </rp.ul>
                 <rp.h3>
-                    Step 4: Measure and iterate
+                    4. Collaborate with creators who share your audience
                 </rp.h3>
                 <rp.p>
-                    Track how videos optimised for search perform against your usual uploads. Review watch time, profile visits, and new followers to see
-                    which angles resonate. When a keyword delivers results, double down with a series or follow up explainer.
+                    Partnering with creators who already speak to your ideal audience accelerates trust. Look for hosts,
+                    podcast guests, or co creators whose values align with yours so the introduction feels organic.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        Repurpose winning scripts into carousels or YouTube Shorts to extend the lifespan of the idea.
+                        Create joint content that solves a problem from two perspectives.
                     </rp.li>
                     <rp.li>
-                        Share your learnings with brand partners so they understand the demand you can capture together.
+                        Share audience insights after the collaboration to understand what resonated for both sides.
+                    </rp.li>
+                    <rp.li>
+                        Follow up with personalised offers or lead magnets to onboard new viewers smoothly.
                     </rp.li>
                 </rp.ul>
                 <rp.p>
-                    Search insights bridge the gap between what you want to create and what audiences are actively asking for. Keep refining your keywords,
-                    and you will stay ahead of trends while serving your community better with every upload.
+                    Staying close to your audience is an ongoing process. Document what you learn, revisit your findings each
+                    quarter, and keep refining your approach so your content always meets people where they are.
                 </rp.p>
                 <div className="text-center mt-10">
                     <a
@@ -135,7 +174,7 @@ const Resource20 = async ({ params }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Unlock Creator Search briefs on Cult Creative
+                        Discover more audience insights with Cult Creative
                     </a>
                 </div>
             </rp.Page>
@@ -143,4 +182,4 @@ const Resource20 = async ({ params }) => {
     );
 };
 
-export default Resource20;
+export default Resource21;

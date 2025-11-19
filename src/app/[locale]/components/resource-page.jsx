@@ -41,7 +41,7 @@ export const Page = ({
             }}
           />
         {/* Article Content */}
-          <div className="w-[calc(100%-40px)] mx-auto px-6 md:px-62 py-32 bg-white text-gray-800 mt-32 mb-10 rounded-3xl relative z-10">
+          <div className="w-[calc(100%-40px)] mx-auto px-5 md:px-62 py-14 md:py-32 bg-white text-gray-800 mt-32 mb-10 rounded-3xl relative z-10">
           {/* Date and Read Time */}
           <div className="text-center mb-6">
             <p className="text-sm md:text-base text-gray-600">
@@ -68,7 +68,7 @@ export const Page = ({
 
           {/* Resource Image */}
           {image && (
-            <div className="mb-24 rounded-2xl overflow-hidden h-[500px]">
+            <div className="mb-10 md:mb-24 rounded-2xl overflow-hidden h-[200px] md:h-[500px]">
               <Image
                 src={image}
                 alt={title}
@@ -86,7 +86,7 @@ export const Page = ({
         </div>
 
         {/* Read Our Next Article Section */}
-        <div className="bg-[#1A1A1A] py-16 px-6 md:px-10 relative z-10">
+        <div className="py-16 px-6 md:px-10 relative z-10">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-8">
               Read Our Next Article:
@@ -95,7 +95,7 @@ export const Page = ({
               {relatedResources.length > 0 ? (
                 relatedResources.map((resource) => (
                   <Link key={resource.path} href={resource.path}>
-                    <div className="bg-white rounded-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 h-[300px] flex flex-col">
+                    <div className="bg-white rounded-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 flex flex-col">
                       <div className="p-3">
                         <div className="relative w-full h-48 rounded-2xl overflow-hidden">
                           <Image
@@ -106,8 +106,8 @@ export const Page = ({
                           />
                         </div>
                       </div>
-                      <div className="px-6 pb-6 flex-1 overflow-hidden">
-                        <h3 className="text-lg md:text-3xl font-aileron tracking-tighter font-bold text-black w-full overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+                      <div className="px-6 pb-3 flex-1 overflow-hidden">
+                        <h3 className="text-2xl md:text-3xl font-aileron tracking-tighter font-bold text-black w-full overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
                           {resource.title}
                         </h3>
                       </div>

@@ -1,37 +1,66 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[12];
-const relatedResources = [resources[10], resources[11], resources[13]];
+const resource = resources[11];
+const relatedResources = [resources[9], resources[10], resources[12]];
 
-const title = "4 Ways to Tap Into Your Target Audience";
-const date = "15 January 2025";
-const readTime = "7 min";
+const title = "Why You Should Crosspost Your Content";
+const date = "29 January 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "Crossposting multiplies your reach Growing as a creator is easier when each idea lives on more than one platform.",
+  "Crossposting gives your content a second and third chance to be discovered, introduces you to new demographics, and keeps your feeds active without doubling your production hours.",
+  "Winning at crossposting is about planning the story once, then editing it so it feels native to TikTok, Instagram, and YouTube.",
+  "With a streamlined workflow, you can cover more platforms and stay consistent all year long.",
+  "Map your goals and platforms Start by choosing which channels matter most to your audience and the brands you want to work with.",
+  "TikTok skews younger and rewards discovery; Instagram blends community and curation; YouTube builds long term search traffic and ad revenue.",
+  "Decide what you want each feed to achieve so you can tailor intros, CTAs, and editing pace.",
+  "Build a reusable content toolkit Systemise your workflow so your core asset can be adapted in minutes instead of hours.",
+  "Create templates for cover slides, caption formats, and hook variations so you are not starting from scratch every time you export.",
+  "Shoot in 4K vertical when possible.",
+  "You can crop wider shots for Reels or Shorts without losing quality.",
+  "Save a library of hook lines, CTAs, and on screen prompts that fit each platform's tone.",
+  "Keep brand elements like fonts, colour blocks, and logos in reusable project files.",
+  "Optimise for each algorithm Small adjustments go a long way.",
+  "Swap trending audio for platform specific sounds, reframe thumbnails so they pop, and adjust length to match attention spans.",
+  "TikTok and Reels thrive on fast hooks, while YouTube Shorts benefits from a more narrative build.",
+  "Align captions with the search terms viewers use on that platform.",
+  "Use native features like stickers, polls, or carousel posts to boost engagement signals.",
+  "Test different posting times, then document the slots that consistently deliver reach.",
+  "Track performance and iterate Review analytics weekly so you know which edits, hooks, or thumbnails carried the most weight.",
+  "When a video performs unusually well on one platform, break down why and replicate that format elsewhere.",
+  "Record your learnings in a simple tracker.",
+  "Over time you will build a crossposting playbook that keeps your feeds fresh without burning you out. <div> <a > Streamline your crossposting with Cult Creative </a> </div>",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "target audience",
-    "creator strategy",
-    "community insights",
-    "audience research",
-    "content marketing",
+    "crossposting",
+    "content strategy",
+    "creator workflow",
+    "social media growth",
+    "repurposing content",
 ];
 
 export const metadata = {
     title: title,
-    description: "Identify, understand, and engage your audience with four practical tactics creators can use right now.",
+    description: "Learn how to crosspost strategically so every video works harder across TikTok, Instagram, and YouTube.",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Identify, understand, and engage your audience with four practical tactics creators can use right now.",
+        description: "Learn how to crosspost strategically so every video works harder across TikTok, Instagram, and YouTube.",
     },
     alternates: {
         canonical: resource.path,
     },
 };
 
-const Resource21 = async ({ params }) => {
+const Resource22 = async ({ params }) => {
     const { locale } = await params;
     setRequestLocale(locale);
     return (
@@ -45,94 +74,72 @@ const Resource21 = async ({ params }) => {
                 image={resource.image}
             >
                 <rp.h2>
-                    Know exactly who you are speaking to
+                    Crossposting multiplies your reach
                 </rp.h2>
                 <rp.p>
-                    Viral moments are great, but sustained growth comes from understanding the people who come back for
-                    every upload. When you study their routines, pain points, and goals, you can tailor content that feels
-                    like it was made just for them.
+                    Growing as a creator is easier when each idea lives on more than one platform. Crossposting gives your content
+                    a second and third chance to be discovered, introduces you to new demographics, and keeps your feeds active
+                    without doubling your production hours.
                 </rp.p>
                 <rp.p>
-                    Use these four tactics to get closer to your target audience and build a feedback loop that evolves
-                    with them.
+                    Winning at crossposting is about planning the story once, then editing it so it feels native to TikTok, Instagram,
+                    and YouTube. With a streamlined workflow, you can cover more platforms and stay consistent all year long.
                 </rp.p>
                 <rp.h3>
-                    1. Audit the signals you already have
+                    Map your goals and platforms
                 </rp.h3>
                 <rp.p>
-                    Start with the data sitting inside your dashboards. Platform analytics reveal the basics: age ranges,
-                    locations, retention drop-offs, and the posts that triggered follows. Combine those numbers with the
-                    qualitative clues in your DMs and comments.
+                    Start by choosing which channels matter most to your audience and the brands you want to work with. TikTok skews
+                    younger and rewards discovery; Instagram blends community and curation; YouTube builds long term search traffic and
+                    ad revenue. Decide what you want each feed to achieve so you can tailor intros, CTAs, and editing pace.
+                </rp.p>
+                <rp.h3>
+                    Build a reusable content toolkit
+                </rp.h3>
+                <rp.p>
+                    Systemise your workflow so your core asset can be adapted in minutes instead of hours. Create templates for cover
+                    slides, caption formats, and hook variations so you are not starting from scratch every time you export.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        Export monthly analytics and highlight the top performers by watch time or saves.
+                        Shoot in 4K vertical when possible. You can crop wider shots for Reels or Shorts without losing quality.
                     </rp.li>
                     <rp.li>
-                        Log the questions viewers repeat so you can prioritise content that answers them.
+                        Save a library of hook lines, CTAs, and on screen prompts that fit each platform's tone.
                     </rp.li>
                     <rp.li>
-                        Track which collaborations sent the most new followers your way and why they converted.
+                        Keep brand elements like fonts, colour blocks, and logos in reusable project files.
                     </rp.li>
                 </rp.ul>
                 <rp.h3>
-                    2. Listen where your community hangs out
+                    Optimise for each algorithm
                 </rp.h3>
                 <rp.p>
-                    Your audience is talking even when they are not on your profile. Join the subreddits, Facebook groups,
-                    and Discord servers where they swap tips or vent frustrations. Those conversations surface the topics
-                    you should cover next.
+                    Small adjustments go a long way. Swap trending audio for platform specific sounds, reframe thumbnails so they pop, and
+                    adjust length to match attention spans. TikTok and Reels thrive on fast hooks, while YouTube Shorts benefits from a more
+                    narrative build.
                 </rp.p>
                 <rp.ul>
                     <rp.li>
-                        Set up keyword alerts for your niche so you get notified when new threads pop up.
+                        Align captions with the search terms viewers use on that platform.
                     </rp.li>
                     <rp.li>
-                        Host casual community polls to confirm assumptions before building a new series.
+                        Use native features like stickers, polls, or carousel posts to boost engagement signals.
                     </rp.li>
                     <rp.li>
-                        Capture the exact words your audience uses so your scripts mirror their language.
+                        Test different posting times, then document the slots that consistently deliver reach.
                     </rp.li>
                 </rp.ul>
                 <rp.h3>
-                    3. Test formats with purpose
+                    Track performance and iterate
                 </rp.h3>
                 <rp.p>
-                    A clear hypothesis makes experimentation useful. Try new hooks, video lengths, or storytelling styles
-                    with a specific goal in mind, then review the metrics that connect to that goal.
+                    Review analytics weekly so you know which edits, hooks, or thumbnails carried the most weight. When a video performs
+                    unusually well on one platform, break down why and replicate that format elsewhere.
                 </rp.p>
-                <rp.ul>
-                    <rp.li>
-                        Run A and B versions of the same tip: one as a rapid fire list, the other as a deeper case study.
-                    </rp.li>
-                    <rp.li>
-                        Compare retention graphs to see which version held attention longer.
-                    </rp.li>
-                    <rp.li>
-                        Repurpose the winning format across other platforms to confirm it resonates elsewhere.
-                    </rp.li>
-                </rp.ul>
-                <rp.h3>
-                    4. Collaborate with creators who share your audience
-                </rp.h3>
                 <rp.p>
-                    Partnering with creators who already speak to your ideal audience accelerates trust. Look for hosts,
-                    podcast guests, or co creators whose values align with yours so the introduction feels organic.
-                </rp.p>
-                <rp.ul>
-                    <rp.li>
-                        Create joint content that solves a problem from two perspectives.
-                    </rp.li>
-                    <rp.li>
-                        Share audience insights after the collaboration to understand what resonated for both sides.
-                    </rp.li>
-                    <rp.li>
-                        Follow up with personalised offers or lead magnets to onboard new viewers smoothly.
-                    </rp.li>
-                </rp.ul>
-                <rp.p>
-                    Staying close to your audience is an ongoing process. Document what you learn, revisit your findings each
-                    quarter, and keep refining your approach so your content always meets people where they are.
+                    Record your learnings in a simple tracker. Over time you will build a crossposting playbook that keeps your feeds fresh
+                    without burning you out.
                 </rp.p>
                 <div className="text-center mt-10">
                     <a
@@ -141,7 +148,7 @@ const Resource21 = async ({ params }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Discover more audience insights with Cult Creative
+                        Streamline your crossposting with Cult Creative
                     </a>
                 </div>
             </rp.Page>
@@ -149,4 +156,4 @@ const Resource21 = async ({ params }) => {
     );
 };
 
-export default Resource21;
+export default Resource22;

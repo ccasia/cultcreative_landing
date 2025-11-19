@@ -4,7 +4,6 @@ import resources from "@/data/resources.json";
 
 // Map of slug to article component
 const articleComponents = {
-  "Resource33": dynamic(() => import("../resource-articles/Resource33")),
   "Resource32": dynamic(() => import("../resource-articles/Resource32")),
   "Resource31": dynamic(() => import("../resource-articles/Resource31")),
   "Resource30": dynamic(() => import("../resource-articles/Resource30")),
@@ -18,6 +17,25 @@ const articleComponents = {
   "Resource22": dynamic(() => import("../resource-articles/Resource22")),
   "Resource21": dynamic(() => import("../resource-articles/Resource21")),
   "Resource20": dynamic(() => import("../resource-articles/Resource20")),
+  "Resource19": dynamic(() => import("../resource-articles/Resource19")),
+  "Resource18": dynamic(() => import("../resource-articles/Resource18")),
+  "Resource17": dynamic(() => import("../resource-articles/Resource17")),
+  "Resource16": dynamic(() => import("../resource-articles/Resource16")),
+  "Resource15": dynamic(() => import("../resource-articles/Resource15")),
+  "Resource14": dynamic(() => import("../resource-articles/Resource14")),
+  "Resource13": dynamic(() => import("../resource-articles/Resource13")),
+  "Resource12": dynamic(() => import("../resource-articles/Resource12")),
+  "Resource11": dynamic(() => import("../resource-articles/Resource11")),
+  "Resource10": dynamic(() => import("../resource-articles/Resource10")),
+  "Resource9": dynamic(() => import("../resource-articles/Resource9")),
+  "Resource8": dynamic(() => import("../resource-articles/Resource8")),
+  "Resource7": dynamic(() => import("../resource-articles/Resource7")),
+  "Resource6": dynamic(() => import("../resource-articles/Resource6")),
+  "Resource5": dynamic(() => import("../resource-articles/Resource5")),
+  "Resource4": dynamic(() => import("../resource-articles/Resource4")),
+  "Resource3": dynamic(() => import("../resource-articles/Resource3")),
+  "Resource2": dynamic(() => import("../resource-articles/Resource2")),
+  "Resource1": dynamic(() => import("../resource-articles/Resource1"))
   // Add more articles here as you create them
   // "starting-your-signature-series": dynamic(() => import("../resource-articles/StartingYourSignatureSeries")),
 };

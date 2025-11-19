@@ -1,36 +1,61 @@
 import resources from "@/data/resources.json";
 import * as rp from "@/app/[locale]/components/resource-page.jsx";
 import { setRequestLocale } from "next-intl/server";
+import { calculateReadingTimeFromContent } from "@/lib/extractTextFromJSX";
 
-const resource = resources[3];
-const relatedResources = [resources[2], resources[4], resources[5]];
+const resource = resources[2];
+const relatedResources = [resources[1], resources[3], resources[4]];
 
-const title = "4 Steps to Find Your Niche as a Content Creator";
-const date = "9 April 2025";
-const readTime = "7 min";
+const title = "Your Guide to a Creator Portfolio";
+const date = "16 April 2025";
+
+// Article content for reading time calculation
+const articleContent = [
+  "Why you need a portfolio You have the engaging content and the results, so now is the time to show them off in your portfolio. <br /> <br /> A strong portfolio is the key to establishing yourself as a credible content creator.",
+  "It highlights your expertise and lets brands see if you are a great match. <br /> <br /> Our platform's built-in Media Kit is a fuss-free, seamless way to display your highlighted works and metrics in one place.",
+  "Just by linking your socials, you will have a portfolio built for you. <br /> <br /> But if you want a more customised feel, we have you covered.",
+  "Keep reading to learn how to create your portfolio.",
+  "Introducing yourself and your niche Just like how your content needs great hooks , your portfolio needs a punchy (and professional) introduction of who you are as a creator and, most importantly, what you can do for brands that work with you. <br /> <br /> This section includes your name, picture, and a brief summary of what services you offer and your specialty.",
+  "Do you have a distinct editing style, or do you bring a touch of humor to every post?",
+  "Now is the time to say it. <br /> <br /> It is important to showcase your niche and unique selling proposition (USP) to ensure you stand out as a creator. <br /> <br /> <b>Tip:</b> Focus on your niche.",
+  "It might be tempting to present yourself as a jack-of-all-trades, but that could indicate a lack of focus.",
+  "Highlighting your best campaign content The work highlights section is the main event of your portfolio. <br /> <br /> It not only demonstrates your expertise and creativity in creating content, but it also shows potential collaborators what you are capable of achieving for them. <br /> <br /> How do you begin curating your selection of work samples?",
+  "Two words: be strategic.",
+  "Take your time to choose content that best showcases your style, skills, and niche. <br /> <br /> Organise your work by categories, like topics (your microniches or areas related to your niche) or formats (reviews, unboxings, problem-and-solution format, day-in-the-life videos, GRWMs, etc.), to showcase your versatility. <br /> <br /> <b>Tip:</b> Avoid including every campaign you have created to make your portfolio seem meatier.",
+  "Remember: quality over quantity.",
+  "Presenting your metrics Metrics are the supporting act to your main event.",
+  "By showcasing numbers, you reinforce your credibility as a creator and assure brands that you can produce results. <br /> <br /> Display your average engagement rate (our Media Kit does the calculations for you!) and highlight your reach and impressions numbers, as these are prioritised in brand campaigns. <br /> <br /> <b>Tip:</b> Do not forget your follower count - it helps collaborators gauge how large your audience is.",
+  "Sharing reviews and testimonials Reviews from past collaborators are the cherry on top.",
+  "Testimonials about your creativity and professionalism are valuable, but reviews with measurable results are even better.",
+  "For instance, a brand could mention a specific percentage increase in their conversion or click-through rates, credited to their collaboration with you. <br /> <br /> <b>Tip:</b> For convenience and consistency, provide a template or a set of questions when asking for reviews from brands.",
+  "Customising your portfolio Customising your portfolio is fun, but remember to keep it practical.",
+  "Whether you are hosting on a site or creating a deck, make sure it has good readability and that the visual branding, like colours and fonts, stays consistent. <br /> <br /> <b>Tip:</b> If you have strong web design skills, host your portfolio on a site so you can show off your creativity.",
+];
+
+const readTime = calculateReadingTimeFromContent(articleContent);
 
 const keywords = [
-    "Content niche",
-    "Personal brand",
-    "Content creators",
-    "Content strategy",
+    "Portfolio",
+    "Brand deals",
+    "Content management",
+    "Collaborations",
 ];
 
 export const metadata = {
     title: title,
-    description: "Learn how to find your niche as a content creator",
+    description: "Learn how to create a creator portfolio",
     keywords: keywords,
     openGraph: {
         images: [resource.image],
         title: title,
-        description: "Learn how to find your niche as a content creator",
+        description: "Learn how to create a creator portfolio",
     },
     alternates: {
         canonical: resource.path,
     },
 };
 
-const Resource30 = async ({ params }) => {
+const Resource31 = async ({ params }) => {
     const { locale } = await params;
     setRequestLocale(locale);
     return (
@@ -44,135 +69,125 @@ const Resource30 = async ({ params }) => {
                 image={resource.image}
             >
                 <rp.h2>
-                    Why it is important to find your niche
+                    Why you need a portfolio
                 </rp.h2>
                 <rp.p>
-                    With the content creator scene booming, it is more important than ever
-                    to stand out. Having a niche helps you do exactly that, and more.
+                    You have the engaging content and the results, so now is the time to show
+                    them off in your portfolio.
                 <br />
                 <br />
-                    A niche is your <i>thing</i> as a content creator. It not only sets you
-                    apart, but it also helps you build a dedicated audience you can connect
-                    with. By identifying your niche, you develop expertise in that area,
-                    establishing yourself as the go-to creator for whatever niche you choose.
-                    This, in turn, opens doors to collaborations and monetisation
-                    opportunities.
+                    A strong portfolio is the key to establishing yourself as a credible
+                    content creator. It highlights your expertise and lets brands see if you
+                    are a great match.
                 <br />
                 <br />
-                    So, how do you find your niche?
+                    Our platform's built-in Media Kit is a fuss-free, seamless way to display
+                    your highlighted works and metrics in one place. Just by linking your
+                    socials, you will have a portfolio built for you.
+                <br />
+                <br />
+                    But if you want a more customised feel, we have you covered. Keep reading
+                    to learn how to create your portfolio.
                 </rp.p>
-                <rp.ol>
-                    <rp.li>
-                        <b>Start with what you like (and know)</b>
-                        <rp.p>
-                            Look inward and find aspects of yourself you want to share with the
-                            world. Maybe you want to document a new hobby, or you want to tell
-                            stories from unique experiences in your life.
-                        <br />
-                        <br />
-                            Your online consumption also helps you spot your niche. Look at your
-                            feed - which creators do you follow, and what content do you enjoy on
-                            your For You Page? How much do those reflect your interests?
-                        <br />
-                        <br />
-                            Another way to surface potential niches is to look at how people
-                            interact with you. What are the areas where friends ask for your
-                            opinion? Do they come to you for fashion tips? Do people compliment
-                            your cooking?
-                        <br />
-                        <br />
-                            From these prompts, list three to five things you enjoy and start from
-                            there.
-                        </rp.p>
-                    </rp.li>
-                    <rp.li>
-                        <b>Assess your knowledge and skills</b>
-                        <rp.p>
-                            Put on your thinking hat and gauge how much you know about your
-                            potential niches. If you were asked to give a 30-minute presentation
-                            with no prep, how much could you share about the topic? What value can
-                            you offer your target audience?
-                        <br />
-                        <br />
-                            Remember that offering value does not require you to be an expert.
-                            Sharing your learning journey and being transparent about your
-                            experience keeps your content relatable and engaging.
-                        <br />
-                        <br />
-                            <rp.a href="https://www.tiktok.com/@leeeeming/video/7383297883484720391?_r=1&_t=8fOTyhU5MWH">
-                                https://www.tiktok.com/@leeeeming/video/7383297883484720391?_r=1&_t=8fOTyhU5MWH
-                            </rp.a>
-                        <br />
-                        <br />
-                            Caption: <rp.a href="https://www.tiktok.com/@leeeeming">@leeeming</rp.a>
-                            shares relatable motherhood content, often with humor that packs a
-                            punch.
-                        </rp.p>
-                    </rp.li>
-                    <rp.li>
-                        <b>Dive deeper into your chosen niche</b>
-                        <rp.p>
-                            Study successful creators in similar niches. Note which content types
-                            perform best (GRWMs, day-in-the-life videos, reviews). Comments are a
-                            good indicator of what the audience likes to see and highlight the
-                            niche potential.
-                        <br />
-                        <br />
-                            This is where tools like TikTok Creator Search Insights are useful.
-                            The tool surfaces similar creators, suggested content, and even{" "}
-                            <rp.a href="https://www.cultcreativeasia.com/my/resources/how-to-tiktok-creator-search-insights">
-                                content gaps
-                            </rp.a>
-                            , which are topics users search for but do not frequently see in their
-                            feeds.
-                        <br />
-                        <br />
-                            Caption: <rp.a href="https://www.instagram.com/imfzhd">@imfzhd</rp.a>
-                            is a sneakers creator known for transparent reviews and a sleek
-                            editing style.
-                        </rp.p>
-                    </rp.li>
-                    <rp.li>
-                        <b>Define your unique selling point</b>
-                        <rp.p>
-                            A unique selling point sets you apart in your niche. Ask yourself what
-                            is missing in the space and how you can bring a fresh perspective.
-                        <br />
-                        <br />
-                            Using your location as part of your storytelling is a great starting
-                            point. Maybe a topic is thriving overseas but lacks local coverage.
-                            That is your opportunity to add regional insight.
-                        <br />
-                        <br />
-                            Get specific - no matter how hyper-niche it feels, there is an
-                            audience waiting for you. If you are a skincare enthusiast, you could
-                            share your routine or the products you have tried and loved.
-                        <br />
-                        <br />
-                            <rp.a href="https://www.instagram.com/p/DEM4wVoyYTE/">
-                                https://www.instagram.com/p/DEM4wVoyYTE/
-                            </rp.a>
-                        <br />
-                        <br />
-                            Caption: <rp.a href="https://www.instagram.com/definitelymayb_/">
-                                @definitelymayb_
-                            </rp.a>
-                            is a dancer and creator sharing authentic content about the women's
-                            dance scene in Kuala Lumpur.
-                        </rp.p>
-                    </rp.li>
-                </rp.ol>
                 <rp.h3>
-                    Keep in mind...
+                    Introducing yourself and your niche
                 </rp.h3>
                 <rp.p>
-                    Your first niche might not be <i>it</i>, but do not be afraid of
-                    experimenting. Stay consistent, listen to your audience feedback, and
-                    pivot when necessary.
+                    Just like how your content needs{" "}
+                    <rp.a href="https://www.cultcreativeasia.com/my/resources/how-to-hook-why-you-need-to-nail-the-first-3-seconds-of-your-content">
+                        great hooks
+                    </rp.a>
+                    , your portfolio needs a punchy (and professional) introduction of who
+                    you are as a creator and, most importantly, what you can do for brands
+                    that work with you.
+                <br />
+                <br />
+                    This section includes your name, picture, and a brief summary of what
+                    services you offer and your specialty. Do you have a distinct editing
+                    style, or do you bring a touch of humor to every post? Now is the time to
+                    say it.
+                <br />
+                <br />
+                    It is important to showcase your niche and unique selling proposition
+                    (USP) to ensure you stand out as a creator.
+                <br />
+                <br />
+                    <b>Tip:</b> Focus on your niche. It might be tempting to present yourself
+                    as a jack-of-all-trades, but that could indicate a lack of focus.
+                </rp.p>
+                <rp.h3>
+                    Highlighting your best campaign content
+                </rp.h3>
+                <rp.p>
+                    The work highlights section is the main event of your portfolio.
+                <br />
+                <br />
+                    It not only demonstrates your expertise and creativity in creating
+                    content, but it also shows potential collaborators what you are capable of
+                    achieving for them.
+                <br />
+                <br />
+                    How do you begin curating your selection of work samples? Two words: be
+                    strategic. Take your time to choose content that best showcases your
+                    style, skills, and niche.
+                <br />
+                <br />
+                    Organise your work by categories, like topics (your microniches or areas
+                    related to your niche) or formats (reviews, unboxings, problem-and-solution
+                    format, day-in-the-life videos, GRWMs, etc.), to showcase your
+                    versatility.
+                <br />
+                <br />
+                    <b>Tip:</b> Avoid including every campaign you have created to make your
+                    portfolio seem meatier. Remember: quality over quantity.
+                </rp.p>
+                <rp.h3>
+                    Presenting your metrics
+                </rp.h3>
+                <rp.p>
+                    Metrics are the supporting act to your main event. By showcasing numbers,
+                    you reinforce your credibility as a creator and assure brands that you can
+                    produce results.
+                <br />
+                <br />
+                    Display your average engagement rate (our Media Kit does the calculations
+                    for you!) and highlight your reach and impressions numbers, as these are
+                    prioritised in brand campaigns.
+                <br />
+                <br />
+                    <b>Tip:</b> Do not forget your follower count - it helps collaborators gauge
+                    how large your audience is.
+                </rp.p>
+                <rp.h3>
+                    Sharing reviews and testimonials
+                </rp.h3>
+                <rp.p>
+                    Reviews from past collaborators are the cherry on top. Testimonials about
+                    your creativity and professionalism are valuable, but reviews with
+                    measurable results are even better. For instance, a brand could mention a
+                    specific percentage increase in their conversion or click-through rates,
+                    credited to their collaboration with you.
+                <br />
+                <br />
+                    <b>Tip:</b> For convenience and consistency, provide a template or a set of
+                    questions when asking for reviews from brands.
+                </rp.p>
+                <rp.h3>
+                    Customising your portfolio
+                </rp.h3>
+                <rp.p>
+                    Customising your portfolio is fun, but remember to keep it practical.
+                    Whether you are hosting on a site or creating a deck, make sure it has good
+                    readability and that the visual branding, like colours and fonts, stays
+                    consistent.
+                <br />
+                <br />
+                    <b>Tip:</b> If you have strong web design skills, host your portfolio on a
+                    site so you can show off your creativity.
                 </rp.p>
             </rp.Page>
         </>
     );
 };
 
-export default Resource30;
+export default Resource31;
