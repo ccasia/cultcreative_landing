@@ -179,8 +179,8 @@ const FirstSection = () => {
         <div
           className="absolute"
           style={{
-            top: '-2%',
-            right: '-5%',
+            top: '3%',
+            right: '8%',
           }}
         >
           <img 
@@ -196,7 +196,7 @@ const FirstSection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10 flex-1 flex items-center justify-center">
         <div className="text-center max-w-6xl mx-auto">
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 leading-tight text-white font-aileron"
+            className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 leading-tight text-white font-aileron"
             style={{ 
               textShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
               letterSpacing: '-0.05em'

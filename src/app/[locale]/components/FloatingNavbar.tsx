@@ -69,13 +69,13 @@ const FloatingNavbar = () => {
                 <img
                   src="/images/logo1.png"
                   alt="Cult Creative"
-                  className="h-10 w-auto cursor-pointer"
+                  className="h-11 w-auto cursor-pointer"
                 />
               </Link>
             </motion.div>
 
             {/* Navigation Links - Center with smaller margins */}
-            <div className="flex items-center space-x-12 mx-40">
+            <div className="flex items-center space-x-11 mx-35">
               {navItems.map((item, index) => (
                 item.href.startsWith('#') ? (
                   <motion.a
@@ -120,22 +120,24 @@ const FloatingNavbar = () => {
             </div>
 
             {/* CTA Button - Far Right */}
-            <motion.button
-              className="bg-cc-onyx text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 shadow-lg hover:shadow-xl shrink-0"
-              style={{
-                fontFamily: 'Aileron',
-                fontWeight: 700,
-                fontStyle: 'normal',
-                fontSize: '14px',
-                lineHeight: '100%',
-                letterSpacing: '0%'
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-            >
-              LOGIN
-            </motion.button>
+            <Link href="https://app.cultcreativeasia.com/auth/jwt/login?returnTo=%2Fdashboard" target="_blank" rel="noopener noreferrer">
+              <motion.button
+                className="bg-cc-onyx text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 shadow-lg hover:shadow-xl shrink-0"
+                style={{
+                  fontFamily: 'Aileron',
+                  fontWeight: 700,
+                  fontStyle: 'normal',
+                  fontSize: '14px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%'
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                LOGIN
+              </motion.button>
+            </Link>
           </div>
         </div>
 
@@ -160,19 +162,21 @@ const FloatingNavbar = () => {
             {/* Right Side: LOGIN Button and Hamburger Menu */}
             <div className="flex items-center gap-2">
               {/* LOGIN Button */}
-              <motion.button
-                className="bg-cc-onyx text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 shrink-0"
-                style={{
-                  fontFamily: 'Aileron, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-              >
-                LOGIN
-              </motion.button>
+              <Link href="https://app.cultcreativeasia.com/auth/jwt/login?returnTo=%2Fdashboard" target="_blank" rel="noopener noreferrer">
+                <motion.button
+                  className="bg-cc-onyx text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#3a3636] transition-colors duration-200 shrink-0"
+                  style={{
+                    fontFamily: 'Aileron, sans-serif',
+                    fontWeight: 700,
+                    fontSize: '14px',
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  LOGIN
+                </motion.button>
+              </Link>
 
               {/* Hamburger Menu Icon in White Rounded Square */}
               <motion.button

@@ -15,9 +15,9 @@ const FourthSection = () => {
     {
       id: 1,
       title: "Brand Video 1",
-      creator: "Cult Creative",
-      name: "Creator",
-      brand: "Nespresso",
+      creator: "Faizah",
+      name: "Faizah",
+      brand: "Dettol SG",
       quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp1.mp4",
       description: "Cult Creative brand video"
@@ -25,9 +25,9 @@ const FourthSection = () => {
     {
       id: 2,
       title: "Brand Video 2",
-      creator: "Cult Creative",
-      name: "Manveer Singh", 
-      brand: "Spritzer",
+      creator: "Ainna",
+      name: "Ainna",
+      brand: "Binti",
       quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp2.mp4",
       description: "Cult Creative brand video"
@@ -35,9 +35,9 @@ const FourthSection = () => {
     {
       id: 3,
       title: "Brand Video 3",
-      creator: "Cult Creative",
-      name: "Creator",
-      brand: "Samsung",
+      creator: "Rachael",
+      name: "Rachael",
+      brand: "GMBB",
       quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp3.mp4",
       description: "Cult Creative brand video"
@@ -45,9 +45,9 @@ const FourthSection = () => {
     {
       id: 4,
       title: "Brand Video 4",
-      creator: "Cult Creative",
-      name: "Creator",
-      brand: "Uniqlo",
+      creator: "Zairul Rusdi",
+      name: "Zairul Rusdi",
+      brand: "Barkath",
       quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp4.mp4",
       description: "Cult Creative brand video"
@@ -55,9 +55,9 @@ const FourthSection = () => {
     {
       id: 5,
       title: "Brand Video 5",
-      creator: "Cult Creative", 
-      name: "Creator",
-      brand: "Grab",
+      creator: "Avanyeesh", 
+      name: "Avanyeesh",
+      brand: "MAE Tabung 2",
       quote: "Lazy people don't",
       videoUrl: "https://storage.googleapis.com/landing-cultcreative/main/v2/lp5.mp4",
       description: "Cult Creative brand video"
@@ -292,7 +292,7 @@ const FourthSection = () => {
                       isCenter ? 'shadow-2xl' : ''
                     }`}>
                       {/* Video Element */}
-                      <div className="aspect-9/16 bg-gray-200 flex items-center justify-center">
+                      <div className="aspect-9/16 bg-gray-200 flex items-center justify-center relative">
                         <video
                           className="w-full h-full object-cover"
                           autoPlay={isCenter}
@@ -314,6 +314,18 @@ const FourthSection = () => {
                           <source src={video.videoUrl} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
+                        
+                        {/* Bottom Overlay with Brand and Creator - Only show on center video */}
+                        {isCenter && (
+                          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                            <h3 className="text-white font-aileron font-bold capitalize" style={{ fontSize: '33.87px', lineHeight: '40px', letterSpacing: '-0.06em' }}>
+                              {video.brand}
+                            </h3>
+                            <p className="text-white/90 italic" style={{ fontFamily: 'Times New Roman, serif', fontSize: '21.17px', lineHeight: '38.11px', letterSpacing: '-0.04em', fontWeight: 400 }}>
+                              {video.name}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -381,11 +393,11 @@ const FourthSection = () => {
                           </video>
                           
                           {/* Bottom Overlay with Brand and Creator */}
-                          <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/80 via-black/50 to-transparent">
-                            <h3 className="text-white text-3xl font-bold mb-2">
+                          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                            <h3 className="text-white font-aileron font-bold capitalize" style={{ fontSize: '33.87px', lineHeight: '40px', letterSpacing: '-0.06em' }}>
                               {video.brand}
                             </h3>
-                            <p className="text-white/90 text-lg italic font-serif">
+                            <p className="text-white/90 italic" style={{ fontFamily: 'Times New Roman, serif', fontSize: '21.17px', lineHeight: '38.11px', letterSpacing: '-0.04em', fontWeight: 400 }}>
                               {video.name}
                             </p>
                           </div>
