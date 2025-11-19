@@ -22,19 +22,21 @@ const CreatorAvatar = ({
 					: `absolute ${positionClass}`
 			}`}
 		>
-			{/* The colored ring */}
-			<div
-				className={`w-full h-full rounded-full border-4 ${creator.borderColor}`}
-			>
-				<div className={`w-full h-full rounded-full`}>
+			<div className="relative w-full h-full">
+				{/* The Image container */}
+				<div className="w-full h-full rounded-full overflow-hidden">
 					<Image
 						src={creator.svgPath}
 						alt={creator.name}
-						width={96}
-						height={96}
-						className="w-full h-full object-cover rounded-full"
+						fill
+						className="object-cover" // Removed rounded-full from here
 					/>
 				</div>
+
+				{/* The colored ring overlay */}
+				<div
+					className={`absolute inset-0 rounded-full border-4 ${creator.borderColor} pointer-events-none`}
+				></div>
 			</div>
 		</button>
 	);
