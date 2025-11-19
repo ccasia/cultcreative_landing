@@ -9,7 +9,7 @@ const Thumbnail = ({ videoData, onClick }) => (
 	<div className="w-24 md:w-36 flex-shrink-0">
 		<button
 			onClick={onClick}
-			className="group w-full rounded-xl md:rounded-2xl overflow-hidden opacity-60 hover:opacity-100"
+			className="group w-full rounded-xl md:rounded-2xl overflow-hidden opacity-60 hover:opacity-100 hover:cursor-pointer"
 		>
 			<div className="relative aspect-[6/7] md:aspect-[16/18]">
 				<Image
@@ -114,7 +114,7 @@ const FirstSection = () => {
 						/>
 					</div>
 					{/* Iphone video player */}
-					<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-52 h-auto md:w-80 lg:w-80 drop-shadow-2xl pointer-events-none">
+					<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-52 h-auto md:w-80 lg:w-80 drop-shadow-2xl hover:cursor-default">
 						<div className="aspect-[9/19]">
 							<Image
 								src="/images/NewCreator/iphone.svg"

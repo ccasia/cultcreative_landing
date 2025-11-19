@@ -99,9 +99,9 @@ const SecondSection = () => {
 							<Image
 								src="/images/NewCreator/stars.svg"
 								alt="stars"
-								width={360}
-								height={360}
-								className="absolute object-contain z-0 left-32 -top-28 md:left-72 md:-top-48"
+								width={840}
+								height={840}
+								className="absolute object-contain z-0 left-32 -top-28 md:-left-72 md:-top-52"
 							/>
 							Our Star Creators.
 						</h2>
