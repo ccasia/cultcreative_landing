@@ -10,6 +10,7 @@ const FloatingNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const pathname = usePathname();
   
   // Extract locale from pathname (e.g., "/my/new-landing" -> "my")
@@ -33,14 +34,15 @@ const FloatingNavbar = () => {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: "For Brands", href: `/${locale}/for-brands` },
-    { name: "For Creators", href: `/${locale}/creator` },
-    { name: "Success Stories", href: `/${locale}/new-stories` }
+    { name: "For Brands", href: `/${locale}/for-brands`, image: "/images/NewMain/navforbrands.svg" },
+    { name: "For Creators", href: `/${locale}/creator`, image: "/images/NewMain/navforcreators.svg" },
+    { name: "Success Stories", href: `/${locale}/new-stories`, image: "/images/NewMain/navforsuccess.svg" }
   ];
 
   return (
     <motion.div 
       className="fixed top-6 left-0 right-0 z-50 flex justify-center md:justify-center"
+      style={{ overflow: 'visible' }}
       initial={{ y: -100, opacity: 0 }}
       animate={{ 
         y: isVisible ? 0 : -100, 
@@ -52,10 +54,11 @@ const FloatingNavbar = () => {
         className={`transition-all duration-300 w-full md:w-auto ${
           isScrolled ? "scale-95" : "scale-100"
         }`}
+        style={{ overflow: 'visible' }}
       >
-      <div className="relative w-full md:w-auto">
+      <div className="relative w-full md:w-auto overflow-visible">
         {/* Desktop: Curvy Background */}
-        <div className="hidden md:block bg-white/90 backdrop-blur-md shadow-2xl border border-gray-200/50 px-6 py-2 rounded-full min-w-[800px]">
+        <div className="hidden md:block bg-white/90 backdrop-blur-md shadow-2xl border border-gray-200/50 px-6 py-2 rounded-full min-w-[800px]" style={{ overflow: 'visible' }}>
           
           {/* Navigation Items */}
           <div className="flex items-center justify-between w-full">
@@ -77,45 +80,61 @@ const FloatingNavbar = () => {
             {/* Navigation Links - Center with smaller margins */}
             <div className="flex items-center space-x-11 mx-35">
               {navItems.map((item, index) => (
-                item.href.startsWith('#') ? (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-700 hover:text-cc-onyx font-medium text-sm transition-colors duration-200 relative group"
-                    style={{
-                      fontFamily: 'Aileron',
-                      fontWeight: 400,
-                      fontStyle: 'normal',
-                      fontSize: '14px',
-                      lineHeight: '100%',
-                      letterSpacing: '0%'
-                    }}
-                    whileHover={{ y: -2 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cc-onyx transition-all duration-200 group-hover:w-full"></span>
-                  </motion.a>
-                ) : (
-                  <Link key={item.name} href={item.href}>
-                    <motion.span
-                      className="text-gray-700 hover:text-cc-onyx font-medium text-sm transition-colors duration-200 relative group cursor-pointer block"
+                <div key={item.name} className="relative flex items-center gap-2">
+                  {/* Hover Image - slides in from right */}
+                  {item.image && (
+                    <motion.img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-5 h-5"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={hoveredItem === item.name ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    />
+                  )}
+                  
+                  {/* Nav Link - moves right on hover */}
+                  {item.href.startsWith('#') ? (
+                    <motion.a
+                      href={item.href}
+                      className="transition-colors duration-200"
                       style={{
                         fontFamily: 'Aileron',
-                        fontWeight: 400,
-                        fontStyle: 'normal',
+                        fontWeight: 600,
                         fontSize: '14px',
-                        lineHeight: '100%',
-                        letterSpacing: '0%'
+                        lineHeight: '20px',
+                        letterSpacing: '0%',
+                        color: '#231F20'
                       }}
-                      whileHover={{ y: -2 }}
-                      transition={{ duration: 0.2 }}
+                      animate={hoveredItem === item.name ? { x: 4 } : { x: 0 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      onMouseEnter={() => setHoveredItem(item.name)}
+                      onMouseLeave={() => setHoveredItem(null)}
                     >
                       {item.name}
-                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cc-onyx transition-all duration-200 group-hover:w-full"></span>
-                    </motion.span>
-                  </Link>
-                )
+                    </motion.a>
+                  ) : (
+                    <Link href={item.href}>
+                      <motion.span
+                        className="transition-colors duration-200 cursor-pointer block"
+                        style={{
+                          fontFamily: 'Aileron',
+                          fontWeight: 600,
+                          fontSize: '14px',
+                          lineHeight: '20px',
+                          letterSpacing: '0%',
+                          color: '#231F20'
+                        }}
+                        animate={hoveredItem === item.name ? { x: 4 } : { x: 0 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        onMouseEnter={() => setHoveredItem(item.name)}
+                        onMouseLeave={() => setHoveredItem(null)}
+                      >
+                        {item.name}
+                      </motion.span>
+                    </Link>
+                  )}
+                </div>
               ))}
             </div>
 

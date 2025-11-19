@@ -368,8 +368,7 @@ const FirstSection = () => {
                    alt="Bottom analytics" 
                    className="w-full max-w-[280px] md:max-w-none md:w-[600px] h-auto"
                    style={{
-                     height: 'auto',
-                     filter: 'drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4))',
+                     height: 'auto'
                    }}
                  />
               </motion.div>
@@ -408,8 +407,7 @@ const FirstSection = () => {
                    alt="Platform overview" 
                    className="w-full max-w-[280px] md:max-w-none md:w-[600px] h-auto"
                    style={{
-                     height: 'auto',
-                     filter: 'drop-shadow(0 35px 70px rgba(0, 0, 0, 0.35))',
+                     height: 'auto'
                    }}
                  />
               </motion.div>
@@ -448,8 +446,7 @@ const FirstSection = () => {
                    alt="Top engagement" 
                    className="w-full max-w-[280px] md:max-w-none md:w-[600px] h-auto"
                    style={{
-                     height: 'auto',
-                     filter: 'drop-shadow(0 40px 80px rgba(0, 0, 0, 0.5))',
+                     height: 'auto'
                    }}
                  />
               </motion.div>

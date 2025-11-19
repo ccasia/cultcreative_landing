@@ -66,12 +66,21 @@ const FourthSection = () => {
 
   // Trusted brands data
   const trustedBrands = [
-    { name: "Nespresso", logo: "/images/NewMain/TrustedBrands/nespresso.svg" },
-    { name: "Andsons", logo: "/images/NewMain/TrustedBrands/andsons.svg" },
-    { name: "Spritzer", logo: "/images/NewMain/TrustedBrands/Spritzer.svg" },
-    { name: "Samsung", logo: "/images/NewMain/TrustedBrands/Samsung.svg" },
-    { name: "Uniqlo", logo: "/images/NewMain/TrustedBrands/Uniqlo.svg" },
-    { name: "Grab", logo: "/images/NewMain/TrustedBrands/Grab.svg" }
+    { name: "Bata", logo: "/images/NewMain/Brands/bata.svg" },
+    { name: "Dettol", logo: "/images/NewMain/Brands/dettol.svg" },
+    { name: "Grab", logo: "/images/NewMain/Brands/grab.svg" },
+    { name: "Jameson", logo: "/images/NewMain/Brands/jameson.svg" },
+    { name: "Longchamp", logo: "/images/NewMain/Brands/longchamp.svg" },
+    { name: "Marriott", logo: "/images/NewMain/Brands/marriott.svg" },
+    { name: "Maybank", logo: "/images/NewMain/Brands/maybank.svg" },
+    { name: "Nespresso", logo: "/images/NewMain/Brands/nespresso.svg" },
+    { name: "Samsung", logo: "/images/NewMain/Brands/samsung.svg" },
+    { name: "Shopee", logo: "/images/NewMain/Brands/shopee.svg" },
+    { name: "Sunway Malls", logo: "/images/NewMain/Brands/sunwaymalls.svg" },
+    { name: "Taco Bell", logo: "/images/NewMain/Brands/tacobell.svg" },
+    { name: "The Body Shop", logo: "/images/NewMain/Brands/thebodyshop.svg" },
+    { name: "Uniqlo", logo: "/images/NewMain/Brands/uniqlo.svg" },
+    { name: "Universal", logo: "/images/NewMain/Brands/universal.svg" }
   ];
 
   const reorderMap = {
@@ -187,29 +196,47 @@ const FourthSection = () => {
 
         {/* Moving Brands */}
         <div className="relative overflow-hidden">
-          <motion.div
-            className="flex space-x-12 items-center"
-            animate={{
-              x: [0, -1200] 
-            }}
-            transition={{
-              duration: 25, 
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          >
-            {/* Duplicate brands for seamless loop */}
-            {[...trustedBrands, ...trustedBrands, ...trustedBrands, ...trustedBrands].map((brand, index) => (
-              <div key={index} className="shrink-0">
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-            ))}
-          </motion.div>
+          <div className="flex animate-scroll" style={{ width: 'max-content' }}>
+            <div className="flex shrink-0">
+              {trustedBrands.map((brand, index) => (
+                <div key={`set1-${index}`} className="shrink-0 mx-6">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="h-10 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex shrink-0">
+              {trustedBrands.map((brand, index) => (
+                <div key={`set2-${index}`} className="shrink-0 mx-6">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="h-10 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+        
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          
+          .animate-scroll {
+            animation: scroll 20s linear infinite;
+            display: flex;
+          }
+        `}</style>
       </div>
 
       {/* Main Hero Content */}
@@ -263,9 +290,9 @@ const FourthSection = () => {
                 const positionVariants = {
                   center: { x: 0, scale: 1.1, zIndex: 5, y: -35 },
                   left1: { x: -380, scale: 0.9, zIndex: 3, y: -15 },
-                  left: { x: -700, scale: 0.8, zIndex: 2, y: -10 },
+                  left: { x: -700, scale: 0.9, zIndex: 2, y: -15 },
                   right1: { x: 380, scale: 0.9, zIndex: 3, y: -15 },
-                  right: { x: 700, scale: 0.8, zIndex: 2, y: -10 },
+                  right: { x: 700, scale: 0.9, zIndex: 2, y: -15 },
                 };
                 
                 return (

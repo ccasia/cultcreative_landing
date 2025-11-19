@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 const FifthSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
@@ -15,6 +16,18 @@ const FifthSection = () => {
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
+    
+    // Preload tilt images for smooth transitions
+    const tiltImages = [
+      '/images/NewMain/Quote 1 Tilt.svg',
+      '/images/NewMain/Quote 2 Tilt.svg',
+      '/images/NewMain/Quote 3 Tilt.svg'
+    ];
+    tiltImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+    
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -174,9 +187,15 @@ const FifthSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
+              onMouseEnter={() => setHoveredCard(testimonial.id)}
+              onMouseLeave={() => setHoveredCard(null)}
+              style={{ perspective: "1000px" }}
             >
-              <img
-                src={testimonial.svgImage}
+              <motion.img
+                src={hoveredCard === testimonial.id 
+                  ? `/images/NewMain/Quote ${testimonial.id} Tilt.svg`
+                  : testimonial.svgImage
+                }
                 alt={`Testimonial ${testimonial.id}`}
                 className={`${
                   testimonial.id === 1
@@ -184,18 +203,19 @@ const FifthSection = () => {
                     : testimonial.id === 3
                     ? "w-[400px] h-[400px] translate-y-2"
                     : "w-[400px] h-[400px]"
-                } hover:rotate-3 hover:scale-125`}
-                onMouseEnter={(e) => {
-                  if (testimonial.id === 1)
-                    e.target.src = "/images/NewMain/Quote 1 Tilt.svg";
-                  else if (testimonial.id === 2)
-                    e.target.src = "/images/NewMain/Quote 2 Tilt.svg";
-                  else if (testimonial.id === 3)
-                    e.target.src = "/images/NewMain/Quote 3 Tilt.svg";
+                } ${hoveredCard === testimonial.id ? "scale-125" : ""}`}
+                animate={hoveredCard === testimonial.id ? {
+                  rotateY: 5,
+                  rotateZ: 3
+                } : {
+                  rotateY: 0,
+                  rotateZ: 0
                 }}
-                onMouseLeave={(e) => {
-                  e.target.src = testimonial.svgImage;
+                transition={{ 
+                  duration: 0.3, 
+                  ease: "easeInOut"
                 }}
+                style={{ transformStyle: "preserve-3d" }}
               />
             </motion.div>
           ))}

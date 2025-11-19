@@ -86,7 +86,7 @@ const SecondSection = () => {
           viewport={{ once: true }}
         >
           <div className="flex items-center justify-center mb-4">
-            <h2 className="text-4xl md:text-5xl font-bold font-aileron relative" style={{ color: '#231f20' }}>
+            <h2 className="text-4xl md:text-5xl font-bold font-aileron relative" style={{ color: '#231f20', letterSpacing: '-0.06em' }}>
               <img 
                 src="/images/NewMain/what.svg" 
                 alt="What decoration" 

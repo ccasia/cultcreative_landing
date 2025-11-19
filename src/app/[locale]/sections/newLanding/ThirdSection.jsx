@@ -105,17 +105,16 @@ const ThirdSection = () => {
 
                   {/* Right side - Content */}
                   <div 
-                    className="flex flex-col justify-center w-full md:w-[490.9px] text-center md:text-left"
+                    className="flex flex-col justify-center w-full md:w-[490.9px] text-center md:text-left md:ml-8"
                     style={{
                       height: '81.25px',
-                      gap: '5.25px',
-                      marginLeft: '0px'
+                      gap: '5.25px'
                     }}
                   >
-                    <h3 className="text-xl md:text-2xl text-gray-800 mb-2" style={{ fontFamily: 'Aileron, sans-serif' }}>
+                    <h3 className="text-gray-800 mb-2" style={{ fontFamily: 'Aileron, sans-serif', fontWeight: 600, fontSize: '29.25px', lineHeight: '37.5px', letterSpacing: '-0.03em' }}>
                       Creator Media Kit
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed" style={{ fontFamily: 'Aileron, sans-serif' }}>
+                    <p className="text-gray-600" style={{ fontFamily: 'Aileron, sans-serif', fontWeight: 400, fontSize: '18px', lineHeight: '18.75px', letterSpacing: '0%' }}>
                       Your all-in-one professional profile that showcases your influence and audience insights.
                     </p>
                   </div>
@@ -154,17 +153,16 @@ const ThirdSection = () => {
 
                   {/* Right side - Content */}
                   <div 
-                    className="flex flex-col justify-center w-full md:w-[490.9px] text-center md:text-left"
+                    className="flex flex-col justify-center w-full md:w-[490.9px] text-center md:text-left md:ml-8"
                     style={{
                       height: '81.25px',
-                      gap: '5.25px',
-                      marginLeft: '0px'
+                      gap: '5.25px'
                     }}
                   >
-                    <h3 className="text-xl md:text-2xl text-gray-800 mb-2" style={{ fontFamily: 'Aileron, sans-serif' }}>
+                    <h3 className="text-gray-800 mb-2" style={{ fontFamily: 'Aileron, sans-serif', fontWeight: 600, fontSize: '29.25px', lineHeight: '37.5px', letterSpacing: '-0.03em' }}>
                       Campaign Analytics
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed" style={{ fontFamily: 'Aileron, sans-serif' }}>
+                    <p className="text-gray-600" style={{ fontFamily: 'Aileron, sans-serif', fontWeight: 400, fontSize: '18px', lineHeight: '18.75px', letterSpacing: '0%' }}>
                       A centralized dashboard that tracks the performance of your campaigns in real time.
                     </p>
                   </div>
@@ -203,17 +201,16 @@ const ThirdSection = () => {
 
                   {/* Right side - Content */}
                   <div 
-                    className="flex flex-col justify-center w-full md:w-[490.9px] text-center md:text-left"
+                    className="flex flex-col justify-center w-full md:w-[490.9px] text-center md:text-left md:ml-8"
                     style={{
                       height: '81.25px',
-                      gap: '5.25px',
-                      marginLeft: '0px'
+                      gap: '5.25px'
                     }}
                   >
-                    <h3 className="text-xl md:text-2xl text-gray-800 mb-2" style={{ fontFamily: 'Aileron, sans-serif' }}>
+                    <h3 className="text-gray-800 mb-2" style={{ fontFamily: 'Aileron, sans-serif', fontWeight: 600, fontSize: '29.25px', lineHeight: '37.5px', letterSpacing: '-0.03em' }}>
                       Content & Creator Management
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed" style={{ fontFamily: 'Aileron, sans-serif' }}>
+                    <p className="text-gray-600" style={{ fontFamily: 'Aileron, sans-serif', fontWeight: 400, fontSize: '18px', lineHeight: '18.75px', letterSpacing: '0%' }}>
                       Stay organized and in control with a single hub to manage all your creators, content, and collaborations.
                     </p>
                   </div>
@@ -252,17 +249,16 @@ const ThirdSection = () => {
 
                   {/* Right side - Content */}
                   <div 
-                    className="flex flex-col justify-center w-full md:w-[490.9px] text-center md:text-left"
+                    className="flex flex-col justify-center w-full md:w-[490.9px] text-center md:text-left md:ml-8"
                     style={{
                       height: '81.25px',
-                      gap: '5.25px',
-                      marginLeft: '0px'
+                      gap: '5.25px'
                     }}
                   >
-                    <h3 className="text-xl md:text-2xl text-gray-800 mb-2" style={{ fontFamily: 'Aileron, sans-serif' }}>
+                    <h3 className="text-gray-800 mb-2" style={{ fontFamily: 'Aileron, sans-serif', fontWeight: 600, fontSize: '29.25px', lineHeight: '37.5px', letterSpacing: '-0.03em' }}>
                       Automated Workflow
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed" style={{ fontFamily: 'Aileron, sans-serif' }}>
+                    <p className="text-gray-600" style={{ fontFamily: 'Aileron, sans-serif', fontWeight: 400, fontSize: '18px', lineHeight: '18.75px', letterSpacing: '0%' }}>
                       Simplify collaboration with contracts that generate instantly.
                     </p>
                   </div>
