@@ -16,7 +16,7 @@ const CreatorAvatar = ({
 	return (
 		<button
 			onClick={onClick}
-			className={`rounded-full transition-all duration-300 ease-in-out transform focus:outline-none ${size} ${
+			className={`rounded-full transition-all duration-300 ease-in-out transform focus:outline-none hover:cursor-pointer ${size} ${
 				isMobile
 					? `relative ${isActive ? "scale-[1.3] opacity-100" : "opacity-70"}`
 					: `absolute ${positionClass}`

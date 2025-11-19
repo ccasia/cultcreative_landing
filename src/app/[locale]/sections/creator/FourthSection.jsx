@@ -28,7 +28,7 @@ const ImageColumn = ({ images, isReversed = false }) => {
 			{images.map((src, index) => (
 				<div
 					key={index}
-					className="relative w-48 h-72 rounded-xl overflow-hidden shadow-lg flex-shrink-0"
+					className="relative w-48 h-72 overflow-hidden shadow-lg flex-shrink-0"
 				>
 					<Image
 						src={src}
@@ -65,7 +65,7 @@ const MobileImageCarousel = ({ images }) => {
 			{images.map((src, index) => (
 				<div
 					key={index}
-					className={`relative rounded-xl w-32 flex-shrink-0 overflow-hidden shadow-lg 
+					className={`relative w-32 flex-shrink-0 overflow-hidden shadow-lg 
 						${index % 2 === 1 ? "mt-28" : " "} 
 					`} //stagger images
 				>

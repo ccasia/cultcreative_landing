@@ -36,7 +36,7 @@ const FifthSection = () => {
 					alt="Monetize your contents"
 					width={1200}
 					height={437}
-					className="hidden md:block w-full max-w-7xl h-auto px-4 md:py-10"
+					className="hidden md:block w-full max-w-7xl h-auto px-4 md:py-10 md:mb-10"
 				/>
 				<Image
 					src="/images/NewCreator/monetizeStepsMobile.png"

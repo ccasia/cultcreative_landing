@@ -20,6 +20,20 @@ const SixthSection = () => {
 		expanded: { flexBasis: "71%" },
 	};
 
+	const textFadeVariants = {
+		initial: { opacity: 0, y: 10 },
+		animate: {
+			opacity: 1,
+			y: 0,
+			transition: { duration: 0.4, ease: "easeOut", delay: 0.5 }, // Slight delay to let width settle
+		},
+		exit: {
+			opacity: 0,
+			y: -10,
+			transition: { duration: 0.2, ease: "easeIn" },
+		},
+	};
+
 	return (
 		<section className="relative w-full md:h-[750px] bg-gradient-to-t from-[#5E2285] to-[#D26ECE] rounded-3xl p-6 md:p-28 md:pb-20">
 			<div className="absolute top-16 md:top-20 left-6 md:left-20 z-40 text-[32px] md:text-6xl">
@@ -60,32 +74,43 @@ const SixthSection = () => {
 					transition={{ type: "spring", stiffness: 200, damping: 30 }}
 					className="relative z-10 flex flex-col justify-center text-white"
 				>
-					<p className="mt-2 md:mt-8 font-aileron font-[400] text-xl md:text-3xl w-auto">
-						Looking to kickstart your{" "}
-						<strong className="font-bold text-[#97C423]">
-							creator journey?
-						</strong>
-					</p>
-					<p className="mt-6 md:mt-8 font-aileron font-[400] text-xl md:text-3xl w-auto">
-						Learn directly from the experts,{" "}
-						<strong className="font-semibold text-[#97C423]">
-							Shermaine Wong
-						</strong>{" "}
-						and{" "}
-						<strong className="font-semibold text-[#97C423]">Ceddy Ang</strong>{" "}
-						on how to succeed as a creator.
-					</p>
-					<motion.button
-						whileHover={{ scale: 1.05 }}
-						whileTap={{ scale: 0.95 }}
-						className={`hidden md:block mt-8 bg-[#97C423] font-bold py-4 px-14 rounded-full self-start transition-opacity duration-300 ease-in-out ${
-							isExpanded ? "opacity-0 pointer-events-none" : "opacity-100"
-						}`}
+					<motion.div
+						key={isExpanded ? "expanded" : "collapsed"}
+						variants={textFadeVariants}
+						initial="initial"
+						animate="animate"
+						exit="exit"
+						className="flex flex-col"
 					>
-						<span className="font-aileron bg-[#5E2285] bg-clip-text text-transparent">
-							ENROL NOW
-						</span>
-					</motion.button>
+						<p className="mt-2 md:mt-8 font-aileron font-[400] text-xl md:text-3xl w-auto">
+							Looking to kickstart your{" "}
+							<strong className="font-bold text-[#97C423]">
+								creator journey?
+							</strong>
+						</p>
+						<p className="mt-6 md:mt-8 font-aileron font-[400] text-xl md:text-3xl w-auto">
+							Learn directly from the experts,{" "}
+							<strong className="font-semibold text-[#97C423]">
+								Shermaine Wong
+							</strong>{" "}
+							and{" "}
+							<strong className="font-semibold text-[#97C423]">
+								Ceddy Ang
+							</strong>{" "}
+							on how to succeed as a creator.
+						</p>
+						<motion.button
+							whileHover={{ scale: 1.05 }}
+							whileTap={{ scale: 0.95 }}
+							className={`hidden md:block mt-8 bg-[#97C423] font-bold py-4 px-14 rounded-full self-start transition-opacity duration-300 ease-in-out ${
+								isExpanded ? "opacity-0 pointer-events-none" : "opacity-100"
+							}`}
+						>
+							<span className="font-aileron bg-[#5E2285] bg-clip-text text-transparent">
+								ENROL NOW
+							</span>
+						</motion.button>
+					</motion.div>
 				</motion.div>
 				{isMdAndAbove ? (
 					<>

@@ -67,7 +67,7 @@ const ThirdSection = () => {
 	const { isMdAndAbove } = useMediaQuery();
 
 	// Determine the x-offset based on the hover state
-	let xOffset = "-12%";
+	let xOffset = "12%";
 	if (hoverZone === "left") {
 		xOffset = "12%";
 	} else if (hoverZone === "right") {
