@@ -16,7 +16,7 @@ const FifthSection = () => {
 							<span className="text-white">4 </span>
 							<div className="absolute top-1/2 -left-6 md:-left-4 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16">
 								<Image
-									src="/images/newCreator/4.svg"
+									src="/images/NewCreator/4.svg"
 									alt="number 4"
 									fill
 									className="object-contain"
@@ -32,14 +32,14 @@ const FifthSection = () => {
 					</p>
 				</div>
 				<Image
-					src="/images/newCreator/monetizeSteps.svg"
+					src="/images/NewCreator/monetizeSteps.svg"
 					alt="Monetize your contents"
 					width={1200}
 					height={437}
 					className="hidden md:block w-full max-w-7xl h-auto px-4 md:py-10"
 				/>
 				<Image
-					src="/images/newCreator/monetizeStepsMobile.png"
+					src="/images/NewCreator/monetizeStepsMobile.png"
 					alt="Monetize your contents"
 					width={437}
 					height={1200}

@@ -44,60 +44,60 @@ const SeventhSection = () => {
 	const testimonialsData = [
 		{
 			id: 1,
-			name: "Jane Doe",
-			svgPath: "/images/NewCreator/testimonialAvatar1.png",
+			name: "Amanda Liew Su Ling",
+			svgPath: "/images/NewCreator/AmandaLiewSuLing.png",
 			testimonial:
-				"The analytics tools are a game-changer. I can finally see what content resonates with my audience and tailor my strategy accordingly. My engagement has gone up by 40%!",
+				"As a small creator I've never come across working with an agency that is organised with a platform. I'm just happy to be part of this!",
 			borderColor: "border-lavender",
 			position: "top-1/5 left-1/7 ",
 			size: "w-28 h-28",
 		},
 		{
 			id: 2,
-			name: "Ken Watanabe",
-			svgPath: "/images/NewCreator/testimonialAvatar2.png",
+			name: "Ayuni Hazan",
+			svgPath: "/images/NewCreator/AyuniHazan.png",
 			testimonial:
-				"As a photographer, managing contracts and payments was always a hassle. This platform automates everything, letting me focus on what I love—creating beautiful images.",
+				"Since using the platform, my productivity has significantly increased. I can't fathom returning to my previous working style!",
 			borderColor: "border-cc-green",
 			position: "bottom-1/2 right-20 -translate-y-1/2",
 			size: "w-20 h-20",
 		},
 		{
 			id: 3,
-			name: "Emily Chen",
-			svgPath: "/images/NewCreator/testimonialAvatar1.png",
+			name: "Telvinder Singh",
+			svgPath: "/images/NewCreator/TelvinderSingh.png",
 			testimonial:
-				"I was hesitant to join another platform, but the community here is incredibly supportive. It’s more than a tool; it’s a network of like-minded creators.",
+				"The platform is great! I really like that I don't have to spend too much time uploading and tracking my drafts.",
 			borderColor: "border-bright-yellow",
 			position: "top-1/5 right-1/6",
 			size: "w-12 h-12",
 		},
 		{
 			id: 4,
-			name: "Aisha Khan",
-			svgPath: "/images/NewCreator/testimonialAvatar2.png",
+			name: "Lim Shan May",
+			svgPath: "/images/NewCreator/LimShanMay.png",
 			testimonial:
-				"The integration with other tools I already use is seamless. It has simplified my workflow and saved me hours every week. I can't recommend it enough.",
+				"The Cult Creative team really took time to really understand our voice and gave us unique tasks that we enjoyed.",
 			borderColor: "border-vibrant-purple",
 			position: "top-1/2 left-20 -translate-y-1/2",
 			size: "w-16 h-16",
 		},
 		{
 			id: 5,
-			name: "David Lee",
-			svgPath: "/images/NewCreator/testimonialAvatar1.png",
+			name: "Ujay Dani",
+			svgPath: "/images/NewCreator/UjayDani.png",
 			testimonial:
-				"Finally, a platform that understands the financial needs of creators. The payment system is fast, reliable, and transparent.",
+				"All of the processes in the hplatform has helped me in my content journey. It's been great!",
 			borderColor: "border-cc-blue",
 			position: "bottom-1/3 right-1/6",
 			size: "w-24 h-24",
 		},
 		{
 			id: 6,
-			name: "Maria Garcia",
-			svgPath: "/images/NewCreator/testimonialAvatar2.png",
+			name: "Puteri Shahiera",
+			svgPath: "/images/NewCreator/PuteriShahiera.png",
 			testimonial:
-				"The user interface is so intuitive and beautiful. It's a joy to use every day, unlike other clunky software I've tried.",
+				"The platform is easy to navigate and I love having all the campaigns in one place!",
 			borderColor: "border-cc-pink",
 			position: "bottom-1/5 left-1/5 -translate-y-1/2",
 			size: "w-18 h-18",
@@ -133,10 +133,7 @@ const SeventhSection = () => {
 				</div>
 				{isMdAndAbove ? (
 					<div>
-						<div
-							className="absolute inset-0 w-full z-10"
-							aria-hidden="true"
-						>
+						<div className="absolute inset-0 w-full z-10" aria-hidden="true">
 							{testimonialsData.map((creator) => (
 								<CreatorAvatar
 									key={creator.id}

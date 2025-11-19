@@ -104,20 +104,20 @@ const FourthSection = () => {
 			<div className="relative w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 				<div className="relative z-20 h-[280px] md:h-[600px] bg-blue flex flex-col md:justify-center items-center">
 					<Image
-						src="/images/newCreator/csGalaxy.svg"
+						src="/images/NewCreator/csGalaxy.svg"
 						alt="Galaxy background"
 						fill
 						className="md:absolute object-contain translate-y-10 translate-x-36 md:-translate-x-0 "
 					/>
 					<Image
-						src="/images/newCreator/csSun.svg"
+						src="/images/NewCreator/csSun.svg"
 						alt="Sun"
 						width={400}
 						height={400}
 						className="absolute -top-48 md:-top-32 -left-40 md:-left-20"
 					/>
 					<Image
-						src="/images/newCreator/stars.svg"
+						src="/images/NewCreator/stars.svg"
 						alt="Sun"
 						width={500}
 						height={500}

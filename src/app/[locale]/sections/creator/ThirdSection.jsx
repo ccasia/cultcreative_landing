@@ -12,14 +12,14 @@ const featuresData = [
 		title: "Brand Deal Access",
 		description:
 			"Easily browse and apply to brand campaigns that fit your niche and interests.",
-		imageSrc: "/images/newCreator/okfBrandDeals.svg",
+		imageSrc: "/images/NewCreator/okfBrandDeals.svg",
 		bgColor: "bg-cc-blue",
 	},
 	{
 		id: 2,
 		title: "Admin Automation",
 		description: "Instantly generate, sign, and upload agreements.",
-		imageSrc: "/images/newCreator/okfAdminAutomation.svg",
+		imageSrc: "/images/NewCreator/okfAdminAutomation.svg",
 		bgColor: "bg-cc-green",
 	},
 	{
@@ -27,7 +27,7 @@ const featuresData = [
 		title: "Media Kit",
 		description:
 			"Showcase your hard work and achievements in a visually-pleasing, downloadable Media Kit.",
-		imageSrc: "/images/newCreator/okfMediakit.svg",
+		imageSrc: "/images/NewCreator/okfMediakit.svg",
 		bgColor: "bg-cc-orange",
 	},
 	{
@@ -35,7 +35,7 @@ const featuresData = [
 		title: "Skill Elevation",
 		description:
 			"Access courses, workshops, and exclusive content from our partners and brand platforms.",
-		imageSrc: "/images/newCreator/okfSkillElevation.svg",
+		imageSrc: "/images/NewCreator/okfSkillElevation.svg",
 		bgColor: "bg-vibrant-purple",
 	},
 ];

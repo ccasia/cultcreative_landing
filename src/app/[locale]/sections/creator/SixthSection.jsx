@@ -27,7 +27,7 @@ const SixthSection = () => {
 					Want To Go From{" "}
 					<span className="relative inline-block">
 						<Image
-							src="/images/newCreator/caPurpleRectangle.svg"
+							src="/images/NewCreator/caPurpleRectangle.svg"
 							alt="purple rectangle"
 							width={242}
 							height={58}
@@ -42,7 +42,7 @@ const SixthSection = () => {
 					<span className="relative inline-block">
 						{" "}
 						<Image
-							src="/images/newCreator/purpleStroke.svg"
+							src="/images/NewCreator/purpleStroke.svg"
 							alt="underline"
 							width={200}
 							height={10}
