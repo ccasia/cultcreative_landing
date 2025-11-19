@@ -31,24 +31,6 @@ const NewFooter = () => {
 
             <div>
               <div>
-            <p className="font-bold text-2xl -tracking-[.1rem]">Cult Careers</p>
-            <ul className="font-light text-sm">
-              <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="https://employer.cultcreative.asia/" target="_blank">
-                  Hire a Creative
-                </a>
-              </li>
-              <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
-                <a href="https://web.cultcreative.asia/?utm_source=wix&utm_medium=job_page&utm_campaign=general_CCWL_website" target="_blank">
-                  Apply to Creative Jobs
-                </a>
-              </li>
-                </ul>
-              </div>
-            </div>
-
-            <div>
-              <div>
             <p className="font-bold text-2xl -tracking-[.1rem]">Company</p>
             <ul className="font-light text-sm">
               <li className="hover:text-[#8A5AFE] duration-150 cursor-pointer">
