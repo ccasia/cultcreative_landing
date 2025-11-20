@@ -6,12 +6,12 @@ import Image from "next/image";
 const CreatorCardDeck = ({ creators = [] }) => {
 	const [deck, setDeck] = useState(creators);
 	const [dragRotation, setDragRotation] = useState(0);
+	const [isSwiping, setIsSwiping] = useState(false);
 
 	useEffect(() => {
 		setDeck(creators);
 	}, [creators]);
 
-	// This function now immediately reorders the deck state
 	const moveCardToEnd = () => {
 		if (deck.length < 2) return;
 
@@ -21,24 +21,64 @@ const CreatorCardDeck = ({ creators = [] }) => {
 		});
 	};
 
+	// --- CHANGE 2: New function to handle the tap sequence ---
+	const handleTap = () => {
+		// Prevent double taps while animating
+		if (isSwiping || deck.length < 2) return;
+
+		// 1. Start the swipe animation
+		setIsSwiping(true);
+
+		// 2. Wait for the animation to finish (300ms), then reorder the deck
+		setTimeout(() => {
+			moveCardToEnd();
+			setIsSwiping(false); // Reset state so the card reappears at the bottom
+		}, 200);
+	};
+
 	const onDragEnd = (event, info) => {
 		const swipeThreshold = 100;
 		if (Math.abs(info.offset.x) > swipeThreshold) {
 			moveCardToEnd();
 		}
-		// No need to reset dragRotation here; the animate prop will handle it smoothly
 	};
 
 	const getCardAnimation = (index) => {
-		// Hide cards beyond the third one to improve performance and avoid visual clutter
-		if (index > 2) {
-			return { opacity: 0, scale: 0.8, y: 60, x: 0, display: "none" };
-		}
-
 		const isTop = index === 0;
 
+		if (isTop && isSwiping) {
+			return {
+				x: 250, // Fly off to the right
+				rotate: 20, // Rotate while flying
+				opacity: 1, // Fade out
+				transition: { duration: 0.2 }, // Quick, snappy swipe
+			};
+		}
+
+		if (index === 3) {
+			return {
+				display: "block", // Keep it in layout!
+				x: 0,
+				opacity: 0, // But make it invisible
+				scale: 1, // Match scale of visible cards
+				rotate: -6, // Match rotation of bottom card (Index 2)
+				// Position it roughly where Index 2 is, so it doesn't "jump" when it moves up
+				y: (deck.length - 1 - 2) * 15,
+				zIndex: 0,
+			};
+		}
+
+		if (index > 3) {
+			return {
+				opacity: 1,
+				scale: 0.8,
+				y: (deck.length - 1 - 2) * 15, // Keep Y stable to prevent layout jumps
+				x: 0,
+				display: "none",
+			};
+		}
+
 		const baseRotation = isTop ? 0 : index === 1 ? 8 : -6;
-		// Add drag-induced rotation only to the top card
 		const finalRotation = isTop ? baseRotation + dragRotation : baseRotation;
 
 		return {
@@ -62,7 +102,6 @@ const CreatorCardDeck = ({ creators = [] }) => {
 						style={{ zIndex: deck.length - index }}
 						initial={false}
 						animate={getCardAnimation(index)}
-						// The layout prop enables smooth animation on reordering
 						layout
 						transition={{
 							type: "spring",
@@ -70,7 +109,7 @@ const CreatorCardDeck = ({ creators = [] }) => {
 							damping: 30,
 						}}
 						onTap={() => {
-							if (isTop) moveCardToEnd();
+							if (isTop) handleTap();
 						}}
 						drag={isTop ? "x" : false}
 						dragConstraints={{ left: 0, right: 0 }}

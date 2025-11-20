@@ -22,7 +22,7 @@ const creators_col_1 = [
 	},
 	{
 		id: 3,
-		name: "Kelvin Lee",
+		name: "Kevin Lee",
 		tag: "Travel",
 		img: "https://storage.googleapis.com/landing-cultcreative/creator/new/images/kevinlee.jpg",
 		gradientColor: "bg-gradient-to-b from-cc-blue to-cc-red",
