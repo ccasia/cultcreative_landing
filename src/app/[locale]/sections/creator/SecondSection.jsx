@@ -97,7 +97,7 @@ const SecondSection = () => {
 						<h2 className="text-[2rem] md:text-6xl font-semibold md:font-bold text-white font-aileron relative inline-block tracking-[-0.06em]">
 							{/* Sparkle effect */}
 							<Image
-								src="/images/NewCreator/stars.svg"
+								src="/images/NewCreator/starsV2.png"
 								alt="stars"
 								width={840}
 								height={840}

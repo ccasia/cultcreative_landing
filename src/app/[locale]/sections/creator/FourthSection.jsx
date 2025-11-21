@@ -117,7 +117,7 @@ const FourthSection = () => {
 						className="absolute -top-48 md:-top-32 -left-40 md:-left-20"
 					/>
 					<Image
-						src="/images/NewCreator/stars.svg"
+						src="/images/NewCreator/starsV2.png"
 						alt="Sun"
 						width={500}
 						height={500}

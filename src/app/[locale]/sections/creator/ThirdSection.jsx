@@ -12,7 +12,7 @@ const featuresData = [
 		title: "Brand Deal Access",
 		description:
 			"Easily browse and apply to brand campaigns that fit your niche and interests.",
-		imageSrc: "/images/NewCreator/okfBrandDeals.svg",
+		imageSrc: "/images/NewCreator/okfBrandDealsV2.png",
 		bgColor: "bg-cc-blue",
 	},
 	{
@@ -54,8 +54,12 @@ const FeatureCard = ({ imageSrc, title, description, bgColor }) => (
 			/>
 		</div>
 		<div className="relative z-10">
-			<h3 className="text-2xl md:text-3xl font-aileron font-[700] md:mb-2 tracking-[-0.06em]">{title}</h3>
-			<p className="text-base/5 md:text-sm font-aileron font-[400]">{description}</p>
+			<h3 className="text-2xl md:text-3xl font-aileron font-[700] md:mb-2 tracking-[-0.06em]">
+				{title}
+			</h3>
+			<p className="text-base/5 md:text-sm font-aileron font-[400]">
+				{description}
+			</p>
 		</div>
 	</div>
 );
