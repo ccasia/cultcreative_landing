@@ -55,7 +55,7 @@ const SuccessStoriesGrid = () => {
       id: 8,
       title: "Noir",
       image:
-        "/images/newStories/grid-images/noir.png",
+        "/images/newStories/grid-images/noir.jpg",
     },
     {
       id: 9,
