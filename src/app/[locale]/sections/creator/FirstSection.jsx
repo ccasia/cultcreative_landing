@@ -39,7 +39,7 @@ const FirstSection = () => {
 
 	return (
 		<section className="min-h-screen flex justify-center items-center w-full bg-white pt-32 pb-0 lg:pt-56 md:pb-12">
-			<div className="container mx-auto px-6 flex flex-col items-center gap-y-24 md:gap-y-48">
+			<div className="container mx-auto px-6 flex flex-col items-center gap-y-18 md:gap-y-48">
 				<div className="relative text-center">
 					<div className="flex items-center justify-center">
 						<h2
@@ -73,8 +73,8 @@ const FirstSection = () => {
 					</p>
 				</div>
 				<div className="relative flex flex-col justify-center items-center">
-					<div className="z-10 flex flex-col justify-center items-center gap-1 md:gap-2">
-						<div className="flex justify-center gap-3 md:gap-5 w-full pl-20">
+					<div className="z-10 flex flex-col justify-center items-center gap-0 md:gap-2">
+						<div className="flex justify-center gap-2 md:gap-5 w-full pl-20">
 							{row1.map((video) => (
 								<Thumbnail
 									key={video.id}
@@ -84,7 +84,7 @@ const FirstSection = () => {
 								/>
 							))}
 						</div>
-						<div className="flex justify-center gap-3 md:gap-5 w-full">
+						<div className="flex justify-center gap-2 md:gap-5 w-full">
 							{row2.map((video) => (
 								<Thumbnail
 									key={video.id}
@@ -94,7 +94,7 @@ const FirstSection = () => {
 								/>
 							))}
 						</div>
-						<div className="flex justify-center gap-3 md:gap-5 w-full pr-20">
+						<div className="flex justify-center gap-2 md:gap-5 w-full pr-20">
 							{row3.map((video) => (
 								<Thumbnail
 									key={video.id}
