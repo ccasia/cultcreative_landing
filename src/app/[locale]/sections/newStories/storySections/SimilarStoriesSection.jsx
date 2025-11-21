@@ -5,36 +5,71 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-const SimilarStoriesSection = ({ similarStories }) => {
+const SimilarStoriesSection = ({ currentStoryId }) => {
   const scrollContainerRef = useRef(null);
 
   // Mock data for similar stories
-  const mockStories = similarStories || [
+  const allStories = [
+    {
+      id: 1,
+      title: "Longchamp",
+      image:
+        "/images/newStories/grid-images/longchamp.jpg",
+    },
     {
       id: 2,
-      title: "The Body Shop",
+      title: "Marriott Group",
       image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=500&fit=crop",
+        "/images/newStories/grid-images/marriott.jpg",
     },
     {
       id: 3,
-      title: "REXPERIENCE",
+      title: "Rexperience",
       image:
-        "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=500&h=500&fit=crop",
+        "/images/newStories/grid-images/rexperience.jpg",
     },
     {
       id: 4,
-      title: "Suisen",
+      title: "Bata",
       image:
-        "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop",
+        "/images/newStories/grid-images/bata.jpg",
     },
     {
       id: 5,
-      title: "Nature Valley",
+      title: "Samsung",
       image:
-        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
+        "/images/newStories/grid-images/samsung.jpg",
+    },
+    {
+      id: 6,
+      title: "Dressing Paula",
+      image:
+        "/images/newStories/grid-images/dressing_paula.png",
+    },
+    {
+      id: 7,
+      title: "Malaysian Pavilion World Expo",
+      image:
+        "/images/newStories/grid-images/expo.jpg",
+    },
+    {
+      id: 8,
+      title: "Noir",
+      image:
+        "/images/newStories/grid-images/noir.jpg",
+    },
+    {
+      id: 9,
+      title: "The Body Shop",
+      image:
+        "/images/newStories/grid-images/body_shop.png",
     },
   ];
+
+  const fourStories = allStories
+    .filter((story) => story.id !== currentStoryId)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
 
   // Scroll to center on mobile
   useEffect(() => {
@@ -43,7 +78,7 @@ const SimilarStoriesSection = ({ similarStories }) => {
         const container = scrollContainerRef.current;
         const cardWidth = 280; // Width of each card on mobile
         const gap = 24; // gap-6 = 24px
-        const centerIndex = Math.floor(mockStories.length / 2) - 1; // Start at index 1 for 4 items
+        const centerIndex = Math.floor(fourStories.length / 2) - 1; // Start at index 1 for 4 items
         const scrollPosition = centerIndex * (cardWidth + gap);
 
         container.scrollTo({
@@ -55,7 +90,7 @@ const SimilarStoriesSection = ({ similarStories }) => {
 
     // Small delay to ensure DOM is ready
     setTimeout(scrollToCenter, 100);
-  }, [mockStories.length]);
+  }, [fourStories.length]);
 
   return (
     <section className="py-12 md:py-20 px-6 md:px-40 bg-white">
@@ -83,7 +118,7 @@ const SimilarStoriesSection = ({ similarStories }) => {
             msOverflowStyle: 'none',
           }}
         >
-          {mockStories.map((story) => (
+          {fourStories.map((story) => (
             <motion.div
               key={story.id}
               whileHover={{ scale: 1.1 }}

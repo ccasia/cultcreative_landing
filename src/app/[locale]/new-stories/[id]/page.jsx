@@ -275,7 +275,7 @@ export default async function StoryDetailPage({ params }) {
 
         {/* Similar Stories Section */}
         <Suspense fallback={<div className="h-96 bg-white animate-pulse"></div>}>
-          <SimilarStoriesSection />
+          <SimilarStoriesSection currentStoryId={parseInt(id)} />
         </Suspense>
 
         {/* Footer */}
