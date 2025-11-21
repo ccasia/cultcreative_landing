@@ -20,7 +20,7 @@ const HeroSection = ({ storyData }) => {
       {/* MOBILE LAYOUT - Hidden on desktop */}
       <div className="flex flex-col items-center w-full lg:hidden">
         {/* Title and Subtitle - Mobile */}
-        <div className="mx-auto my-16">
+        <div className="mx-auto my-16 px-10">
           <div className="relative z-10 inline-block">
             <h1 className="text-4xl font-aileron font-bold tracking-tighter text-white text-left relative z-10">
               {title}
@@ -151,7 +151,7 @@ const HeroSection = ({ storyData }) => {
         {/* Stats and Info Chips - Separate Container */}
         <div className="max-w-max">
           {/* Stats */}
-          <div className="mb-6 grid grid-cols-3 gap-24 max-w-2xl">
+          <div className="mb-6 flex flex-row gap-24">
             {stats.map((stat, index) => (
               <div key={index} className="text-left">
                 <p className="text-white font-family-aileron font-bold text-[36px] tracking-tight mb-1">{stat.label}</p>

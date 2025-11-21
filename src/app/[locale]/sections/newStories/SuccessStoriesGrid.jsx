@@ -11,57 +11,57 @@ const SuccessStoriesGrid = () => {
   const [stories] = useState([
     {
       id: 1,
-      title: "Dressing Paula",
+      title: "Longchamp",
       image:
-        "/images/newStories/grid-images/dressing-paula.png",
+        "/images/newStories/grid-images/longchamp.jpg",
     },
     {
       id: 2,
-      title: "The Body Shop",
+      title: "Marriott Group",
       image:
-        "/images/newStories/grid-images/body-shop.png",
+        "/images/newStories/grid-images/marriott.jpg",
     },
     {
       id: 3,
       title: "Rexperience",
       image:
-        "/images/newStories/grid-images/rexperience.png",
+        "/images/newStories/grid-images/rexperience.jpg",
     },
     {
       id: 4,
-      title: "Suisen",
+      title: "Bata",
       image:
-        "/images/newStories/grid-images/suisen.png",
+        "/images/newStories/grid-images/bata.jpg",
     },
     {
       id: 5,
-      title: "Nature Valley",
+      title: "Samsung",
       image:
-        "/images/newStories/grid-images/nature-valley.png",
+        "/images/newStories/grid-images/samsung.jpg",
     },
     {
       id: 6,
-      title: "Lenskart",
+      title: "Dressing Paula",
       image:
-        "/images/newStories/grid-images/lenskart.png",
+        "/images/newStories/grid-images/dressing_paula.png",
     },
     {
       id: 7,
-      title: "Flint",
+      title: "Malaysian Pavilion World Expo",
       image:
-        "/images/newStories/grid-images/flint.png",
+        "/images/newStories/grid-images/expo.jpg",
     },
     {
       id: 8,
-      title: "Pejoy",
-      image:
-        "/images/newStories/grid-images/pejoy.png",
-    },
-    {
-      id: 9,
       title: "Noir",
       image:
         "/images/newStories/grid-images/noir.png",
+    },
+    {
+      id: 9,
+      title: "The Body Shop",
+      image:
+        "/images/newStories/grid-images/body_shop.png",
     },
   ]);
 

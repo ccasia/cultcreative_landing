@@ -1,8 +1,90 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
 import { DeviceFrameset } from "react-device-frameset";
 import "react-device-frameset/styles/marvel-devices.min.css";
+
+const VideoCard = ({ video, index }) => {
+  const [isVisible, setIsVisible] = useState(index === 0); // First video loads immediately
+  const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef(null);
+  const containerRef = useRef(null);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "100px" }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className={`shrink-0 relative -top-20 ${
+        index === 0 ? "" : index === 1 ? "hidden md:block " : "hidden lg:block"
+      }`}
+    >
+      <div className="scale-[0.52] origin-center">
+        <DeviceFrameset device="iPhone X" color="black">
+          <div className="h-full w-full bg-white relative">
+            {!isLoaded && (
+              <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+                <svg
+                  className="w-8 h-8 text-gray-400 animate-spin"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              </div>
+            )}
+            {isVisible && (
+              <video
+                ref={videoRef}
+                src={video.thumbnail}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                onLoadedData={() => setIsLoaded(true)}
+                className="w-full h-full object-cover"
+              >
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </div>
+        </DeviceFrameset>
+      </div>
+    </div>
+  );
+};
 
 const VideosSection = ({ videos }) => {
   // Mock video data for now - placeholder iPhones
@@ -29,32 +111,7 @@ const VideosSection = ({ videos }) => {
       {/* iPhone Frames Grid - 1 on mobile, 2 on tablet, 4 on desktop */}
       <div className="flex justify-center lg:-space-x-40 flex-wrap">
         {mockVideos.map((video, index) => (
-          <div
-            key={video.id}
-            className={`shrink-0 relative -top-20 ${
-              index === 0 ? '' :
-              index === 1 ? 'hidden md:block ' :
-              'hidden lg:block'
-            }`}
-          >
-            {/* iPhone Frame - smaller on mobile, original size on desktop */}
-            <div className="scale-[0.52] origin-center">
-              <DeviceFrameset device='iPhone X' color="black">
-                <div className="h-full w-full bg-white">
-                  <video
-                    src={video.thumbnail}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </DeviceFrameset>
-            </div>
-          </div>
+          <VideoCard key={video.id} video={video} index={index} />
         ))}
       </div>
 
