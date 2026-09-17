@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import Image from "next/image";
 
 const LocationSelector = dynamic(() => import("./LocationSelector"));
 
@@ -21,7 +20,8 @@ const locations = [
     officeLocation: "National Design Center",
     companyName: "Cult creative Pte Ltd",
     registrationNumber: "202505503N",
-    address: "",
+    address:
+      "CULT CREATIVE PTE. LTD. 14 Robinson Road, #08-01A Far East Finance Building, Singapore 048545",
   },
 ];
 
