@@ -9,10 +9,6 @@ const FloatingNavbar = dynamic(
 	() => import("@/app/[locale]/components/FloatingNavbar"),
 );
 
-const AppWaitlistBanner = dynamic(
-	() => import("@/app/[locale]/components/AppWaitlistBanner"),
-);
-
 // Dynamic import for For Brands sections
 const FirstSection = dynamic(
 	() => import("@/app/[locale]/sections/forBrands/FirstSection"),
@@ -86,9 +82,7 @@ const ForBrandsPage = async ({ params }) => {
           `,
 				}}
 			/>
-			<FloatingNavbar>
-				<AppWaitlistBanner />
-			</FloatingNavbar>
+			<FloatingNavbar />
 			<main className="flex flex-col min-h-screen w-full overflow-x-clip">
 				<Suspense
 					fallback={

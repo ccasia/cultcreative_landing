@@ -88,6 +88,12 @@
 	}
 }
 
+@keyframes fade-pulse {
+	50% {
+		opacity: 0;
+	}
+}
+
 @theme {
 	/* Colors */
 	--color-cc-blue: #1340ff;
@@ -142,6 +148,9 @@
 	--animation-loop-scroll: loop-scroll 30s linear infinite;
 	--animation-loop-scroll-reverse: loop-scroll 30s linear infinite reverse;
 	--animation-scroll-x: scroll-x 30s linear infinite;
+
+	/* v4 namespace — generates the animate-fade-pulse utility */
+	--animate-fade-pulse: fade-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 :root {
@@ -179,6 +188,11 @@ body {
 
 .font-baskerville {
 	font-family: "Libre Baskerville", serif;
+}
+
+.font-baskerville-thin {
+	font-family: "Libre Baskerville", serif;
+	font-weight: 100;
 }
 
 /* Custom gradient backgrounds */

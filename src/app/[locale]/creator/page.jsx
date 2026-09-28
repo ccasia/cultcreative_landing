@@ -8,10 +8,6 @@ const FloatingNavbar = dynamic(
 	() => import("@/app/[locale]/components/FloatingNavbar"),
 );
 
-const AppWaitlistBanner = dynamic(
-	() => import("@/app/[locale]/components/AppWaitlistBanner"),
-);
-
 // Dynamic imports for better performance
 const FirstSection = dynamic(
 	() => import("@/app/[locale]/sections/creator/FirstSection"),
@@ -58,9 +54,7 @@ const Creator = ({ params: { locale } }) => {
 
 	return (
 		<>
-			<FloatingNavbar>
-				<AppWaitlistBanner />
-			</FloatingNavbar>
+			<FloatingNavbar />
 
 			<main className="flex flex-col min-h-screen w-full overflow-x-clip bg-white">
 				<Suspense

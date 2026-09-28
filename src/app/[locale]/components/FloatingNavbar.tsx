@@ -5,6 +5,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavVisibilityContext } from "./NavVisibilityContext";
+import AppDownloadBanner from "./AppDownloadBanner";
+
+const AppPromoBadge = ({ className }: { className: string }) => (
+  <img src="/logo/cclogo.png" alt="" aria-hidden className={`rounded-[8px] ${className}`} />
+);
 
 const FloatingNavbar = ({ children }: { children?: React.ReactNode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,8 +50,9 @@ const FloatingNavbar = ({ children }: { children?: React.ReactNode }) => {
     return pathname === href || pathname?.startsWith(href + '/');
   };
 
-  // CSS filter to convert any color to #1340ff (blue)
-  // This filter transforms the image to the target blue color
+  const creatorHref = `/${locale}/creator`;
+  const isCreatorPage = isActivePage(creatorHref);
+  const showAppBadge = !isCreatorPage;
   const blueColorFilter = 'brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(5765%) hue-rotate(229deg) brightness(98%) contrast(107%)';
 
   return (
@@ -214,7 +220,8 @@ const FloatingNavbar = ({ children }: { children?: React.ReactNode }) => {
 
                 {/* Hamburger Menu Icon in White Rounded Square */}
                 <motion.button
-                  className="bg-white p-2 rounded-full text-gray-700 hover:text-cc-onyx transition-colors duration-200 border border-gray-200"
+                  className="relative bg-white p-2 rounded-full text-gray-700 hover:text-cc-onyx transition-colors duration-200 border border-gray-200"
+                  aria-label={showAppBadge ? "Open menu, new: get the app" : "Open menu"}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -222,6 +229,9 @@ const FloatingNavbar = ({ children }: { children?: React.ReactNode }) => {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
+                  {showAppBadge && (
+                    <AppPromoBadge className="absolute -top-1.5 -right-1.5 h-5 w-5 drop-shadow-md motion-safe:animate-fade-pulse" />
+                  )}
                 </motion.button>
               </div>
             </div>
@@ -315,6 +325,9 @@ const FloatingNavbar = ({ children }: { children?: React.ReactNode }) => {
                               <img src={item.image} alt="" className="w-5 h-5" style={{ filter: blueColorFilter }} />
                             )}
                             {item.name}
+                            {item.href === creatorHref && showAppBadge && (
+                              <AppPromoBadge className="ml-auto h-5 w-5 motion-safe:animate-fade-pulse" />
+                            )}
                           </motion.span>
                         </Link>
                       );
@@ -330,6 +343,7 @@ const FloatingNavbar = ({ children }: { children?: React.ReactNode }) => {
         </div>
         </motion.nav>
       </motion.div>
+      <AppDownloadBanner showMobile={isCreatorPage} />
       {children}
     </NavVisibilityContext.Provider>
   );

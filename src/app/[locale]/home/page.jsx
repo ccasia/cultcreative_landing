@@ -14,10 +14,6 @@ const FloatingNavbar = dynamic(
 	{ ssr: true },
 );
 
-const AppWaitlistBanner = dynamic(
-	() => import("@/app/[locale]/components/AppWaitlistBanner"),
-);
-
 const FirstSection = dynamic(
 	() => import("@/app/[locale]/sections/newLanding/FirstSection"),
 	{ ssr: true },
@@ -73,9 +69,7 @@ const NewLanding = async ({ params }) => {
 
 	return (
 		<>
-			<FloatingNavbar>
-				<AppWaitlistBanner />
-			</FloatingNavbar>
+			<FloatingNavbar />
 			<main className="flex flex-col min-h-screen w-full overflow-x-clip">
 				<Suspense
 					fallback={
