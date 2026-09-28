@@ -40,7 +40,7 @@ const LocaleLayout = async ({ children, params }) => {
     <>
       <Script
         id="microsoft-clarity-init"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
           (function(c,l,a,r,i,t,y){
@@ -53,7 +53,7 @@ const LocaleLayout = async ({ children, params }) => {
       />
       <Script
         id="tiktok"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             !function (w, d, t) {
@@ -96,7 +96,7 @@ const LocaleLayout = async ({ children, params }) => {
       />
       <Script
         id="meta-pixel-direct"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             !function(f,b,e,v,n,t,s)

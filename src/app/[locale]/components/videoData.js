@@ -65,7 +65,7 @@ export const videoGallery = [
 		thumbnail:
 			"https://storage.googleapis.com/landing-cultcreative/creator/new/images/thumbnails/nai.png",
 		videoUrl:
-			"https://storage.googleapis.com/landing-cultcreative/creator/new/videos/Presence%20-%20Nai.mov",
+			"https://storage.googleapis.com/landing-cultcreative/creator/new/videos/Presence%20-%20Nai.mp4",
 		alt: "Presence - Nai",
 	},
 	{
@@ -131,7 +131,7 @@ export const videoGallery = [
 		thumbnail:
 			"https://storage.googleapis.com/landing-cultcreative/creator/new/images/thumbnails/Dressing%20Paula3.png",
 		videoUrl:
-			"https://storage.googleapis.com/landing-cultcreative/creator/new/videos/Meet%20Me%20at%20The%20Cafe%20with%20DP.mov",
+			"https://storage.googleapis.com/landing-cultcreative/creator/new/videos/Meet%20Me%20at%20The%20Cafe%20with%20DP.mp4",
 		alt: "Dressing Paula",
 	},
 	{

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { videoGallery } from "../../components/videoData";
 
@@ -124,6 +124,15 @@ const FirstSection = () => {
   const playerRef = useRef(null);
 
   const posterSrc = activeVideo?.thumbnail ?? videoGallery[0].thumbnail;
+  const {
+    props: { src: optimizedPosterSrc },
+  } = getImageProps({
+    src: posterSrc,
+    alt: "",
+    width: 320,
+    height: 569,
+    quality: 60,
+  });
 
   useEffect(() => {
     setIsClient(true);
@@ -294,8 +303,8 @@ const FirstSection = () => {
                 <video
                   key={activeVideo.videoUrl}
                   className="absolute top-0 left-0 w-full h-full object-cover px-[5.5%] py-[9.5%] rounded-[40px] md:rounded-[60px]"
-                  poster={posterSrc}
-                  preload="auto"
+                  poster={optimizedPosterSrc}
+                  preload="metadata"
                   autoPlay
                   loop
                   muted

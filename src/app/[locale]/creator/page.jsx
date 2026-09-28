@@ -24,9 +24,6 @@ const FourthSection = dynamic(
 const FifthSection = dynamic(
 	() => import("@/app/[locale]/sections/creator/FifthSection"),
 );
-const SixthSection = dynamic(
-	() => import("@/app/[locale]/sections/creator/SixthSection"),
-);
 const SeventhSection = dynamic(
 	() => import("@/app/[locale]/sections/creator/SeventhSection"),
 );
@@ -69,7 +66,6 @@ const Creator = ({ params: { locale } }) => {
 					<ThirdSection />
 					<FourthSection />
 					<FifthSection />
-					<SixthSection />
 					<SeventhSection />
 					<NewFooter />
 					<Toaster position="top-center" />

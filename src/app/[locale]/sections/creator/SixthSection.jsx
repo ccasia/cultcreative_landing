@@ -141,7 +141,6 @@ const SixthSection = () => {
                   alt="Shermaine in Iphone"
                   className="object-contain"
                   fill
-                  priority
                 />
               </div>
             </div>
