@@ -47,7 +47,7 @@ const DesktopBanner = () => {
 			{!isDismissed && (
 				<motion.aside
 					aria-label="Get the Cult Creative app"
-					className="fixed right-18 bottom-2 z-40 hidden md:block"
+					className="fixed right-14 -bottom-20 z-40 hidden md:block"
 					style={{ y: "-50%" }}
 					initial={{ opacity: 0, x: 40 }}
 					animate={{ opacity: 1, x: 0 }}
@@ -134,7 +134,6 @@ const DesktopBanner = () => {
 };
 
 const MobileBanner = () => {
-	const isNavVisible = useNavVisibility();
 	const [isExpanded, setIsExpanded] = useState(false);
 	const [isDismissed, setIsDismissed] = useState(false);
 	const [isGone, setIsGone] = useState(false);
@@ -163,9 +162,9 @@ const MobileBanner = () => {
 
 	return (
 		<motion.div
-			className="pointer-events-none fixed left-0 right-0 top-[100px] z-40 flex justify-end px-3 md:hidden"
+			className="pointer-events-none fixed left-0 right-0 bottom-0 z-40 flex justify-end px-3 md:hidden"
 			initial={{ opacity: 0, y: -20 }}
-			animate={{ opacity: 1, y: isNavVisible ? 0 : -80 }}
+			animate={{ opacity: 1}}
 			transition={{ duration: 0.3, ease: "easeInOut" }}
 		>
 			<motion.div
@@ -181,7 +180,7 @@ const MobileBanner = () => {
 				transition={{ width: spring, marginRight: spring, scale: spring }}
 				aria-hidden={!isExpanded}
 			>
-				<div className="flex h-12 items-center gap-1.5 rounded-l-[20px] rounded-r-[12px] bg-gradient-to-r from-[#8a5afe] to-[#231F20] py-2 pl-3 pr-2.5">
+				<div className="flex items-center gap-1.5 rounded-l-[20px] rounded-r-[12px] bg-gradient-to-r from-[#8a5afe] to-[#231F20] py-2 pl-3 pr-2.5">
 					<button
 						onClick={dismiss}
 						aria-label="Dismiss app download banner"
@@ -190,27 +189,30 @@ const MobileBanner = () => {
 					>
 						<CloseIcon className="h-3.5 w-3.5" />
 					</button>
-					<div className="min-w-0 flex-1 mr-2">
-						<p
-							className="truncate text-[12px] leading-[12px] text-white"
-							style={headlineStyle}
-						>
-							You Made It This Far,
-						</p>
-						<p
-							className="truncate font-baskerville-thin text-[12px] italic leading-[100%] text-white/90"
-							style={{ letterSpacing: "-0.04em" }}
-						>
-							Get our app now!
-						</p>
+					{/* Row 1: copy — Row 2: store badges */}
+					<div className="flex min-w-0 flex-1 flex-col gap-1.5">
+						<div className="flex min-w-0 flex-row items-baseline gap-1">
+							<p
+								className="truncate text-[17px] leading-[20px] text-white"
+								style={headlineStyle}
+							>
+								You Made It This Far,
+							</p>
+							<p
+								className="truncate font-baskerville-thin text-[16px] italic leading-[100%] text-white/90"
+								style={{ letterSpacing: "-0.04em" }}
+							>
+								Get our app now!
+							</p>
+						</div>
+						<StoreBadges />
 					</div>
-					<StoreBadges size="sm" />
 				</div>
 			</motion.div>
 
 			<motion.div
 				aria-hidden
-				className="shrink-0 rounded-[14px] shadow-2xl"
+				className="shrink-0 rounded-[14px]"
 				animate={{
 					opacity: isDismissed ? 0 : 1,
 					scale: isDismissed ? 0.8 : 1,
