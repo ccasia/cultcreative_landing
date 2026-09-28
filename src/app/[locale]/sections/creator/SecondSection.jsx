@@ -101,6 +101,7 @@ const SecondSection = () => {
                 alt="stars"
                 width={840}
                 height={840}
+                sizes="(min-width: 768px) 840px, 400px"
                 className="absolute object-contain z-0 left-32 -top-28 md:-left-72 md:-top-52"
               />
               Our Star Creators.

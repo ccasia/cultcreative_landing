@@ -269,21 +269,6 @@ const FirstSection = () => {
               ))}
             </div>
           </div>
-          <motion.div
-            className="absolute inset-0 z-20 pointer-events-none"
-            variants={shouldAnimate ? overlayVariants : undefined}
-            initial={shouldAnimate ? "hidden" : { opacity: 1 }}
-            animate={shouldAnimate ? undefined : { opacity: 1 }}
-            whileInView={shouldAnimate ? "visible" : undefined}
-            viewport={{ once: true }}
-          >
-            <Image
-              src="/images/NewCreator/radialBlur.svg"
-              alt="Radial blur"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
           {/* Iphone video player */}
           <motion.div
             ref={playerRef}
