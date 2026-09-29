@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/appLinks";
+import { APP_STORE_URL, PLAY_STORE_URL, WEB_APP_URL } from "@/lib/appLinks";
 
 export function GET(request: NextRequest) {
 	const ua = request.headers.get("user-agent") ?? "";
@@ -11,5 +11,5 @@ export function GET(request: NextRequest) {
 		return NextResponse.redirect(PLAY_STORE_URL);
 	}
 
-	return NextResponse.redirect(new URL("/my/creator", request.url));
+	return NextResponse.redirect(WEB_APP_URL);
 }

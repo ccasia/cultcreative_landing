@@ -135,8 +135,6 @@ const DesktopBanner = () => {
 
 const MobileBanner = () => {
 	const [isExpanded, setIsExpanded] = useState(false);
-	const [isDismissed, setIsDismissed] = useState(false);
-	const [isGone, setIsGone] = useState(false);
 
 	useEffect(() => {
 		let timer: ReturnType<typeof setTimeout>;
@@ -153,23 +151,16 @@ const MobileBanner = () => {
 		};
 	}, []);
 
-	const dismiss = () => {
-		setIsExpanded(false);
-		setIsDismissed(true);
-	};
-
-	if (isGone) return null;
-
 	return (
 		<motion.div
-			className="pointer-events-none fixed left-0 right-0 bottom-0 z-40 flex justify-end px-3 md:hidden"
+			className="pointer-events-none fixed left-0 right-0 bottom-0 z-40 flex items-end justify-end px-3 md:hidden"
 			initial={{ opacity: 0, y: -20 }}
-			animate={{ opacity: 1}}
+			animate={{ opacity: 1 }}
 			transition={{ duration: 0.3, ease: "easeInOut" }}
 		>
 			<motion.div
 				className="pointer-events-auto min-w-0 max-w-[calc(100vw-80px)] overflow-hidden"
-				style={{ transformOrigin: "right center" }}
+				style={{ transformOrigin: "right" }}
 				initial={false}
 				animate={{
 					width: isExpanded ? "auto" : 0,
@@ -180,9 +171,9 @@ const MobileBanner = () => {
 				transition={{ width: spring, marginRight: spring, scale: spring }}
 				aria-hidden={!isExpanded}
 			>
-				<div className="flex items-center gap-1.5 rounded-l-[20px] rounded-r-[12px] bg-gradient-to-r from-[#8a5afe] to-[#231F20] py-2 pl-3 pr-2.5">
+				<div className="flex items-center gap-5 rounded-l-[20px] rounded-r-[12px] bg-gradient-to-r from-[#8a5afe] to-[#231F20] py-2 pl-4 pr-2.5">
 					<button
-						onClick={dismiss}
+						onClick={() => setIsExpanded(false)}
 						aria-label="Dismiss app download banner"
 						className="shrink-0 cursor-pointer p-0.5 text-white/80 transition-colors duration-200 hover:text-white"
 						tabIndex={isExpanded ? 0 : -1}
@@ -191,9 +182,9 @@ const MobileBanner = () => {
 					</button>
 					{/* Row 1: copy — Row 2: store badges */}
 					<div className="flex min-w-0 flex-1 flex-col gap-1.5">
-						<div className="flex min-w-0 flex-row items-baseline gap-1">
+						<div className="flex min-w-0 flex-col items-baseline">
 							<p
-								className="truncate text-[17px] leading-[20px] text-white"
+								className="truncate text-[17px] leading-[17px] text-white"
 								style={headlineStyle}
 							>
 								You Made It This Far,
@@ -210,28 +201,22 @@ const MobileBanner = () => {
 				</div>
 			</motion.div>
 
-			<motion.div
-				aria-hidden
-				className="shrink-0 rounded-[14px]"
-				animate={{
-					opacity: isDismissed ? 0 : 1,
-					scale: isDismissed ? 0.8 : 1,
-				}}
-				transition={{
-					delay: isDismissed ? 0.45 : 0,
-					duration: 0.25,
-					ease: "easeOut",
-				}}
-				onAnimationComplete={() => {
-					if (isDismissed) setIsGone(true);
-				}}
+			<motion.button
+				onClick={() => setIsExpanded((open) => !open)}
+				aria-label={
+					isExpanded ? "Close app download banner" : "Get the Cult Creative app"
+				}
+				aria-expanded={isExpanded}
+				aria-controls="app-download-banner"
+				className="pointer-events-auto shrink-0 cursor-pointer rounded-[14px]"
+				whileTap={{ scale: 0.92 }}
 			>
 				<img
 					src="/favicon-192x192.png"
 					alt=""
 					className="h-12 w-12 rounded-[14px]"
 				/>
-			</motion.div>
+			</motion.button>
 		</motion.div>
 	);
 };

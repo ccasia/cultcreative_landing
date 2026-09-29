@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const FifthSection = () => {
   return (
-    <section className="relative min-h-screen bg-white flex flex-col items-center overflow-hidden md:py-32">
-      <div className="flex flex-col w-full items-center gap-y-4 py-32 md:py-0">
+    <section className="relative min-h-screen bg-white flex flex-col items-center overflow-hidden md:p-32">
+      <div className="flex flex-col w-full items-center gap-y-4 p-32 md:py-0">
         <div className="flex flex-col text-center">
           <h2 className="text-[2rem]/10 md:text-[4rem]/10 font-bold font-aileron text-black relative inline-block tracking-[-0.06em]">
             Landing Brand Deals Is
