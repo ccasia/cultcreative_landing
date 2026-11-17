@@ -21,7 +21,7 @@ const locations = [
     companyName: "Cult creative Pte Ltd",
     registrationNumber: "202505503N",
     address:
-      "CULT CREATIVE PTE. LTD. 14 Robinson Road, #08-01A Far East Finance Building, Singapore 048545",
+      "14 Robinson Road, #08-01A Far East Finance Building, Singapore 048545",
   },
 ];
 
@@ -46,7 +46,7 @@ const NewFooter = () => {
               {locations.map((location) => (
                 <div key={location.companyName} className="mt-4">
                   <h1 className="uppercase font-bold text-sm">
-                    {location.companyName} - {location.country}
+                    {location.country}
                   </h1>
                   <div className="text-sm font-light mt-4 uppercase flex flex-col gap-0.5 text-['rgba(35, 31, 32, 1)']">
                     <p>{location.companyName}</p>
